@@ -1,0 +1,42 @@
+{
+  "step": "v2_gf_fixture",
+  "snapshot": "/beegfs/a474r867/bioai/hf_cache/hub/models--ctheodoris--Geneformer/snapshots/1f7fbae4e469a5f4f1af8c111a529cfe1b3829f5",
+  "V1": {
+    "cells_compared": 24,
+    "cells_identical": 24,
+    "match_rate": 1.0,
+    "first_diff_cell": null,
+    "upstream_len_sample": [
+      616,
+      639,
+      616
+    ],
+    "mine_len_sample": [
+      616,
+      639,
+      616
+    ],
+    "special_tokens": false,
+    "max_len": 2048,
+    "mapping_file": "/beegfs/a474r867/bioai/hf_cache/hub/models--ctheodoris--Geneformer/snapshots/1f7fbae4e469a5f4f1af8c111a529cfe1b3829f5/geneformer/gene_dictionaries_30m/ensembl_mapping_dict_gc30M.pkl"
+  },
+  "V2": {
+    "cells_compared": 24,
+    "cells_identical": 24,
+    "match_rate": 1.0,
+    "first_diff_cell": null,
+    "upstream_len_sample": [
+      515,
+      509,
+      530
+    ],
+    "mine_len_sample": [
+      515,
+      509,
+      530
+    ],
+    "special_tokens": true,
+    "max_len": 4096,
+    "mapping_file": "pkg default"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "step": "v2_scfm_smoke",
+  "model": "cw_clip_v1",
+  "n_cells": 16,
+  "device": "cuda",
+  "fwd_dim": [
+    16,
+    2048
+  ],
+  "loss": 0.002915252698585391,
+  "tower": "GeneformerModel",
+  "locking_mode": "LU",
+  "n_params_with_grad": 181,
+  "wall_s": 34.7
+}

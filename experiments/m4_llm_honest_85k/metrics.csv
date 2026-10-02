@@ -1,0 +1,16 @@
+seed,caption_mode,text_model,arm,macro_f1,balanced_acc
+0,-,-,cell_only_supervised,0.6154729916721616,0.6265894497277169
+0,type_llm,all-MiniLM-L6-v2,grounded_zeroshot,0.30564892263876786,0.3839321096035556
+0,type_llm,all-MiniLM-L6-v2,grounded_probe,0.5190557283697277,0.5231893368547224
+0,type_llm,cambridgeltl/SapBERT-from-PubMedBERT-fulltext,grounded_zeroshot,0.4512402770827874,0.50391816495022
+0,type_llm,cambridgeltl/SapBERT-from-PubMedBERT-fulltext,grounded_probe,0.5826861121563154,0.5968204273928479
+1,-,-,cell_only_supervised,0.6279752769617368,0.6517600671842614
+1,type_llm,all-MiniLM-L6-v2,grounded_zeroshot,0.3795623284447399,0.5003102466848992
+1,type_llm,all-MiniLM-L6-v2,grounded_probe,0.5813783542460687,0.5836780887763752
+1,type_llm,cambridgeltl/SapBERT-from-PubMedBERT-fulltext,grounded_zeroshot,0.3783308741768187,0.48002647683798627
+1,type_llm,cambridgeltl/SapBERT-from-PubMedBERT-fulltext,grounded_probe,0.5387659577080885,0.5586130167345104
+2,-,-,cell_only_supervised,0.5716187690455321,0.6369656457984687
+2,type_llm,all-MiniLM-L6-v2,grounded_zeroshot,0.2867977043943359,0.4232674648352131
+2,type_llm,all-MiniLM-L6-v2,grounded_probe,0.49253119103479315,0.5524711771434287
+2,type_llm,cambridgeltl/SapBERT-from-PubMedBERT-fulltext,grounded_zeroshot,0.3721955537060406,0.4774784024621887
+2,type_llm,cambridgeltl/SapBERT-from-PubMedBERT-fulltext,grounded_probe,0.5268555744232482,0.5603410352393396

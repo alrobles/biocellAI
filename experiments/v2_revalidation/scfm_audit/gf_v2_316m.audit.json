@@ -1,0 +1,41 @@
+{
+  "model": "gf_v2_316m",
+  "checkpoint": {
+    "dir": "/beegfs/a474r867/bioai/hf_cache/hub/models--ctheodoris--Geneformer/snapshots/1f7fbae4e469a5f4f1af8c111a529cfe1b3829f5/Geneformer-V2-316M",
+    "snapshot_id": "1f7fbae4e469a5f4f1af8c111a529cfe1b3829f5",
+    "refs_main": "1f7fbae4e469a5f4f1af8c111a529cfe1b3829f5",
+    "files": [
+      {
+        "file": "model.safetensors",
+        "size": 1265455076,
+        "sha256": "965ceccea81953d362081ef3843560a0e4fef88d396c28017881f1e94b1246f3"
+      },
+      {
+        "file": "training_args.bin",
+        "size": 5432,
+        "sha256": "e45150f9a4ca34cb4e91ce79f65f3d99d9d66df9f66a37517a352d291008e0b8"
+      }
+    ]
+  },
+  "dicts": {
+    "token": "/beegfs/a474r867/bioai/hf_cache/hub/models--ctheodoris--Geneformer/snapshots/1f7fbae4e469a5f4f1af8c111a529cfe1b3829f5/geneformer/token_dictionary_gc104M.pkl",
+    "median": "/beegfs/a474r867/bioai/hf_cache/hub/models--ctheodoris--Geneformer/snapshots/1f7fbae4e469a5f4f1af8c111a529cfe1b3829f5/geneformer/gene_median_dictionary_gc104M.pkl",
+    "mapping": "/beegfs/a474r867/bioai/hf_cache/hub/models--ctheodoris--Geneformer/snapshots/1f7fbae4e469a5f4f1af8c111a529cfe1b3829f5/geneformer/ensembl_mapping_dict_gc104M.pkl"
+  },
+  "tokenizer": "biocellai.scfm.gf_tokenize \u2014 upstream-parity fixture: experiments/v2_revalidation/gf_fixture.json (special=True, max_len=4096)",
+  "patches": [],
+  "environment": {
+    "torch": "2.14.0",
+    "transformers": "5.17.0",
+    "anndata": "0.13.4",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1",
+    "geneformer": "0.1.0",
+    "scgpt": "0.2.4",
+    "cellwhisperer": "0.1.0",
+    "pytorch-lightning": "1.9.5",
+    "torchmetrics": "1.9.0",
+    "sentence-transformers": "6.1.0"
+  }
+}

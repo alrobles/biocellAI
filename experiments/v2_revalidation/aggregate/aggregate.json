@@ -1,0 +1,26 @@
+{
+  "step": "v2_aggregate",
+  "tag": "full",
+  "cohorts": [
+    "blood",
+    "rosmap",
+    "seaad_mtg"
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "arms": [
+    "B0",
+    "B1",
+    "B2",
+    "N1",
+    "N2",
+    "T0",
+    "T1",
+    "T2",
+    "T3"
+  ],
+  "n_rows": 78
+}

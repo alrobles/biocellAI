@@ -1,0 +1,36 @@
+{
+  "model": "scgpt_wh",
+  "checkpoint": {
+    "dir": "/beegfs/a474r867/bioai/data/scgpt_whole_human",
+    "files": [
+      {
+        "file": "best_model.pt",
+        "size": 205385258,
+        "sha256": "6cb5d451ab5c4b33eb673adbe4fddc61d2389df1b89b7651a9fe2e557572b922"
+      }
+    ],
+    "extra": [
+      "args.json",
+      "best_model.pt",
+      "vocab.json"
+    ]
+  },
+  "loader": "scgpt.tasks.embed_data (0.2.4 upstream entry point)",
+  "patches": [
+    "anndata.AnnData.__init__ drops dtype kwarg inside embed_data (scgpt 0.2.4 vs anndata>=0.10)"
+  ],
+  "environment": {
+    "torch": "2.14.0",
+    "transformers": "5.17.0",
+    "anndata": "0.13.4",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1",
+    "geneformer": "0.1.0",
+    "scgpt": "0.2.4",
+    "cellwhisperer": "0.1.0",
+    "pytorch-lightning": "1.9.5",
+    "torchmetrics": "1.9.0",
+    "sentence-transformers": "6.1.0"
+  }
+}

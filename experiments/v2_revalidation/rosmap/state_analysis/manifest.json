@@ -1,0 +1,73 @@
+{
+  "step": "v2_state_analysis",
+  "cohort": "rosmap",
+  "pathology": "path_level",
+  "covariates": [
+    "age_death",
+    "Sex",
+    "pmi",
+    "n_regions"
+  ],
+  "seed_meta": [
+    {
+      "seed": 0,
+      "n_train_donors": 83,
+      "n_test_donors": 28,
+      "n_regions": 6,
+      "blocks_evaluated": [
+        "cov",
+        "comp",
+        "compXreg",
+        "cov+comp",
+        "cov+comp+compXreg",
+        "state_pb",
+        "state_scfm",
+        "cov+comp+state_pb",
+        "cov+comp+state_scfm"
+      ],
+      "compxreg_included": true
+    },
+    {
+      "seed": 1,
+      "n_train_donors": 83,
+      "n_test_donors": 28,
+      "n_regions": 6,
+      "blocks_evaluated": [
+        "cov",
+        "comp",
+        "compXreg",
+        "cov+comp",
+        "cov+comp+compXreg",
+        "state_pb",
+        "state_scfm",
+        "cov+comp+state_pb",
+        "cov+comp+state_scfm"
+      ],
+      "compxreg_included": true
+    },
+    {
+      "seed": 2,
+      "n_train_donors": 83,
+      "n_test_donors": 28,
+      "n_regions": 6,
+      "blocks_evaluated": [
+        "cov",
+        "comp",
+        "compXreg",
+        "cov+comp",
+        "cov+comp+compXreg",
+        "state_pb",
+        "state_scfm",
+        "cov+comp+state_pb",
+        "cov+comp+state_scfm"
+      ],
+      "compxreg_included": true
+    }
+  ],
+  "scfm_npz": "experiments/v2_revalidation/rosmap/scfm/gf_v2_316m_native_s{s}.npz",
+  "scfm_npz_s0_sha256": "97150b4941afaa932ae5e338885c491dcffa8f09810b9054bcf46688907dfdc2",
+  "n1_pred": "experiments/v2_revalidation/rosmap/run_s{s}_full/predictions_N1.csv",
+  "fold_s0_sha256": "f4eb429fbd471fab7656af0777d7ec6f7e058d21847f5ec3417d3bbbf8f67518",
+  "git": "082dc30ba13299c0403ac17af020349c2dc90e12",
+  "wall_s": 52.0
+}

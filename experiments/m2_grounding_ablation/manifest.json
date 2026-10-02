@@ -1,0 +1,47 @@
+{
+  "name": "tabula_sapiens_blood",
+  "source": "cellxgene_census",
+  "filters": {
+    "census_version": "2025-11-08",
+    "collection": "Tabula Sapiens",
+    "is_primary_data": true,
+    "max_cells": 30000,
+    "min_cells_per_type": 100,
+    "tissue_general": "blood"
+  },
+  "n_cells": 29999,
+  "n_genes_hvg": 2000,
+  "n_donors": 9,
+  "n_cell_types": 16,
+  "cells_per_donor": {
+    "TSP7": 7177,
+    "TSP14": 7156,
+    "TSP21": 4970,
+    "TSP2": 4559,
+    "TSP8": 1759,
+    "TSP1": 1551,
+    "TSP10": 1534,
+    "TSP25": 1118,
+    "TSP27": 175
+  },
+  "cells_per_type": {
+    "neutrophil": 11228,
+    "erythrocyte": 4045,
+    "classical monocyte": 3808,
+    "monocyte": 3408,
+    "CD4-positive, alpha-beta T cell": 1730,
+    "CD8-positive, alpha-beta T cell": 1627,
+    "B cell": 1348,
+    "natural killer cell": 1098,
+    "macrophage": 462,
+    "intermediate monocyte": 385,
+    "plasma cell": 300,
+    "naive thymus-derived CD4-positive, alpha-beta T cell": 175,
+    "platelet": 151,
+    "non-classical monocyte": 118,
+    "mature NK T cell": 70,
+    "hematopoietic precursor cell": 46
+  },
+  "seed": 0,
+  "date": "2026-09-20T12:46:39.939786"
+}

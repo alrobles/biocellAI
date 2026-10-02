@@ -1,0 +1,80 @@
+diff --git a/src/cellwhisperer/jointemb/geneformer_model.py b/src/cellwhisperer/jointemb/geneformer_model.py
+index 5a723be..9bcbf5f 100644
+--- a/src/cellwhisperer/jointemb/geneformer_model.py
++++ b/src/cellwhisperer/jointemb/geneformer_model.py
+@@ -59,6 +59,7 @@ class GeneformerTranscriptomeProcessor(ProcessorMixin):
+         self.tokenizer = TranscriptomeTokenizer(
+             custom_attr_name_dict={k: k for k in emb_label},  # refactor-delete
+             nproc=nproc,
++            model_version="V1",  # 12L-30M backbone: gc30M dict, 2048 len, no CLS/EOS
+         )
+         # Download
+         if get_path(["paths", "ensembl_gene_symbol_map"]).exists():
+@@ -365,17 +366,16 @@ class GeneformerModel(
+             Boolean masked positions. Indicates which patches are masked (1) and which aren't (0).
+         """
+         assert not return_dict, f"No support for return_dict={return_dict}"
++        # compat shim: geneformer==0.0.1 get_embs API is unavailable; compute
++        # cell embeddings directly (mean-pool of last hidden layer over non-pad tokens)
+         layer_to_quant = quant_layers(self.geneformer_model) + self.config.emb_layer
+-        embs = get_embs(
+-            self.geneformer_model,
+-            expression_tokens,
+-            expression_token_lengths,
+-            self.config.emb_mode,
+-            layer_to_quant,
+-            PAD_TOKEN_ID,
+-            self.config.forward_batch_size,
+-            self.config.summary_stat,
+-        )
++        assert self.config.emb_mode == "cell", self.config.emb_mode
++        hidden = self.geneformer_model.bert(
++            input_ids=expression_tokens,
++            output_hidden_states=True,
++        ).hidden_states[layer_to_quant]
++        mask = (expression_tokens != PAD_TOKEN_ID).unsqueeze(-1).to(hidden.dtype)
++        embs = (hidden * mask).sum(dim=1) / mask.sum(dim=1).clamp(min=1)
+         return (None, embs)
+ 
+         # if not return_dict:
+diff --git a/src/cellwhisperer/jointemb/model.py b/src/cellwhisperer/jointemb/model.py
+index 001fd56..13eb648 100644
+--- a/src/cellwhisperer/jointemb/model.py
++++ b/src/cellwhisperer/jointemb/model.py
+@@ -11,7 +11,10 @@ from cellwhisperer.config import get_path
+ import torch
+ from .geneformer_model import GeneformerConfig, GeneformerModel
+ from .scgpt_model import ScGPTConfig, ScGPTModel
+-from .uce_model import UCEConfig, UCEModel
++try:
++    from .uce_model import UCEConfig, UCEModel
++except ImportError:
++    UCEConfig = UCEModel = None
+ from .loss.discriminator import GlobalDiscriminatorDot
+ 
+ from transformers.modeling_utils import PreTrainedModel
+diff --git a/src/cellwhisperer/jointemb/processing.py b/src/cellwhisperer/jointemb/processing.py
+index 593d802..0bdac53 100644
+--- a/src/cellwhisperer/jointemb/processing.py
++++ b/src/cellwhisperer/jointemb/processing.py
+@@ -28,7 +28,10 @@ from transformers.tokenization_utils_base import BatchEncoding
+ from .geneformer_model import GeneformerTranscriptomeProcessor
+ # Lazy import when needed to avoid scgpt dependency
+ # from .scgpt_model import ScGPTTranscriptomeProcessor
+-from .uce_model import UCETranscriptomeProcessor
++try:
++    from .uce_model import UCETranscriptomeProcessor
++except ImportError:
++    UCETranscriptomeProcessor = None
+ 
+ 
+ class TranscriptomeTextDualEncoderProcessor(ProcessorMixin):
+@@ -88,6 +91,8 @@ class TranscriptomeTextDualEncoderProcessor(ProcessorMixin):
+             raise ValueError("You have to specify a tokenizer.")
+ 
+         super().__init__(tokenizer, transcriptome_processor)
++        # transformers>=4.40 ProcessorMixin may drop unknown attribute types
++        self.transcriptome_processor = transcriptome_processor
+ 
+     def __call__(
+         self,

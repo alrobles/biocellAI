@@ -1,0 +1,25 @@
+{
+  "step": "v2_scfm_table",
+  "cohorts": [
+    "blood",
+    "rosmap",
+    "seaad_mtg"
+  ],
+  "models": [
+    "cw_clip_v1",
+    "gf_v1_10m",
+    "gf_v2_104m",
+    "gf_v2_316m",
+    "scgpt_wh"
+  ],
+  "inputs": [
+    "hvg",
+    "native"
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "n_rows": 90
+}

@@ -1,0 +1,38 @@
+{
+  "model": "cw_clip_v1",
+  "checkpoint": {
+    "file": "/beegfs/a474r867/bioai/data/cellwhisperer/cellwhisperer_clip_v1.ckpt",
+    "size": 1463915796,
+    "sha256": "f152d591d6f9cbd8b7f7a8f73e2e5874585124568be297f142284911a8c539a6"
+  },
+  "loader": "cellwhisperer.utils.model_io.load_cellwhisperer_model",
+  "clone": {
+    "path": "/beegfs/a474r867/bioai/repos/cellwhisperer",
+    "git_rev": "29843cf308704e019048424b0c3b98179628358a",
+    "dirty_files": [
+      "M src/cellwhisperer/jointemb/geneformer_model.py",
+      " M src/cellwhisperer/jointemb/model.py",
+      " M src/cellwhisperer/jointemb/processing.py"
+    ]
+  },
+  "patches": [
+    "TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD=1",
+    "PretrainedConfig._experts_implementation_internal=None",
+    "clone patches at repos/cellwhisperer (UCE guards, processor attr, mean-pool get_embs)",
+    "VERY_COMMON_GENES sanity check bypassed for subset input"
+  ],
+  "environment": {
+    "torch": "2.14.0",
+    "transformers": "5.17.0",
+    "anndata": "0.13.4",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1",
+    "geneformer": "0.1.0",
+    "scgpt": "0.2.4",
+    "cellwhisperer": "0.1.0",
+    "pytorch-lightning": "1.9.5",
+    "torchmetrics": "1.9.0",
+    "sentence-transformers": "6.1.0"
+  }
+}

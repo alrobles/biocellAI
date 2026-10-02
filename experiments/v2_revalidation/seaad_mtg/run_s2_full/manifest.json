@@ -1,0 +1,66 @@
+{
+  "protocol": "v2",
+  "arms": [
+    "B0",
+    "B1",
+    "B2",
+    "T0",
+    "T1",
+    "T2",
+    "T3",
+    "N1",
+    "N2"
+  ],
+  "fold": {
+    "path": "/beegfs/a474r867/bioai/repos/biocellai-devel/experiments/v2_revalidation/seaad_mtg/folds/fold_s2.h5ad",
+    "sha256": "8ce30d33aec375979e94aff61d71af1b3c0ff0cbf786db1eda6e251b7e42af47"
+  },
+  "config": {
+    "label_col": "cell_type",
+    "pathology_col": "CPS_Global",
+    "covariates": [],
+    "proto_dim": 384,
+    "ridge_alpha": 1.0,
+    "train": {
+      "epochs": "40",
+      "lr": "0.001",
+      "batch_size": "256",
+      "seed": "2",
+      "hidden": "(256, 128)",
+      "embed_dim": "64",
+      "dropout": "0.1",
+      "temperature": "0.07",
+      "device": "cpu",
+      "probe_epochs": "200"
+    }
+  },
+  "text_targets": {
+    "T2": {
+      "captions_file": "experiments/v2_revalidation/seaad_mtg/folds/captions_s2_markers.json",
+      "captions_sha256": "6777d40774d118d597fb5313d07c31ff0e575919cd255464d335eb73d5f6591b"
+    },
+    "T3": {
+      "captions_file": "experiments/v2_revalidation/seaad_mtg/folds/captions_s2_pubmed_rag.json",
+      "captions_sha256": "ca1f096d1c9bce1b07ca017500ee3465f4c7581025885d40b834816b056c1662"
+    },
+    "N2": {
+      "permutes": "T3",
+      "seed": 890
+    }
+  },
+  "text_encoder": "all-MiniLM-L6-v2",
+  "environment": {
+    "numpy": "2.5.3",
+    "pandas": "2.3.3",
+    "torch": "2.14.0",
+    "scanpy": "1.12.4",
+    "anndata": "0.13.4"
+  },
+  "code_sha256": {
+    "v2run.py": "37fc19240f2095574c2f43294022e9f1590c9ad1f3c762bb296f50e09bfbe718",
+    "train.py": "f19824d3c60868d05fbab6058604f7a0284a5d6b64ce3a2c9b856f99e454ed07",
+    "data.py": "e824ad4368d9e3de1d2b00eb24d36b3d95734e1ef6b83e28f9fc22f9008f54c1",
+    "v2_run.py": "83988e3a2d6e18400fea2045792558f28f740a11fb3b84dec614e9d159c4f9b9"
+  },
+  "seed": 2
+}

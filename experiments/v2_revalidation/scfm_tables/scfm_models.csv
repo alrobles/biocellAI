@@ -1,0 +1,90 @@
+cohort,seed,model,input,n_cells,n_cells_embedded,n_genes_input,emb_dim,wall_s,params,hidden,vocab_genes,n_dropped_empty,gene_id_source,id_map_hit_rate,patches
+blood,0,cw_clip_v1,hvg,85055,85055,1997,2048,386.6,,,,0,ensembl_id,,"TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD=1; PretrainedConfig._experts_implementation_internal=None; clone patches at repos/cellwhisperer (UCE guards, processor attr, mean-pool get_embs); VERY_COMMON_GENES sanity check bypassed for subset input"
+blood,0,cw_clip_v1,native,85055,85055,61497,2048,2426.6,,,,0,ensembl_id,,"TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD=1; PretrainedConfig._experts_implementation_internal=None; clone patches at repos/cellwhisperer (UCE guards, processor attr, mean-pool get_embs); VERY_COMMON_GENES sanity check bypassed for subset input"
+blood,0,gf_v1_10m,hvg,85055,85055,1997,256,42.3,10196992.0,256.0,,0,feature_id,0.4877,
+blood,0,gf_v2_104m,hvg,85055,85055,1997,768,319.3,103774464.0,768.0,,0,feature_id,0.4797,
+blood,0,gf_v2_104m,native,85055,85055,61497,768,12951.0,103774464.0,768.0,,0,feature_id,0.947,
+blood,0,gf_v2_316m,hvg,85055,85055,1997,1152,657.9,315004032.0,1152.0,,0,feature_id,0.4797,
+blood,0,gf_v2_316m,native,85055,85055,61497,1152,3439.2,315004032.0,1152.0,,0,feature_id,0.967,
+blood,0,scgpt_wh,hvg,85055,85055,1997,512,273.2,,,1453.0,0,feature_name,0.7216,anndata.AnnData.__init__ drops dtype kwarg inside embed_data (scgpt 0.2.4 vs anndata>=0.10)
+blood,0,scgpt_wh,native,85055,85055,61497,512,512.7,,,38852.0,0,feature_name,0.951,anndata.AnnData.__init__ drops dtype kwarg inside embed_data (scgpt 0.2.4 vs anndata>=0.10)
+blood,1,cw_clip_v1,hvg,85055,85055,1998,2048,363.6,,,,0,ensembl_id,,"TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD=1; PretrainedConfig._experts_implementation_internal=None; clone patches at repos/cellwhisperer (UCE guards, processor attr, mean-pool get_embs); VERY_COMMON_GENES sanity check bypassed for subset input"
+blood,1,cw_clip_v1,native,85055,85055,61497,2048,1000.2,,,,0,ensembl_id,,"TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD=1; PretrainedConfig._experts_implementation_internal=None; clone patches at repos/cellwhisperer (UCE guards, processor attr, mean-pool get_embs); VERY_COMMON_GENES sanity check bypassed for subset input"
+blood,1,gf_v1_10m,hvg,85055,85055,1998,256,46.7,10196992.0,256.0,,0,feature_id,0.486,
+blood,1,gf_v1_10m,native,85055,85055,61497,256,252.5,10196992.0,256.0,,0,feature_id,0.9445,
+blood,1,gf_v2_104m,hvg,85055,85055,1998,768,306.6,103774464.0,768.0,,0,feature_id,0.477,
+blood,1,gf_v2_104m,native,85055,85055,61497,768,13130.8,103774464.0,768.0,,0,feature_id,0.947,
+blood,1,gf_v2_316m,hvg,85055,85055,1998,1152,627.6,315004032.0,1152.0,,0,feature_id,0.477,
+blood,1,gf_v2_316m,native,85055,85055,61497,1152,3373.6,315004032.0,1152.0,,0,feature_id,0.967,
+blood,1,scgpt_wh,hvg,85055,85055,1998,512,234.7,,,1465.0,0,feature_name,0.7292,anndata.AnnData.__init__ drops dtype kwarg inside embed_data (scgpt 0.2.4 vs anndata>=0.10)
+blood,1,scgpt_wh,native,85055,85055,61497,512,378.6,,,38852.0,0,feature_name,0.951,anndata.AnnData.__init__ drops dtype kwarg inside embed_data (scgpt 0.2.4 vs anndata>=0.10)
+blood,2,cw_clip_v1,hvg,85055,85055,1995,2048,361.0,,,,0,ensembl_id,,"TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD=1; PretrainedConfig._experts_implementation_internal=None; clone patches at repos/cellwhisperer (UCE guards, processor attr, mean-pool get_embs); VERY_COMMON_GENES sanity check bypassed for subset input"
+blood,2,cw_clip_v1,native,85055,85055,61497,2048,999.5,,,,0,ensembl_id,,"TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD=1; PretrainedConfig._experts_implementation_internal=None; clone patches at repos/cellwhisperer (UCE guards, processor attr, mean-pool get_embs); VERY_COMMON_GENES sanity check bypassed for subset input"
+blood,2,gf_v1_10m,hvg,85055,85055,1995,256,55.6,10196992.0,256.0,,0,feature_id,0.5298,
+blood,2,gf_v1_10m,native,85055,85055,61497,256,248.4,10196992.0,256.0,,0,feature_id,0.9445,
+blood,2,gf_v2_104m,hvg,85055,85055,1995,768,414.9,103774464.0,768.0,,0,feature_id,0.5208,
+blood,2,gf_v2_104m,native,85055,85055,61497,768,12524.2,103774464.0,768.0,,0,feature_id,0.947,
+blood,2,gf_v2_316m,hvg,85055,85055,1995,1152,1249.5,315004032.0,1152.0,,0,feature_id,0.5208,
+blood,2,gf_v2_316m,native,85055,85055,61497,1152,3228.8,315004032.0,1152.0,,0,feature_id,0.967,
+blood,2,scgpt_wh,hvg,85055,85055,1995,512,201.8,,,1539.0,0,feature_name,0.7679,anndata.AnnData.__init__ drops dtype kwarg inside embed_data (scgpt 0.2.4 vs anndata>=0.10)
+blood,2,scgpt_wh,native,85055,85055,61497,512,370.4,,,38852.0,0,feature_name,0.951,anndata.AnnData.__init__ drops dtype kwarg inside embed_data (scgpt 0.2.4 vs anndata>=0.10)
+rosmap,0,cw_clip_v1,hvg,163646,163646,2000,2048,705.8,,,,0,__index__,,"TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD=1; PretrainedConfig._experts_implementation_internal=None; clone patches at repos/cellwhisperer (UCE guards, processor attr, mean-pool get_embs); VERY_COMMON_GENES sanity check bypassed for subset input"
+rosmap,0,cw_clip_v1,native,163646,163646,36601,2048,4499.4,,,,0,__index__,,"TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD=1; PretrainedConfig._experts_implementation_internal=None; clone patches at repos/cellwhisperer (UCE guards, processor attr, mean-pool get_embs); VERY_COMMON_GENES sanity check bypassed for subset input"
+rosmap,0,gf_v1_10m,hvg,163646,163646,2000,256,71.4,10196992.0,256.0,,0,__index__,0.678,
+rosmap,0,gf_v1_10m,native,163646,163646,36601,256,1018.0,10196992.0,256.0,,0,__index__,0.681,
+rosmap,0,gf_v2_104m,hvg,163646,163646,2000,768,560.1,103774464.0,768.0,,0,__index__,0.691,
+rosmap,0,gf_v2_104m,native,163646,163646,36601,768,2962.7,103774464.0,768.0,,0,__index__,0.701,
+rosmap,0,gf_v2_316m,hvg,163646,163646,2000,1152,1685.9,315004032.0,1152.0,,0,__index__,0.691,
+rosmap,0,gf_v2_316m,native,163646,163646,36601,1152,7648.4,315004032.0,1152.0,,0,__index__,0.701,
+rosmap,0,scgpt_wh,hvg,163646,163646,2000,512,285.7,,,1408.0,0,__index__,0.698,anndata.AnnData.__init__ drops dtype kwarg inside embed_data (scgpt 0.2.4 vs anndata>=0.10)
+rosmap,0,scgpt_wh,native,163646,163646,36601,512,798.2,,,24285.0,0,__index__,0.6845,anndata.AnnData.__init__ drops dtype kwarg inside embed_data (scgpt 0.2.4 vs anndata>=0.10)
+rosmap,1,cw_clip_v1,hvg,163646,163646,2000,2048,1211.6,,,,0,__index__,,"TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD=1; PretrainedConfig._experts_implementation_internal=None; clone patches at repos/cellwhisperer (UCE guards, processor attr, mean-pool get_embs); VERY_COMMON_GENES sanity check bypassed for subset input"
+rosmap,1,cw_clip_v1,native,163646,163646,36601,2048,1909.1,,,,0,__index__,,"TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD=1; PretrainedConfig._experts_implementation_internal=None; clone patches at repos/cellwhisperer (UCE guards, processor attr, mean-pool get_embs); VERY_COMMON_GENES sanity check bypassed for subset input"
+rosmap,1,gf_v1_10m,hvg,163646,163646,2000,256,70.2,10196992.0,256.0,,0,__index__,0.691,
+rosmap,1,gf_v1_10m,native,163646,163646,36601,256,1017.9,10196992.0,256.0,,0,__index__,0.681,
+rosmap,1,gf_v2_104m,hvg,163646,163646,2000,768,577.4,103774464.0,768.0,,0,__index__,0.705,
+rosmap,1,gf_v2_104m,native,163646,163646,36601,768,2893.6,103774464.0,768.0,,0,__index__,0.701,
+rosmap,1,gf_v2_316m,hvg,163646,163646,2000,1152,1726.0,315004032.0,1152.0,,0,__index__,0.705,
+rosmap,1,gf_v2_316m,native,163646,163646,36601,1152,7492.9,315004032.0,1152.0,,0,__index__,0.701,
+rosmap,1,scgpt_wh,hvg,163646,163646,2000,512,285.4,,,1434.0,0,__index__,0.711,anndata.AnnData.__init__ drops dtype kwarg inside embed_data (scgpt 0.2.4 vs anndata>=0.10)
+rosmap,1,scgpt_wh,native,163646,163646,36601,512,839.5,,,24285.0,0,__index__,0.6845,anndata.AnnData.__init__ drops dtype kwarg inside embed_data (scgpt 0.2.4 vs anndata>=0.10)
+rosmap,2,cw_clip_v1,hvg,163646,163646,2000,2048,972.5,,,,0,__index__,,"TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD=1; PretrainedConfig._experts_implementation_internal=None; clone patches at repos/cellwhisperer (UCE guards, processor attr, mean-pool get_embs); VERY_COMMON_GENES sanity check bypassed for subset input"
+rosmap,2,cw_clip_v1,native,163646,163646,36601,2048,1909.6,,,,0,__index__,,"TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD=1; PretrainedConfig._experts_implementation_internal=None; clone patches at repos/cellwhisperer (UCE guards, processor attr, mean-pool get_embs); VERY_COMMON_GENES sanity check bypassed for subset input"
+rosmap,2,gf_v1_10m,hvg,163646,163646,2000,256,73.6,10196992.0,256.0,,0,__index__,0.687,
+rosmap,2,gf_v1_10m,native,163646,163646,36601,256,1040.5,10196992.0,256.0,,0,__index__,0.681,
+rosmap,2,gf_v2_104m,hvg,163646,163646,2000,768,575.6,103774464.0,768.0,,0,__index__,0.702,
+rosmap,2,gf_v2_104m,native,163646,163646,36601,768,2961.8,103774464.0,768.0,,0,__index__,0.701,
+rosmap,2,gf_v2_316m,hvg,163646,163646,2000,1152,884.9,315004032.0,1152.0,,0,__index__,0.702,
+rosmap,2,gf_v2_316m,native,163646,163646,36601,1152,7661.2,315004032.0,1152.0,,0,__index__,0.701,
+rosmap,2,scgpt_wh,hvg,163646,163646,2000,512,182.2,,,1434.0,0,__index__,0.7095,anndata.AnnData.__init__ drops dtype kwarg inside embed_data (scgpt 0.2.4 vs anndata>=0.10)
+rosmap,2,scgpt_wh,native,163646,163646,36601,512,486.2,,,24285.0,0,__index__,0.6845,anndata.AnnData.__init__ drops dtype kwarg inside embed_data (scgpt 0.2.4 vs anndata>=0.10)
+seaad_mtg,0,cw_clip_v1,hvg,125909,125909,2000,2048,558.2,,,,0,__index__,,"TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD=1; PretrainedConfig._experts_implementation_internal=None; clone patches at repos/cellwhisperer (UCE guards, processor attr, mean-pool get_embs); VERY_COMMON_GENES sanity check bypassed for subset input"
+seaad_mtg,0,cw_clip_v1,native,125909,125909,36601,2048,1523.4,,,,0,__index__,,"TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD=1; PretrainedConfig._experts_implementation_internal=None; clone patches at repos/cellwhisperer (UCE guards, processor attr, mean-pool get_embs); VERY_COMMON_GENES sanity check bypassed for subset input"
+seaad_mtg,0,gf_v1_10m,hvg,125909,125909,2000,256,41.1,10196992.0,256.0,,0,__index__,0.8045,
+seaad_mtg,0,gf_v1_10m,native,125909,125909,36601,256,208.1,10196992.0,256.0,,0,__index__,0.681,
+seaad_mtg,0,gf_v2_104m,hvg,125909,125909,2000,768,793.5,103774464.0,768.0,,0,__index__,0.7075,
+seaad_mtg,0,gf_v2_104m,native,125909,125909,36601,768,20326.8,103774464.0,768.0,,0,__index__,0.5815,
+seaad_mtg,0,gf_v2_316m,hvg,125909,125909,2000,1152,1594.4,315004032.0,1152.0,,0,__index__,0.7075,
+seaad_mtg,0,gf_v2_316m,native,125909,125909,36601,1152,9163.3,315004032.0,1152.0,,0,__index__,0.701,
+seaad_mtg,0,scgpt_wh,hvg,125909,125909,2000,512,315.4,,,1648.0,0,__index__,0.818,anndata.AnnData.__init__ drops dtype kwarg inside embed_data (scgpt 0.2.4 vs anndata>=0.10)
+seaad_mtg,0,scgpt_wh,native,125909,125909,36601,512,373.1,,,24285.0,0,__index__,0.6845,anndata.AnnData.__init__ drops dtype kwarg inside embed_data (scgpt 0.2.4 vs anndata>=0.10)
+seaad_mtg,1,cw_clip_v1,hvg,125909,125909,2000,2048,540.2,,,,0,__index__,,"TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD=1; PretrainedConfig._experts_implementation_internal=None; clone patches at repos/cellwhisperer (UCE guards, processor attr, mean-pool get_embs); VERY_COMMON_GENES sanity check bypassed for subset input"
+seaad_mtg,1,cw_clip_v1,native,125909,125909,36601,2048,1505.0,,,,0,__index__,,"TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD=1; PretrainedConfig._experts_implementation_internal=None; clone patches at repos/cellwhisperer (UCE guards, processor attr, mean-pool get_embs); VERY_COMMON_GENES sanity check bypassed for subset input"
+seaad_mtg,1,gf_v1_10m,hvg,125909,125909,2000,256,91.9,10196992.0,256.0,,0,__index__,0.8075,
+seaad_mtg,1,gf_v1_10m,native,125909,125909,36601,256,225.4,10196992.0,256.0,,0,__index__,0.681,
+seaad_mtg,1,gf_v2_104m,hvg,125909,125909,2000,768,809.9,103774464.0,768.0,,0,__index__,0.823,
+seaad_mtg,1,gf_v2_104m,native,125909,125909,36601,768,10335.6,103774464.0,768.0,,0,__index__,0.701,
+seaad_mtg,1,gf_v2_316m,hvg,125909,125909,2000,1152,2402.0,315004032.0,1152.0,,0,__index__,0.823,
+seaad_mtg,1,gf_v2_316m,native,125909,125909,36601,1152,9337.0,315004032.0,1152.0,,0,__index__,0.701,
+seaad_mtg,1,scgpt_wh,hvg,125909,125909,2000,512,312.5,,,1654.0,0,__index__,0.8215,anndata.AnnData.__init__ drops dtype kwarg inside embed_data (scgpt 0.2.4 vs anndata>=0.10)
+seaad_mtg,1,scgpt_wh,native,125909,125909,36601,512,754.6,,,24285.0,0,__index__,0.6845,anndata.AnnData.__init__ drops dtype kwarg inside embed_data (scgpt 0.2.4 vs anndata>=0.10)
+seaad_mtg,2,cw_clip_v1,hvg,125909,125909,2000,2048,955.4,,,,0,__index__,,"TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD=1; PretrainedConfig._experts_implementation_internal=None; clone patches at repos/cellwhisperer (UCE guards, processor attr, mean-pool get_embs); VERY_COMMON_GENES sanity check bypassed for subset input"
+seaad_mtg,2,cw_clip_v1,native,125909,125909,36601,2048,3098.1,,,,0,__index__,,"TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD=1; PretrainedConfig._experts_implementation_internal=None; clone patches at repos/cellwhisperer (UCE guards, processor attr, mean-pool get_embs); VERY_COMMON_GENES sanity check bypassed for subset input"
+seaad_mtg,2,gf_v1_10m,hvg,125909,125909,2000,256,90.0,10196992.0,256.0,,0,__index__,0.8105,
+seaad_mtg,2,gf_v1_10m,native,125909,125909,36601,256,772.4,10196992.0,256.0,,0,__index__,0.681,
+seaad_mtg,2,gf_v2_104m,hvg,125909,125909,2000,768,799.5,103774464.0,768.0,,0,__index__,0.827,
+seaad_mtg,2,gf_v2_104m,native,125909,125909,36601,768,10024.6,103774464.0,768.0,,0,__index__,0.701,
+seaad_mtg,2,gf_v2_316m,hvg,125909,125909,2000,1152,2354.9,315004032.0,1152.0,,0,__index__,0.827,
+seaad_mtg,2,gf_v2_316m,native,125909,125909,36601,1152,9015.0,315004032.0,1152.0,,0,__index__,0.701,
+seaad_mtg,2,scgpt_wh,hvg,125909,125909,2000,512,313.4,,,1658.0,0,__index__,0.8225,anndata.AnnData.__init__ drops dtype kwarg inside embed_data (scgpt 0.2.4 vs anndata>=0.10)
+seaad_mtg,2,scgpt_wh,native,125909,125909,36601,512,675.7,,,24285.0,0,__index__,0.6845,anndata.AnnData.__init__ drops dtype kwarg inside embed_data (scgpt 0.2.4 vs anndata>=0.10)
