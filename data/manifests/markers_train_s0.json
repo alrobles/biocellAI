@@ -1,0 +1,162 @@
+{
+  "B cell": [
+    "AFF3",
+    "CD74",
+    "BANK1",
+    "IGHM",
+    "BACH2",
+    "IGKC",
+    "MS4A1",
+    "IGHD"
+  ],
+  "CD4-positive, alpha-beta T cell": [
+    "LTB",
+    "CD69",
+    "BACH2",
+    "EIF3M",
+    "ATP6V1G1",
+    "SNHG14",
+    "CASP8",
+    "AKAP9"
+  ],
+  "CD8-positive, alpha-beta T cell": [
+    "GNLY",
+    "CCL5",
+    "CD69",
+    "CASP8",
+    "IRF1",
+    "AKAP9",
+    "ATR",
+    "GK5"
+  ],
+  "classical monocyte": [
+    "VCAN",
+    "THBS1",
+    "CD74",
+    "LRP1",
+    "ITGB2",
+    "FCGRT",
+    "PRAM1",
+    "ATP1B3"
+  ],
+  "erythrocyte": [
+    "ALAS2",
+    "CA1",
+    "HBD",
+    "AHSP",
+    "HBM",
+    "CA2",
+    "IGHA1",
+    "IGKC"
+  ],
+  "hematopoietic precursor cell": [
+    "PPBP",
+    "ZNF385D",
+    "ITGA2B",
+    "GP9",
+    "NRGN",
+    "TREML1",
+    "FERMT3",
+    "CAVIN2"
+  ],
+  "intermediate monocyte": [
+    "CD74",
+    "VCAN",
+    "IFITM3",
+    "FCGRT",
+    "ITGB2",
+    "ATP1B3",
+    "LRP1",
+    "ATP5F1B"
+  ],
+  "macrophage": [
+    "VCAN",
+    "CD74",
+    "LRP1",
+    "TNFAIP2",
+    "STAB1",
+    "PRAM1",
+    "ATP1B3",
+    "THBS1"
+  ],
+  "mature NK T cell": [
+    "GNLY",
+    "CD69",
+    "BACH2",
+    "CCL5",
+    "AFF3",
+    "CASP8",
+    "ATR",
+    "IRF1"
+  ],
+  "monocyte": [
+    "VCAN",
+    "CD74",
+    "FCGRT",
+    "LRP1",
+    "ITGB2",
+    "S100A12",
+    "CLU",
+    "EID1"
+  ],
+  "naive thymus-derived CD4-positive, alpha-beta T cell": [
+    "CD69",
+    "BACH2",
+    "LTB",
+    "LMBR1",
+    "ZFAS1",
+    "CHD6",
+    "SNHG14",
+    "EIF3M"
+  ],
+  "natural killer cell": [
+    "GNLY",
+    "CCL5",
+    "CD69",
+    "CASP8",
+    "IRF1",
+    "GK5",
+    "ATR",
+    "AKAP9"
+  ],
+  "neutrophil": [
+    "BASP1",
+    "S100A12",
+    "IGF2R",
+    "MMP9",
+    "ITGAX",
+    "MARCKS",
+    "JAML",
+    "TUBA1A"
+  ],
+  "non-classical monocyte": [
+    "CD74",
+    "IFITM3",
+    "ATP1B3",
+    "ITGB2",
+    "PRAM1",
+    "FCGRT",
+    "ATP5F1B",
+    "APOBEC3A"
+  ],
+  "plasma cell": [
+    "IGHA1",
+    "JCHAIN",
+    "IGKC",
+    "IGLC2",
+    "IGLC3",
+    "SSR3",
+    "IGHG1",
+    "IGLL5"
+  ],
+  "platelet": [
+    "PPBP",
+    "TUBB1",
+    "CAVIN2",
+    "NRGN",
+    "GNG11",
+    "GP9",
+    "ITGA2B",
+    "CLU"
+  ]
+}

@@ -1,0 +1,497 @@
+{
+  "AFF3": [
+    "ALF transcription elongation factor 3",
+    "MLLT2-like",
+    "LAF4",
+    "lymphoid nuclear protein related to AF4",
+    "AF4/FMR2 family, member 3",
+    "AF4/FMR2 family member 3"
+  ],
+  "AHSP": [
+    "alpha hemoglobin stabilizing protein",
+    "EDRF",
+    "alpha hemoglobin stabilising protein",
+    "ERAF",
+    "erythroid associated factor"
+  ],
+  "AKAP9": [
+    "A-kinase anchoring protein 9",
+    "KIAA0803",
+    "AKAP350",
+    "AKAP450",
+    "CG-NAP",
+    "YOTIAO",
+    "HYPERION",
+    "PRKA9",
+    "MU-RMS-40.16A",
+    "PPP1R45",
+    "LQT11",
+    "A-kinase anchoring protein 450",
+    "AKAP9-BRAF fusion protein",
+    "AKAP120-like protein",
+    "protein kinase A anchoring protein 9",
+    "A-kinase anchor protein, 350kDa",
+    "yotiao",
+    "A kinase (PRKA) anchor protein 9"
+  ],
+  "ALAS2": [
+    "5'-aminolevulinate synthase 2",
+    "ALAS-E",
+    "sideroblastic/hypochromic anemia",
+    "ASB",
+    "aminolevulinate, delta-, synthase 2"
+  ],
+  "APOBEC3A": [
+    "ARP3",
+    "PHRBN",
+    "phorbolin I"
+  ],
+  "ATP1B3": [
+    "FLJ29027",
+    "CD298",
+    "sodium pump subunit beta-3"
+  ],
+  "ATP5F1B": [
+    "ATP synthase F1 subunit beta",
+    "ATPSB",
+    "ATP5B"
+  ],
+  "ATP6V1G1": [
+    "ATPase H+ transporting V1 subunit G1",
+    "ATP6GL",
+    "Vma10",
+    "ATP6G",
+    "DKFZp547P234",
+    "V-ATPase subunit G1",
+    "ATP6J",
+    "ATP6G1"
+  ],
+  "ATR": [
+    "ATR checkpoint kinase",
+    "FRP1",
+    "SCKL",
+    "SCKL1",
+    "MEC1",
+    "ataxia telangiectasia and Rad3 related"
+  ],
+  "BACH2": [
+    "BACH transcriptional regulator 2",
+    "BTBD25"
+  ],
+  "BANK1": [
+    "BANK",
+    "FLJ20706"
+  ],
+  "BASP1": [
+    "NAP-22",
+    "NAP22",
+    "CAP23",
+    "CAP-23"
+  ],
+  "CA1": [
+    "carbonic anhydrase 1",
+    "Car1",
+    "carbonic anhydrase I"
+  ],
+  "CA2": [
+    "carbonic anhydrase 2",
+    "Car2",
+    "CA-II",
+    "CAII",
+    "carbonic anhydrase II"
+  ],
+  "CASP8": [
+    "caspase 8",
+    "MCH5",
+    "MACH",
+    "FLICE",
+    "Casp-8"
+  ],
+  "CAVIN2": [
+    "caveolae associated protein 2",
+    "SDR",
+    "PS-p68",
+    "cavin-2",
+    "phosphatidylserine binding protein",
+    "SDPR",
+    "serum deprivation response"
+  ],
+  "CCL5": [
+    "C-C motif chemokine ligand 5",
+    "RANTES",
+    "SISd",
+    "TCP228",
+    "MGC17164",
+    "T-cell specific protein p288",
+    "T-cell specific RANTES protein",
+    "SIS-delta",
+    "beta-chemokine RANTES",
+    "D17S136E",
+    "SCYA5",
+    "small inducible cytokine A5 (RANTES)",
+    "chemokine (C-C motif) ligand 5"
+  ],
+  "CD69": [
+    "CD69 molecule",
+    "CLEC2C"
+  ],
+  "CD74": [
+    "CD74 molecule",
+    "CLIP",
+    "HLA-DR-gamma",
+    "Ia-associated invariant chain",
+    "gamma chain of class II antigens",
+    "MHC HLA-DR gamma chain",
+    "DHLAG"
+  ],
+  "CHD6": [
+    "KIAA1335",
+    "FLJ22369",
+    "dJ620E11.1",
+    "CHD5",
+    "RIGB"
+  ],
+  "CLU": [
+    "clusterin",
+    "SGP-2",
+    "SP-40",
+    "TRPM-2",
+    "KUB1",
+    "CLU1",
+    "CLU2",
+    "complement lysis inhibitor",
+    "sulfated glycoprotein 2",
+    "apolipoprotein J",
+    "CLI",
+    "APOJ"
+  ],
+  "EID1": [
+    "EID-1",
+    "C15orf3",
+    "CRI1",
+    "CREBBP/EP300 inhibitory protein 1",
+    "CREBBP/EP300 inhibitor 1"
+  ],
+  "EIF3M": [
+    "hfl-B5",
+    "FLJ29030",
+    "GA17",
+    "TANGO7",
+    "PCID1"
+  ],
+  "FCGRT": [
+    "Fc gamma receptor and transporter",
+    "FcgammaRn",
+    "FcRn",
+    "neonatal Fc receptor",
+    "FCRN alpha-chain"
+  ],
+  "FERMT3": [
+    "FERM domain containing kindlin 3",
+    "URP2",
+    "KIND3",
+    "MIG2B",
+    "MGC10966",
+    "UNC112C",
+    "kindlin-3",
+    "UNC-112 related protein 2",
+    "fermitin family homolog 3 (Drosophila)",
+    "fermitin family member 3"
+  ],
+  "GK5": [
+    "glycerol kinase 5",
+    "MGC40579",
+    "glycerol kinase 5 (putative)"
+  ],
+  "GNG11": [
+    "G protein subunit gamma 11",
+    "GNGT11",
+    "G protein gamma-11 subunit"
+  ],
+  "GNLY": [
+    "granulysin",
+    "NKG5",
+    "LAG-2",
+    "D2S69E",
+    "TLA519",
+    "T-lymphocyte activation gene 519",
+    "LAG2"
+  ],
+  "GP9": [
+    "glycoprotein IX platelet",
+    "CD42a",
+    "GPIX",
+    "platelet glycoprotein IX",
+    "glycoprotein IX (platelet)"
+  ],
+  "HBD": [
+    "hemoglobin subunit delta",
+    "HBK",
+    "hemoglobin, delta"
+  ],
+  "HBM": [
+    "hemoglobin subunit mu",
+    "HBK",
+    "HBAP2",
+    "hemoglobin, alpha pseudogene 2",
+    "hemoglobin, mu"
+  ],
+  "IFITM3": [
+    "1-8U",
+    "DSPA2b",
+    "dispanin subfamily A member 2b"
+  ],
+  "IGF2R": [
+    "insulin like growth factor 2 receptor",
+    "CD222",
+    "MPRI",
+    "MPR1",
+    "CIMPR",
+    "M6P-R",
+    "CI-M6PR",
+    "CI-MPR",
+    "MPR300",
+    "insulin-like growth factor 2 receptor"
+  ],
+  "IGHA1": [
+    "immunoglobulin heavy constant alpha 1",
+    "AL928768.3"
+  ],
+  "IGHD": [
+    "immunoglobulin heavy constant delta",
+    "FLJ00382",
+    "FLJ46727",
+    "MGC29633",
+    "immunoglobulin delta",
+    "constant region of heavy chain of IgD"
+  ],
+  "IGHG1": [],
+  "IGHM": [
+    "immunoglobulin heavy constant mu"
+  ],
+  "IGKC": [
+    "immunoglobulin kappa constant",
+    "HCAK1"
+  ],
+  "IGLC2": [
+    "immunoglobulin lambda constant 2",
+    "IGLC"
+  ],
+  "IGLC3": [
+    "IGLC"
+  ],
+  "IGLL5": [
+    "immunoglobulin lambda like polypeptide 5",
+    "immunoglobulin lambda-like polypeptide 5"
+  ],
+  "IRF1": [
+    "interferon regulatory factor 1",
+    "MAR",
+    "interferon regulatory factor-1"
+  ],
+  "ITGA2B": [
+    "integrin subunit alpha 2b",
+    "CD41B",
+    "CD41",
+    "PPP1R93",
+    "GPIIb",
+    "Integrin alpha-IIb",
+    "GP2B"
+  ],
+  "ITGAX": [
+    "integrin subunit alpha X",
+    "CD11c",
+    "CD11C"
+  ],
+  "ITGB2": [
+    "integrin subunit beta 2",
+    "LFA-1",
+    "MAC-1",
+    "CD18",
+    "MFI7"
+  ],
+  "JAML": [
+    "junction adhesion molecule like",
+    "Gm638",
+    "AMICA",
+    "AMICA1"
+  ],
+  "JCHAIN": [
+    "joining chain of multimeric IgA and IgM",
+    "IGCJ",
+    "JCH",
+    "immunoglobulin J chain",
+    "IgJ chain",
+    "J chain",
+    "IGJ"
+  ],
+  "LMBR1": [
+    "limb development membrane protein 1",
+    "ACHP",
+    "FLJ11665",
+    "ZRS",
+    "C7orf2",
+    "chromosome 7 open reading frame 2",
+    "limb region 1 homolog (mouse)"
+  ],
+  "LRP1": [
+    "LDL receptor related protein 1",
+    "LRP",
+    "CD91",
+    "LRP1A",
+    "APOER",
+    "IGFBP3R1",
+    "IGFBP-3R",
+    "APR",
+    "A2MR",
+    "alpha-2-macroglobulin receptor"
+  ],
+  "LTB": [
+    "lymphotoxin beta",
+    "p33",
+    "TNFSF3",
+    "TNF superfamily member 3",
+    "TNFC"
+  ],
+  "MARCKS": [
+    "PKCSL",
+    "80K-L",
+    "MACS"
+  ],
+  "MMP9": [
+    "matrix metallopeptidase 9",
+    "CLG4B"
+  ],
+  "MS4A1": [
+    "membrane spanning 4-domains A1",
+    "B1",
+    "Bp35",
+    "FMC7",
+    "CD20"
+  ],
+  "NRGN": [
+    "neurogranin",
+    "RC3"
+  ],
+  "PPBP": [
+    "pro-platelet basic protein",
+    "SCYB7",
+    "TGB",
+    "NAP-2-L1",
+    "LA-PF4",
+    "MDGF",
+    "LDGF",
+    "Beta-TG",
+    "CTAP3",
+    "CXCL7",
+    "PBP",
+    "b-TG1",
+    "TGB1",
+    "CTAPIII",
+    "NAP-2",
+    "platelet basic protein",
+    "beta-thromboglobulin",
+    "connective tissue-activating peptide III",
+    "neutrophil-activating peptide-2",
+    "chemokine (C-X-C motif) ligand 7",
+    "THBGB1"
+  ],
+  "PRAM1": [
+    "PML-RARA regulated adaptor molecule 1",
+    "PML-RAR"
+  ],
+  "S100A12": [
+    "S100 calcium binding protein A12",
+    "p6",
+    "MRP6",
+    "CGRP",
+    "CAAF1",
+    "CAGC",
+    "ENRAGE",
+    "neutrophil S100 protein",
+    "calgranulin C"
+  ],
+  "SNHG14": [
+    "small nucleolar RNA host gene 14",
+    "NCRNA00214",
+    "UBE3A-AS",
+    "UBE3A-ATS",
+    "non-protein coding RNA 214",
+    "UBE3A antisense",
+    "UBE3A-AS1",
+    "IPW",
+    "imprinted in Prader-Willi syndrome"
+  ],
+  "SSR3": [
+    "signal sequence receptor subunit 3",
+    "TRAPG",
+    "translocon-associated protein gamma"
+  ],
+  "STAB1": [
+    "stabilin 1",
+    "KIAA0246",
+    "STAB-1",
+    "FEEL-1",
+    "CLEVER-1",
+    "FELE-1",
+    "FEX1",
+    "SCARH2",
+    "MS-1 antigen"
+  ],
+  "THBS1": [
+    "thrombospondin 1",
+    "TSP1",
+    "THBS",
+    "TSP",
+    "THBS-1",
+    "TSP-1",
+    "thrombospondin-1p180"
+  ],
+  "TNFAIP2": [
+    "TNF alpha induced protein 2",
+    "B94",
+    "EXOC3L3",
+    "exocyst complex component 3-like 3"
+  ],
+  "TREML1": [
+    "TLT1",
+    "dJ238O23.3",
+    "TREM-like transcript 1"
+  ],
+  "TUBA1A": [
+    "tubulin alpha 1a",
+    "TUBA3",
+    "B-ALPHA-1",
+    "FLJ25113",
+    "tubulin, alpha, brain-specific"
+  ],
+  "TUBB1": [
+    "tubulin beta 1 class VI",
+    "dJ543J19.4",
+    "class VI beta-tubulin",
+    "tubulin, beta 1"
+  ],
+  "VCAN": [
+    "versican",
+    "PG-M",
+    "versican proteoglycan",
+    "CSPG2",
+    "chondroitin sulfate proteoglycan 2"
+  ],
+  "ZFAS1": [
+    "ZNFX1 antisense RNA 1",
+    "HSUP1",
+    "HSUP2",
+    "C20orf199",
+    "NCRNA00275",
+    "ZNFX1-AS1",
+    "chromosome 20 open reading frame 199",
+    "non-protein coding RNA 275"
+  ],
+  "ZNF385D": [
+    "zinc finger protein 385D",
+    "FLJ22419",
+    "ZNF659",
+    "zinc finger protein 659"
+  ]
+}

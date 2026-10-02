@@ -1,0 +1,11 @@
+{
+  "CPS_Global_q0": "Cells from a human brain with the lowest overall cortical pathology burden: minimal amyloid and tau pathology, preserved neuronal integrity and quiescent glia.",
+  "CPS_Global_q1": "Cells from a human brain with low-to-moderate overall cortical pathology burden: early amyloid and tau accumulation with mild glial activation.",
+  "CPS_Global_q2": "Cells from a human brain with moderate-to-high overall cortical pathology burden: substantial amyloid and tau pathology, activated microglia and reactive astrocytes.",
+  "CPS_Global_q3": "Cells from a human brain with the highest overall cortical pathology burden: severe amyloid and tau pathology, neuronal loss, gliosis and neuroinflammation.",
+  "CPS_Local_q0": "Cells from a brain region with the lowest local pathology burden: minimal regional amyloid and tau pathology.",
+  "CPS_Local_q1": "Cells from a brain region with low-to-moderate local pathology burden.",
+  "CPS_Local_q2": "Cells from a brain region with moderate-to-high local pathology burden.",
+  "CPS_Local_q3": "Cells from a brain region with the highest local pathology burden: severe regional amyloid and tau pathology with gliosis.",
+  "nan": "Cells from a human brain with uncharacterized neuropathology."
+}

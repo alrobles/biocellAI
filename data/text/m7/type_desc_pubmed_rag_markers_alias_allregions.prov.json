@@ -1,0 +1,10 @@
+{
+ "note": "base = M7 PubMed-RAG markers_alias descriptions (24 types); added manual minimal descriptions for 5 hippocampal/ependymal types new in the all-region build (DG, CA2-4, Sub-CA1, EC IT, Ependymal)",
+ "manual_types": [
+  "CA2-4",
+  "DG",
+  "EC IT",
+  "Ependymal",
+  "Sub-CA1"
+ ]
+}

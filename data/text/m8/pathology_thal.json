@@ -1,0 +1,9 @@
+{
+  "Thal 0": "Cells from an aged human brain with no amyloid-beta deposition: no detectable amyloid plaques in any brain region.",
+  "Thal 1": "Cells from a human brain with the earliest phase of amyloid-beta deposition: plaques restricted to the neocortex, with subcortical regions unaffected.",
+  "Thal 2": "Cells from a human brain with early amyloid-beta spread: neocortical plaques plus involvement of allocortical regions including entorhinal cortex and hippocampus.",
+  "Thal 3": "Cells from a human brain with intermediate amyloid-beta spread: plaques extending into deep subcortical nuclei including basal ganglia and thalamus.",
+  "Thal 4": "Cells from a human brain with advanced amyloid-beta spread: plaque deposition reaching brainstem structures in addition to cortical and subcortical involvement.",
+  "Thal 5": "Cells from a human brain with the final phase of amyloid-beta spread: diffuse plaque deposition throughout the neuraxis including cerebellum, with global amyloid burden.",
+  "nan": "Cells from a human brain with uncharacterized neuropathology."
+}

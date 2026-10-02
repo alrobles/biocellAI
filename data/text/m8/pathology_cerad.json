@@ -1,0 +1,7 @@
+{
+  "Absent": "Cells from an aged human brain with no neuritic amyloid plaques: cortical neuropil free of neuritic plaque burden, normal microglial and synaptic homeostasis.",
+  "Sparse": "Cells from a human brain with sparse neuritic amyloid plaques: occasional focal plaques in neocortex with largely preserved neuronal integrity and minimal glial reaction.",
+  "Moderate": "Cells from a human brain with moderate neuritic plaque burden: frequent amyloid-beta neuritic plaques across neocortex, activated microglia clustered around deposits, reactive astrocytes and synaptic stress.",
+  "Frequent": "Cells from a human brain with dense neuritic amyloid plaque burden: abundant amyloid-beta plaques throughout cortical layers, pronounced neuroinflammation, gliosis and neuronal dystrophy.",
+  "nan": "Cells from a human brain with uncharacterized neuropathology."
+}

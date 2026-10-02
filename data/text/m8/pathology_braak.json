@@ -1,0 +1,9 @@
+{
+  "Braak 0": "Cells from an aged human brain with no neurofibrillary tangle pathology: neuronal tau homeostasis is intact, with no detectable neurofibrillary degeneration in any region.",
+  "Braak II": "Cells from a human brain with very early neurofibrillary pathology: tau-bearing neurofibrillary tangles largely confined to the transentorhinal and entorhinal cortex, with preserved neocortical integrity.",
+  "Braak III": "Cells from a human brain with limbic-stage neurofibrillary pathology: tangles extend through the hippocampus and limbic structures, with early involvement of association cortex and emerging synaptic stress.",
+  "Braak IV": "Cells from a human brain with advancing limbic neurofibrillary pathology: dense tangle burden in hippocampus and entorhinal cortex, spreading into temporal isocortex, accompanied by reactive glia and synaptic dysfunction.",
+  "Braak V": "Cells from a human brain with isocortical neurofibrillary pathology: widespread tangle involvement of neocortical association areas, substantial neuronal loss, gliosis and impaired cortical connectivity.",
+  "Braak VI": "Cells from a human brain with severe end-stage neurofibrillary pathology: devastating tangle burden across virtually all cortical areas including primary sensory regions, marked neuronal loss and gliosis.",
+  "nan": "Cells from a human brain with uncharacterized neuropathology."
+}

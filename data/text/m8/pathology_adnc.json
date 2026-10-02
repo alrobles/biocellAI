@@ -1,0 +1,7 @@
+{
+  "Not AD": "Cells from an aged human brain with no detectable Alzheimer's disease neuropathology: no amyloid plaques, no neurofibrillary tangles, normal microglial and synaptic homeostasis.",
+  "Low": "Cells from a human brain with early Alzheimer's disease pathology: sparse amyloid-beta plaques and neurofibrillary tangles largely confined to entorhinal and transentorhinal cortex, with largely preserved neuronal and synaptic integrity.",
+  "Intermediate": "Cells from a human brain with intermediate Alzheimer's disease pathology: moderate amyloid plaque burden and neurofibrillary tangles spreading into limbic and isocortical regions, accompanied by activated microglia and reactive astrocytes.",
+  "High": "Cells from a human brain with severe Alzheimer's disease pathology: dense widespread amyloid-beta plaques, extensive neurofibrillary degeneration, marked neuronal loss, gliosis and neuroinflammation.",
+  "nan": "Cells from a human brain with uncharacterized neuropathology."
+}

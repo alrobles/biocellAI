@@ -1,0 +1,5 @@
+{
+  "nonAD": "Cells from an aged human brain with no detectable Alzheimer's disease neuropathology: no significant amyloid plaques or neurofibrillary tangles, preserved synaptic markers and homeostatic microglia.",
+  "earlyAD": "Cells from a human brain with early-stage Alzheimer's disease pathology: emerging amyloid-beta deposition and neurofibrillary tangles beginning in entorhinal and limbic regions, with early microglial activation and mild synaptic stress.",
+  "lateAD": "Cells from a human brain with advanced late-stage Alzheimer's disease pathology: widespread neuritic plaques and neurofibrillary tangles across neocortex and hippocampus, pronounced gliosis, synapse loss, and neuronal dysfunction."
+}

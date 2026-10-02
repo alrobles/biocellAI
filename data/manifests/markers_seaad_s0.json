@@ -1,0 +1,242 @@
+{
+  "Astrocyte": [
+    "SLC1A3",
+    "SLC1A2",
+    "RFX4",
+    "PARD3",
+    "RYR3",
+    "HIF3A",
+    "GPC5",
+    "AL137139.2"
+  ],
+  "Chandelier": [
+    "ZNF385D",
+    "LHFPL3",
+    "ALK",
+    "ZNF536",
+    "SDK1",
+    "ERBB4",
+    "FSTL5",
+    "CA8"
+  ],
+  "Endothelial": [
+    "FLT1",
+    "ATP10A",
+    "CLDN5",
+    "MECOM",
+    "EPAS1",
+    "VWF",
+    "ANO2",
+    "ERG"
+  ],
+  "Immune": [
+    "LRMDA",
+    "DOCK8",
+    "APBB1IP",
+    "SLC1A3",
+    "TBXAS1",
+    "ARHGAP15",
+    "ARHGAP24",
+    "FYB1"
+  ],
+  "L2/3 IT": [
+    "CUX2",
+    "AC013287.1",
+    "TAFA1",
+    "AC011287.1",
+    "CBLN2",
+    "AL117329.1",
+    "PDZD2",
+    "AC021613.1"
+  ],
+  "L4 IT": [
+    "RORB",
+    "POU6F2",
+    "TRHDE",
+    "NTNG1",
+    "AC246817.1",
+    "CPNE4",
+    "AC109466.1",
+    "CNTN5"
+  ],
+  "L5 ET": [
+    "GRM8",
+    "BCL11B",
+    "ROBO2",
+    "PTCHD1-AS",
+    "COL21A1",
+    "ERG",
+    "SLIT3",
+    "MYO16"
+  ],
+  "L5 IT": [
+    "IL1RAPL2",
+    "AC109466.1",
+    "HS3ST2",
+    "AC016687.2",
+    "FOXP2",
+    "PDE1A",
+    "AC008415.1",
+    "AC060765.2"
+  ],
+  "L5/6 NP": [
+    "HTR2C",
+    "TSHZ2",
+    "NPSR1-AS1",
+    "ZNF385D",
+    "TLL1",
+    "IFNG-AS1",
+    "LHFPL3",
+    "GRM8"
+  ],
+  "L6 CT": [
+    "SEMA3E",
+    "HS3ST4",
+    "FOXP2",
+    "RYR3",
+    "DLC1",
+    "ADAMTSL1",
+    "LUZP2",
+    "PDZRN4"
+  ],
+  "L6 IT": [
+    "AC019211.1",
+    "AC067956.1",
+    "ZNF804B",
+    "CBLN2",
+    "PDZRN4",
+    "HS3ST5",
+    "AC021613.1",
+    "HS3ST2"
+  ],
+  "L6 IT Car3": [
+    "ZNF804B",
+    "SYNPR",
+    "AC110023.1",
+    "RGS12",
+    "SPOCK3",
+    "PDE1A",
+    "CA10",
+    "ZNF804A"
+  ],
+  "L6b": [
+    "ZFHX3",
+    "PCSK5",
+    "HS3ST4",
+    "ROBO2",
+    "SEMA3E",
+    "PDZRN4",
+    "RYR3",
+    "KIAA1217"
+  ],
+  "Lamp5": [
+    "ADARB2",
+    "GRIK1",
+    "NXPH1",
+    "AC132803.1",
+    "ALK",
+    "KCNIP1",
+    "FBXL7",
+    "ZNF536"
+  ],
+  "Lamp5 Lhx6": [
+    "NXPH1",
+    "ADARB2",
+    "PDGFD",
+    "GRIK1",
+    "MYO16",
+    "EYA4",
+    "ZNF536",
+    "CHST9"
+  ],
+  "OPC": [
+    "VCAN",
+    "LHFPL3",
+    "PCDH15",
+    "SMOC1",
+    "PTPRZ1",
+    "MEGF11",
+    "SEMA5A",
+    "LUZP2"
+  ],
+  "Oligodendrocyte": [
+    "ST18",
+    "PLP1",
+    "RNF220",
+    "TMEM144",
+    "C10orf90",
+    "DOCK5",
+    "ENPP2",
+    "FRMD4B"
+  ],
+  "Pax6": [
+    "RELN",
+    "ADARB2",
+    "CXCL14",
+    "ZNF385D",
+    "NXPH1",
+    "IL1RAPL2",
+    "NR2F2-AS1",
+    "ZNF536"
+  ],
+  "Pvalb": [
+    "NXPH1",
+    "SOX6",
+    "ERBB4",
+    "BTBD11",
+    "ZNF385D",
+    "ZNF536",
+    "ADAMTS9-AS2",
+    "MYO16"
+  ],
+  "Sncg": [
+    "ADARB2",
+    "FSTL5",
+    "GRIK1",
+    "NR2F2-AS1",
+    "CXCL14",
+    "THSD7B",
+    "SGO1-AS1",
+    "AC132803.1"
+  ],
+  "Sst": [
+    "NXPH1",
+    "GRIK1",
+    "SYNPR",
+    "SPOCK3",
+    "SOX6",
+    "KIF26B",
+    "GRIK3",
+    "ROBO2"
+  ],
+  "Sst Chodl": [
+    "NPY",
+    "SOX6",
+    "GRIK1",
+    "IL1RAPL2",
+    "PWRN1",
+    "NXPH2",
+    "LHFPL3",
+    "NXPH1"
+  ],
+  "VLMC & Perivascular": [
+    "LAMA2",
+    "EBF1",
+    "EPS8",
+    "COLEC12",
+    "ATP1A2",
+    "DCN",
+    "ITIH5",
+    "AC092957.1"
+  ],
+  "Vip": [
+    "ADARB2",
+    "SYNPR",
+    "ERBB4",
+    "SLC24A3",
+    "PLD5",
+    "GALNTL6",
+    "ZNF536",
+    "RGS12"
+  ]
+}
