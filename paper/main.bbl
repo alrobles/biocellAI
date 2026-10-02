@@ -1,0 +1,204 @@
+\begin{thebibliography}{27}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Atti and Subramaniam(2025)]{scfm_limits}
+Srijan Atti and Shankar Subramaniam.
+\newblock Fundamental limitations of foundation models in single-cell
+  transcriptomics.
+\newblock \emph{bioRxiv}, 2025.
+\newblock \doi{10.1101/2025.06.26.661767}.
+
+\bibitem[Chen and Zou(2024)]{genept}
+Yiqun~T. Chen and James Zou.
+\newblock {GenePT}: a simple but effective foundation model for genes and cells
+  built from {ChatGPT}.
+\newblock \emph{bioRxiv}, 2024.
+\newblock \doi{10.1101/2023.10.16.561085}.
+
+\bibitem[Cui et~al.(2024)Cui, Wang, Maan, Pang, Luo, Duan, and Wang]{scgpt}
+Haotian Cui, Chloe Wang, Hassaan Maan, Kuan Pang, Fengming Luo, Nan Duan, and
+  Bo~Wang.
+\newblock {scGPT}: toward building a foundation model for single-cell
+  multi-omics using generative {AI}.
+\newblock \emph{Nature Methods}, 21:\penalty0 1470--1480, 2024.
+\newblock \doi{10.1038/s41592-024-02201-0}.
+
+\bibitem[{CZ CELLxGENE}(2023)]{cellxgene}
+{CZ CELLxGENE}.
+\newblock {CZ CELLxGENE Discover Census}.
+\newblock \url{https://cellxgene.cziscience.com/census-model}, 2023.
+
+\bibitem[Franz{\'e}n et~al.(2019)Franz{\'e}n, Gan, and
+  Bj{\"o}rkegren]{panglaodb}
+Oscar Franz{\'e}n, Li-Ming Gan, and Johan L.~M. Bj{\"o}rkegren.
+\newblock {PanglaoDB}: a web server for exploration of mouse and human
+  single-cell {RNA} sequencing data.
+\newblock \emph{Database}, 2019:\penalty0 baz046, 2019.
+\newblock \doi{10.1093/database/baz046}.
+
+\bibitem[Groeneveld et~al.(2024)Groeneveld, Beltagy, Walsh, Bhagia, Kinney,
+  Tafjord, Jha, Ivison, Magnusson, Wang, et~al.]{olmo}
+Dirk Groeneveld, Iz~Beltagy, Evan~Pete Walsh, Akshita Bhagia, Rodney Kinney,
+  Oyvind Tafjord, Ananya~Harsh Jha, Hamish Ivison, Ian Magnusson, Yizhong Wang,
+  et~al.
+\newblock {OLMo}: Accelerating the science of language models.
+\newblock In \emph{Proceedings of ACL}, pages 15789--15809, 2024.
+
+\bibitem[Groeneveld et~al.(2025)]{olmo2}
+Dirk Groeneveld et~al.
+\newblock 2 {OLMo} 2 {F}urious.
+\newblock \emph{arXiv:2501.00656}, 2025.
+
+\bibitem[Hao et~al.(2024)Hao, Gong, Zeng, Liu, Guo, Cheng, Wang, Ma, Zhang, and
+  Song]{scfoundation}
+Minsheng Hao, Jing Gong, Xin Zeng, Chiming Liu, Yucheng Guo, Xingyi Cheng,
+  Taifeng Wang, Jianzhu Ma, Xuegong Zhang, and Le~Song.
+\newblock Large-scale foundation model on single-cell transcriptomics.
+\newblock \emph{Nature Methods}, 21:\penalty0 1481--1491, 2024.
+\newblock \doi{10.1038/s41592-024-02305-7}.
+
+\bibitem[Istrate et~al.(2024)Istrate, Li, Karaletsos, and {CZ CELLxGENE
+  AI}]{scgenept}
+Ana-Maria Istrate, Donghui Li, Theofanis Karaletsos, and {CZ CELLxGENE AI}.
+\newblock {scGenePT}: Is language all you need for modeling single-cell
+  perturbations?
+\newblock \emph{bioRxiv}, 2024.
+\newblock \doi{10.1101/2024.10.23.619972}.
+
+\bibitem[{KCFM Team}(2025)]{kcfm}
+{KCFM Team}.
+\newblock {KCFM}: A knowledge-graph--informed foundation model for single-cell
+  annotation, 2025.
+\newblock \url{https://github.com/nudt-bioinfo/KCFM}.
+
+\bibitem[Kedzierska et~al.(2025)Kedzierska, Crawford, Amini, and
+  Lu]{kedzierska}
+Kasia~Z. Kedzierska, Lorin Crawford, Ava~P. Amini, and Alex~X. Lu.
+\newblock Zero-shot evaluation reveals limitations of single-cell foundation
+  models.
+\newblock \emph{Genome Biology}, 26:\penalty0 101, 2025.
+\newblock \doi{10.1186/s13059-025-03574-x}.
+
+\bibitem[Levine et~al.(2024)Levine, Rizvi, L{\'e}vy, Pallikkavaliyaveetil,
+  Zhang, Chen, Ghadermarzi, Wu, et~al.]{cell2sentence}
+Daniel Levine, Syed~A. Rizvi, Sacha L{\'e}vy, Nazreen Pallikkavaliyaveetil,
+  David Zhang, Xingyu Chen, Sina Ghadermarzi, Ruiming Wu, et~al.
+\newblock {Cell2Sentence}: Teaching large language models the language of
+  biology.
+\newblock In \emph{Proceedings of ICML}, volume 235 of \emph{PMLR}, 2024.
+
+\bibitem[Liu et~al.(2021)Liu, Shareghi, Meng, Basaldella, and Collier]{sapbert}
+Fangyu Liu, Ehsan Shareghi, Zaiqiao Meng, Marco Basaldella, and Nigel Collier.
+\newblock Self-alignment pretraining for biomedical entity representations.
+\newblock In \emph{Proceedings of NAACL-HLT}, pages 4228--4238, 2021.
+
+\bibitem[{Qwen Team}(2024)]{qwen25}
+{Qwen Team}.
+\newblock Qwen2.5 technical report.
+\newblock \emph{arXiv:2412.15115}, 2024.
+
+\bibitem[Radford et~al.(2021)Radford, Kim, Hallacy, Ramesh, Goh, Agarwal,
+  Sastry, Askell, Mishkin, Clark, Krueger, and Sutskever]{clip}
+Alec Radford, Jong~Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh,
+  Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark,
+  Gretchen Krueger, and Ilya Sutskever.
+\newblock Learning transferable visual models from natural language
+  supervision.
+\newblock In \emph{Proceedings of ICML}, pages 8748--8763, 2021.
+
+\bibitem[Reimers and Gurevych(2019)]{sbert}
+Nils Reimers and Iryna Gurevych.
+\newblock Sentence-{BERT}: Sentence embeddings using {Siamese BERT-Networks}.
+\newblock In \emph{Proceedings of EMNLP-IJCNLP}, pages 3982--3992, 2019.
+
+\bibitem[Rizvi et~al.(2025)Rizvi, Levine, Patel, Zhang, Wang, Perry, Constante,
+  He, Zhang, et~al.]{c2sscale}
+Syed~Asad Rizvi, Daniel Levine, Aakash Patel, Shiyang Zhang, Eric~W. Wang,
+  Curtis~Jamison Perry, Nicole~Mayerli Constante, Sizhuang He, David Zhang,
+  et~al.
+\newblock Scaling large language models for next-generation single-cell
+  analysis.
+\newblock \emph{bioRxiv}, 2025.
+\newblock \doi{10.1101/2025.04.14.648850}.
+
+\bibitem[Rosen et~al.(2023)Rosen, Roohani, Agrawal, Samotor{\v{c}}an, {Tabula
+  Sapiens Consortium}, Quake, and Leskovec]{uce}
+Yanay Rosen, Yusuf Roohani, Ayush Agrawal, Leon Samotor{\v{c}}an, {Tabula
+  Sapiens Consortium}, Stephen~R. Quake, and Jure Leskovec.
+\newblock Universal cell embeddings: A foundation model for cell biology.
+\newblock \emph{bioRxiv}, 2023.
+\newblock \doi{10.1101/2023.11.28.568918}.
+
+\bibitem[Schaefer et~al.(2025)Schaefer, Peneder, Malzl, Lombardo, Peycheva,
+  Burton, Hakobyan, Sharma, Krausgruber, Sin, Menche, Tomazou, and
+  Bock]{cellwhisperer}
+Moritz Schaefer, Peter Peneder, Daniel Malzl, Salvo~Danilo Lombardo, Mihaela
+  Peycheva, Jake Burton, Anna Hakobyan, Varun Sharma, Thomas Krausgruber,
+  Celine Sin, J{\"o}rg Menche, Eleni~M. Tomazou, and Christoph Bock.
+\newblock Multimodal learning enables chat-based exploration of single-cell
+  data.
+\newblock \emph{Nature Biotechnology}, 2025.
+\newblock \doi{10.1038/s41587-025-02857-9}.
+
+\bibitem[{scHilda Team}(2025)]{schilda}
+{scHilda Team}.
+\newblock {scHilda}: Hierarchical integration of {LLM} with {KG} database for
+  single cell type annotation.
+\newblock \emph{PLoS Computational Biology}, 2025.
+\newblock \doi{10.1371/journal.pcbi.1014291}.
+
+\bibitem[{Tabula Sapiens Consortium} et~al.(2022){Tabula Sapiens Consortium},
+  Jones, Karkanias, Krasnow, et~al.]{tabulasapiens}
+{Tabula Sapiens Consortium}, Robert~C. Jones, Jim Karkanias, Mark~A. Krasnow,
+  et~al.
+\newblock The {Tabula Sapiens}: A multiple-organ, single-cell transcriptomic
+  atlas of humans.
+\newblock \emph{Science}, 376\penalty0 (6594):\penalty0 eabl4896, 2022.
+\newblock \doi{10.1126/science.abl4896}.
+
+\bibitem[Theodoris et~al.(2023)Theodoris, Xiao, Chopra, Chaffin, Al~Sayed,
+  Hill, Mantineo, Brydon, Zeng, Liu, and Ellinor]{geneformer}
+Christina~V. Theodoris, Ling Xiao, Anant Chopra, Mark~D. Chaffin, Zeina~R.
+  Al~Sayed, Matthew~C. Hill, Helene Mantineo, Emily~M. Brydon, Zexian Zeng,
+  X.~Shirley Liu, and Patrick~T. Ellinor.
+\newblock Transfer learning enables predictions in network biology.
+\newblock \emph{Nature}, 618:\penalty0 616--624, 2023.
+\newblock \doi{10.1038/s41586-023-06139-9}.
+
+\bibitem[van~den Oord et~al.(2018)van~den Oord, Li, and Vinyals]{infonce}
+Aaron van~den Oord, Yazhe Li, and Oriol Vinyals.
+\newblock Representation learning with contrastive predictive coding.
+\newblock \emph{arXiv:1807.03748}, 2018.
+
+\bibitem[Wang et~al.(2021)Wang, Pisco, McGeever, Brbi{\'c}, Zitnik, Darmanis,
+  Leskovec, Karkanias, and Altman]{onclass}
+Sheng Wang, Angela~Oliveira Pisco, Ariel McGeever, Maria Brbi{\'c}, Marinka
+  Zitnik, Spyros Darmanis, Jure Leskovec, Jim Karkanias, and Russ~B. Altman.
+\newblock Leveraging the cell ontology to classify unseen cell types.
+\newblock \emph{Nature Communications}, 12:\penalty0 5556, 2021.
+\newblock \doi{10.1038/s41467-021-25725-x}.
+
+\bibitem[Yu et~al.(2025)]{scrag}
+Zhiyin Yu et~al.
+\newblock {scRAG}: Hybrid retrieval-augmented generation for {LLM}-based
+  cross-tissue single-cell annotation.
+\newblock In \emph{Findings of ACL}, 2025.
+
+\bibitem[Yuan et~al.(2024)Yuan, Zhan, and {scCello Team}]{sccello}
+Xinyu Yuan, Zhihao Zhan, and {scCello Team}.
+\newblock {scCello}: Cell-ontology guided transcriptome foundation model.
+\newblock In \emph{NeurIPS}, 2024.
+\newblock Spotlight.
+
+\bibitem[Zhao et~al.(2024)Zhao, Zhang, Nie, Chen, Song, et~al.]{langcell}
+Suyuan Zhao, Jiahuan Zhang, Zijing Nie, Zizhen Chen, Le~Song, et~al.
+\newblock {LangCell}: Language-cell pre-training for cell identity
+  understanding.
+\newblock In \emph{Proceedings of ICML}, volume 235 of \emph{PMLR}, pages
+  61159--61185, 2024.
+
+\end{thebibliography}
