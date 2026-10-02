@@ -1,0 +1,27 @@
+BioCellAI — Foundations
+Copyright 2025 alrobles
+
+This project is licensed under the Apache License, Version 2.0
+(see LICENSE), with the following exceptions and clarifications:
+
+GENERATED DATA ARTIFACTS
+Project-generated text and metadata artifacts — LLM-generated captions and
+their provenance records (data/text/), retrieval corpora (data/retrieval/),
+dataset manifests, gene aliases, donor-split lists, and fold manifests
+(data/manifests/, experiments/v2_revalidation/*.json) — are licensed under
+the Creative Commons Attribution 4.0 International License (CC-BY-4.0).
+https://creativecommons.org/licenses/by/4.0/
+
+THIRD-PARTY DATA
+This repository does not redistribute source single-cell datasets.
+Tabula Sapiens, SEA-AD (Allen Institute), and ROSMAP data retain their
+original terms and access conditions; processed derivatives are released
+only where those terms permit, and controlled-access data (ROSMAP via the
+AD Knowledge Portal) are represented here by manifests and donor
+identifiers only.
+
+MODEL WEIGHTS
+Any trained checkpoints released through the project channels are licensed
+Apache-2.0 and carry a provenance manifest identifying their training-data
+license chain. Checkpoints derived from controlled-access data are released
+only where the data-use terms permit.
