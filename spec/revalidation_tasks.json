@@ -1,0 +1,456 @@
+{
+ "protocol": "v2_revalidation",
+ "historical_commit": "5d72702",
+ "spec": "spec/adr/ADR-011-scientific-revalidation.md",
+ "output_root": "experiments/v2_revalidation",
+ "gpu_policy": {
+  "pilot_concurrency": 1,
+  "initial_max_concurrency": 2,
+  "auto_submit": false
+ },
+ "tasks": [
+  {
+   "id": "R0-PROTOCOL",
+   "title": "Corrected question, objectives, experiment matrix, and gates",
+   "owner": "research",
+   "status": "completed",
+   "depends_on": [],
+   "acceptance": "ADR-011 written; freeze its commit before new scientific runs",
+   "evidence": [
+    "spec/adr/ADR-011-scientific-revalidation.md"
+   ]
+  },
+  {
+   "id": "R0-CLAIMS",
+   "title": "Mark the manuscript and historical record as subject to revalidation",
+   "owner": "research",
+   "status": "completed",
+   "depends_on": [
+    "R0-PROTOCOL"
+   ],
+   "acceptance": "Status visible in paper/README/ADR-010; no invented new results",
+   "evidence": [
+    "README.md",
+    "paper/main.tex",
+    "spec/adr/ADR-010-m13-multicohort.md"
+   ],
+   "verification": "Audit notice and provisional abstract/discussion/conclusion updated; complete scientific rewrite remains R8-PAPER"
+  },
+  {
+   "id": "R0-INVENTORY",
+   "title": "Inventory sources, jobs, metrics, weights, and hashes on HPC",
+   "owner": "engineering",
+   "status": "completed",
+   "depends_on": [
+    "R0-PROTOCOL",
+    "R0-CREDENTIAL"
+   ],
+   "acceptance": "Complete source-to-claim registry and reconciliation of missing artifacts",
+   "deliverables": [
+    "inventory.json",
+    "claims.csv"
+   ],
+   "evidence": [
+    "experiments/v2_revalidation/inventory.json"
+   ],
+   "verification": "Full sweep of /beegfs/a474r867/bioai via ssh kuhpc 2026-09-27: 3744 files, 551.2G cataloged. 12 source-count h5ads (10 SEA-AD regions ~166G + rosmap_liu2025 17.8G + rosmap_for_seaad), 351 embedding/weight artifacts across m7-m12/a2/g2 experiments, 394 job logs, 666 HF cache entries (OLMo-2-13B, Qwen2.5-14B, SapBERT, MiniLM, Geneformer, BioBERT), scGPT whole-human + CellWhisperer weights. sha256 for all files <=64MB (3347 hashed), larger files deferred with size+mtime. License classes: 37 review_required_seaad_allen, 40 controlled_rosmap_synapse, 1170 third_party_model_weights, 1 open_ccby_tabula. Precipitation-project .pt files under /beegfs/a474r867 excluded (outside bioai tree). Canonical copy on HPC; repo copy under experiments/v2_revalidation/."
+  },
+  {
+   "id": "R0-CREDENTIAL",
+   "title": "Rotate the exposed credential and verify secure use",
+   "owner": "project_owner",
+   "status": "completed",
+   "depends_on": [],
+   "acceptance": "Owner confirms revocation and replacement without revealing values",
+   "evidence": [
+    "docs/release-plan.md",
+    "spec/revalidation_tasks.json"
+   ],
+   "verification": "Scoped key rotated in hermes-hydra hydra.yaml 2026-09-26; old key verified rejected (unauthorized), new key verified working. Client copies updated: local secrets file (600), Devin Cloud secrets manager (HERMES_HYDRA_API_KEY), and alpha/beta mesh nodes (ssh pull from reumanlab, byte-identical sha256, mode 600); gamma shares the reumanlab host. ~/env perms tightened to 600 on local and reumanlab. Residual: new key transited agent session once — rotate manually outside agent channel for zero-transcript exposure."
+  },
+  {
+   "id": "R1-CORE",
+   "title": "Validate counts, prevent repeated preprocessing, and fit HVGs on train",
+   "owner": "engineering",
+   "status": "completed",
+   "depends_on": [
+    "R0-PROTOCOL"
+   ],
+   "acceptance": "Tests for counts, invariance to test changes, IDs, and a unified split pass",
+   "evidence": [
+    "src/biocellai/data.py",
+    "tests/test_revalidation.py"
+   ],
+   "verification": "pytest tests/test_revalidation.py: passed on synthetic counts; real-data reconstruction remains R1-REAL-DATA"
+  },
+  {
+   "id": "R1-PREPARE-CLI",
+   "title": "Immutable fold builder with hashes and sample counts",
+   "owner": "engineering",
+   "status": "completed",
+   "depends_on": [
+    "R1-CORE"
+   ],
+   "acceptance": "Synthetic integration produces h5ad and manifest files and rejects overwrites",
+   "evidence": [
+    "scripts/v2_prepare.py",
+    "tests/test_revalidation.py"
+   ],
+   "verification": "test_v2_prepare_cli_is_immutable passes; no real cohorts processed"
+  },
+  {
+   "id": "R1-REAL-DATA",
+   "title": "Rebuild blood, SEA-AD, and ROSMAP datasets from verified counts",
+   "owner": "data",
+   "status": "completed",
+   "depends_on": [
+    "R0-INVENTORY",
+    "R1-PREPARE-CLI"
+   ],
+   "acceptance": "Flow table reconciling 127/84 donors and QC by type/region; comparable folds",
+   "deliverables": [
+    "dataset_flow.csv",
+    "source_manifests.json",
+    "fold_manifests.json"
+   ],
+   "evidence": [
+    "experiments/v2_revalidation/dataset_flow.csv",
+    "experiments/v2_revalidation/source_manifests.json",
+    "experiments/v2_revalidation/fold_manifests.json",
+    "scripts/v2_extract.py",
+    "scripts/v2_prepare.py"
+   ],
+   "verification": "SEA-AD MTG UMIs layer 1,178,694->125,909 cells/84 donors (63+21 per fold); ROSMAP liu2025 raw X 2,263,395->163,783->163,646 cells/111 donors (83+28); blood raw X 85,055 cells/9 donors (7+2). All X verified integer counts; donor-table joins exact (84/84, 111/111); per-donor cap 1500; folds hashed, train-only HVG=2000. ROSMAP extract needed vectorized CSR row-gather fix (06793b6) after scipy copy stalled under node memory pressure."
+  },
+  {
+   "id": "R1-CAPTIONS",
+   "title": "Fold-specific markers, retrieval, and captions",
+   "owner": "data",
+   "status": "completed",
+   "depends_on": [
+    "R1-REAL-DATA"
+   ],
+   "acceptance": "No test donor contributes to dataset-derived captions",
+   "deliverables": [
+    "caption_manifest.json"
+   ],
+   "evidence": [
+    "experiments/v2_revalidation/caption_manifest.json",
+    "scripts/v2_captions.py",
+    "data/text/m7/type_desc_pubmed_rag_markers_alias_rosmap.prov.json"
+   ],
+   "verification": "Markers fit on train donors only (rank_genes_groups on train split) for all cohorts x seeds; PubMed corpus is external retrieval (no donor data). ROSMAP Subclass names mapped onto SEA-AD allregions corpus: 32/34 covered, Exc TH + Inh MEIS2 fall back to name-only; mapping judgment calls flagged in prov.json for R5-REVIEW."
+  },
+  {
+   "id": "R2-CORE",
+   "title": "Inductive scaler/ridge/PCA, consistent splits, and exact gates",
+   "owner": "engineering",
+   "status": "completed",
+   "depends_on": [
+    "R0-PROTOCOL"
+   ],
+   "acceptance": "Tests for train-only fitting, feature units, overlap, and paired bootstrap pass",
+   "evidence": [
+    "src/biocellai/progression.py",
+    "src/biocellai/revalidation.py",
+    "tests/test_revalidation.py"
+   ],
+   "verification": "Unit tests pass; paired bootstrap is conditional on fixed predictions, not a completed scientific analysis"
+  },
+  {
+   "id": "R2-CPU-BASELINES",
+   "title": "Composition, pseudobulk, and covariates with per-donor predictions",
+   "owner": "statistics",
+   "status": "completed",
+   "depends_on": [
+    "R1-REAL-DATA",
+    "R2-CORE"
+   ],
+   "acceptance": "Predictions and metrics on identical donors; R²/MAE/NaNs reported",
+   "evidence": [
+    "experiments/v2_revalidation/aggregate/summary_path_rho.csv",
+    "experiments/v2_revalidation/aggregate/summary_path_r2.csv",
+    "experiments/v2_revalidation/aggregate/summary_path_mae.csv"
+   ],
+   "verification": "B0 (composition ridge) + B1 (pseudobulk PCA ridge) ran on identical 21/28 test donors per seed in SEA-AD+ROSMAP with per-donor prediction CSVs on HPC; blood reports NaN pathology (no target) explicitly. B1 rho mean 0.44/0.59 vs B2 0.53/0.63 -- encoder-free pseudobulk is the second-strongest arm in both cohorts."
+  },
+  {
+   "id": "R2-TRANSFER",
+   "title": "Separate strict transfer from supervised target-cohort orientation",
+   "owner": "engineering",
+   "status": "pending",
+   "depends_on": [
+    "R1-REAL-DATA",
+    "R2-CORE"
+   ],
+   "acceptance": "Source-fitted predictor/axis and transformations; no target fitting or labels in the strict arm"
+  },
+  {
+   "id": "R3-PRIMITIVES",
+   "title": "One-hot/random prototypes and permutation within train only",
+   "owner": "engineering",
+   "status": "completed",
+   "depends_on": [
+    "R1-CORE",
+    "R2-CORE"
+   ],
+   "acceptance": "Fixed per-class banks; independent seed; test labels unchanged",
+   "evidence": [
+    "src/biocellai/train.py",
+    "src/biocellai/data.py",
+    "tests/test_revalidation.py"
+   ],
+   "verification": "Prototype and training-donor permutation tests pass; not yet integrated into a v2 experiment runner"
+  },
+  {
+   "id": "R3-RUNNER",
+   "title": "V2 runner with B2/T0/T1/T2/T3/N1 and equivalent budgets",
+   "owner": "engineering",
+   "status": "completed",
+   "depends_on": [
+    "R1-PREPARE-CLI",
+    "R2-CORE",
+    "R3-PRIMITIVES"
+   ],
+   "acceptance": "Same labels, cells, updates, and probe protocol; separate seeds; complete checkpoints/provenance",
+   "evidence": [
+    "src/biocellai/v2run.py",
+    "scripts/v2_run.py",
+    "tests/test_v2run.py"
+   ],
+   "verification": "v2 runner implemented: B0/B1 encoder-free baselines, B2 dual-head supervised (type CE + pathology MSE), T0/T1 one-hot/random prototype contrastive, T2-T4/N2 caption-bank arms via --captions ARM=PATH (N2 = permuted class->caption map of --n2-of). All arms share cells, donor split, encoder capacity, TrainConfig budget. Per-arm donor-level predictions + checkpoints + manifest.json (fold sha256, code hashes, env versions, seed). Output dir reserved via reserve_output (no overwrite). 6 tests + end-to-end CLI smoke on synthetic fold verified 2026-09-26 (B0 rho=1.0 on composition-driven target confirms pipeline correctness)."
+  },
+  {
+   "id": "R3-SMOKE",
+   "title": "CPU smoke test and one HPC fold covering every control",
+   "owner": "engineering",
+   "status": "completed",
+   "depends_on": [
+    "R3-RUNNER",
+    "R1-CAPTIONS",
+    "R7-ENV"
+   ],
+   "acceptance": "No leakage or empty captions; outputs validated; no test-based model selection",
+   "note": "blood (8 arms) + seaad_mtg (9 arms incl N1/N2) HPC smokes ran clean 2026-09-27; cannot close until R1-CAPTIONS covers ROSMAP",
+   "evidence": [
+    "src/biocellai/v2run.py",
+    "scripts/slurm/v2_run.sbatch"
+   ],
+   "verification": "blood smoke job 30512697 (8 arms incl N2) and seaad_mtg smoke (9 arms incl N1) completed with full artifact inventory (metrics, donor predictions, checkpoints, hashed manifests); synthetic e2e covers reserve_output non-overwrite and N1-without-pathology guard. Caption banks present per fold before smoke."
+  },
+  {
+   "id": "R3-MATRIX",
+   "title": "Run the primary MLP matrix and preregistered nulls",
+   "owner": "research",
+   "status": "completed",
+   "depends_on": [
+    "R3-SMOKE"
+   ],
+   "acceptance": "All arms and permutations complete or limitations explicit; no test-based early stopping",
+   "evidence": [
+    "experiments/v2_revalidation/seaad_mtg/run_s0_full/metrics.csv",
+    "experiments/v2_revalidation/rosmap/run_s0_full/metrics.csv",
+    "experiments/v2_revalidation/blood/run_s0_full/metrics.csv",
+    "experiments/v2_revalidation/aggregate/metrics_long.csv"
+   ],
+   "verification": "3 cohorts x 3 seeds x full arm matrix, 40 epochs, CPU. SEA-AD+ROSMAP: 9 arms incl N1/N2; blood: 8 arms (N1 n/a -- no pathology target, limitation explicit). ROSMAP chain ran prep->captions->matrix->report under Slurm afterok deps. Result: all paired gates FAIL in both pathology cohorts; text arms never approach B2; N1 retains rho 0.24-0.49 (composition confound)."
+  },
+  {
+   "id": "R4-GENEFORMER",
+   "title": "Official V1/V2 tokenizer and input parity",
+   "owner": "engineering",
+   "status": "completed",
+   "depends_on": [
+    "R0-INVENTORY",
+    "R1-CORE"
+   ],
+   "acceptance": "Full counts, correct vocabulary/medians/special tokens/length; fixture checked against upstream",
+   "evidence": "experiments/v2_revalidation/gf_fixture.json: 24/24 exact sequence matches vs real upstream TranscriptomeTokenizer for both V1 (no specials, 2048) and V2 (cls/eos after max_len-2 truncate, 4096); match_rate=1.0",
+   "verification": "gf_tokenize replicates ensmap (.upper() alias->ens, vocab-filtered) OR gene_name_id_dict resolution by probe hit-rate, upstream 1:1-vs-collapse sum with uniques-then-sorted-groups ordering, obs n_counts libsize, x/lib*1e4/median rank; dict choice + hit rates recorded per-job in embed manifests"
+  },
+  {
+   "id": "R4-SCGPT-CW",
+   "title": "Audit scGPT loading and version CellWhisperer patches",
+   "owner": "engineering",
+   "status": "completed",
+   "depends_on": [
+    "R0-INVENTORY",
+    "R1-CORE"
+   ],
+   "acceptance": "Checkpoint parity, frozen/FT smoke tests, and a reproducible environment without hidden patches",
+   "evidence": "scfm_audit/: per-model audit manifests (ckpt sha256, HF snapshot 1f7fbae4, CW clone 29843cf3 + cw_clone_patches.diff); smoke_scgpt_wh.json (frozen ok; FT loss 1.51->0.25, backbone_grad_sum 5756.7); cw_ft_smoke.json (181 transcriptome-tower params with nonzero grads after FrozenCachedModel unwrap; locking_mode=LU)",
+   "verification": "scGPT uses official scgpt.tasks.embed_data with scoped anndata dtype shim (recorded in manifest patches); CW frozen+FT verified on GPU; all shims listed in PATCHES -> embed manifests; clone diff committed"
+  },
+  {
+   "id": "R4-C2S",
+   "title": "Resolve C2S-Scale: run it or declare a partial benchmark",
+   "owner": "project_owner",
+   "status": "completed",
+   "depends_on": [
+    "R0-INVENTORY"
+   ],
+   "acceptance": "Verifiable result or explicit scope decision without removing G2",
+   "evidence": "Documented partial-benchmark decision: no C2S weights in HF cache and no offline acquisition path on the airgapped cluster; scope decision recorded in scfm audit notes; G2 retained",
+   "verification": "HF cache inventory shows no c2s-scale snapshot; benchmark proceeds with GF V1/V2 + scGPT + CellWhisperer"
+  },
+  {
+   "id": "R4-BENCHMARK",
+   "title": "Native scFMs and HVG ablation with a common probe",
+   "owner": "research",
+   "status": "completed",
+   "depends_on": [
+    "R4-GENEFORMER",
+    "R4-SCGPT-CW",
+    "R4-C2S",
+    "R1-REAL-DATA",
+    "R7-ENV"
+   ],
+   "acceptance": "Same cells/donors, separate native/HVG tables, compute/parameters/overlap reported",
+   "evidence": "scfm_tables/: 90/90 tuples complete (5 models x 2 inputs x 3 cohorts x 3 seeds); scfm_long.csv joins metrics + manifests (params, wall_s, vocab coverage, id_map_hit_rate, n_dropped_empty); separate native/hvg summary tables committed",
+   "verification": "Same fold cells/donors as v2 arms, same linear-probe + donor-ridge protocol; missing-cell tolerant eval; headlineresult: no frozen scFM beats B2 (rosmap best 0.51 vs 0.633; seaad best 0.25 vs 0.532); GF-V2-316M tops identity F1 (0.62-0.95) but pathology ~<=0.48"
+  },
+  {
+   "id": "R5-REVIEW",
+   "title": "Blinded biological caption review by two experts",
+   "owner": "domain_reviewers",
+   "status": "blocked",
+   "depends_on": [
+    "R1-CAPTIONS"
+   ],
+   "blocker": "Human reviewers have not yet been assigned",
+   "acceptance": "Actual 0–2 rubric scores, PMIDs, lineage-error flags, agreement, and adjudication",
+   "deliverables": [
+    "expert_review.csv",
+    "reviewer_agreement.json"
+   ]
+  },
+  {
+   "id": "R5-MARKERS",
+   "title": "Marker recovery independent of genes used in captions",
+   "owner": "biology",
+   "status": "pending",
+   "depends_on": [
+    "R1-CAPTIONS",
+    "R3-MATRIX"
+   ],
+   "acceptance": "Precision@10 and provenance; 0.6 gate without circularity"
+  },
+  {
+   "id": "R5-STATE",
+   "title": "Composition–state analysis with covariates and type×region controls",
+   "owner": "statistics",
+   "status": "completed",
+   "depends_on": [
+    "R2-CPU-BASELINES",
+    "R3-MATRIX"
+   ],
+   "acceptance": "Train-only residualization, fixed weights, and paired incremental comparison; no causal attribution",
+   "evidence": [
+    "experiments/v2_revalidation/rosmap/state_analysis/",
+    "experiments/v2_revalidation/seaad_mtg/state_analysis/"
+   ],
+   "verification": "3 seeds x 2 cohorts; train-only cov+comp residualization with fixed weights; paired bootstrap delta-rho on held-out donors; compXreg present on ROSMAP (6 regions) and recorded-excluded on SEA-AD (1 region); no causal language"
+  },
+  {
+   "id": "R6-INFERENCE",
+   "title": "Paired CIs, permutations, multiplicity, and automated decisions",
+   "owner": "statistics",
+   "status": "pending",
+   "depends_on": [
+    "R3-MATRIX",
+    "R4-BENCHMARK",
+    "R5-STATE",
+    "R2-TRANSFER"
+   ],
+   "acceptance": "Complete donor predictions; 2000 valid bootstrap replicates; 100 MLP nulls or explicit limitations",
+   "deliverables": [
+    "paired_comparisons.csv",
+    "gates.json"
+   ]
+  },
+  {
+   "id": "R6-CONFIRMATION",
+   "title": "Distinguish exploratory reanalysis from uninspected confirmation",
+   "owner": "research",
+   "status": "pending",
+   "depends_on": [
+    "R6-INFERENCE"
+   ],
+   "acceptance": "Nested validation and/or a new cohort; otherwise remove confirmatory wording"
+  },
+  {
+   "id": "R7-ENV",
+   "title": "Freeze environments and model revisions; add CI and an installable smoke test",
+   "owner": "engineering",
+   "status": "completed",
+   "depends_on": [
+    "R0-INVENTORY"
+   ],
+   "acceptance": "Clean installation, versions/hardware and patches recorded, offline tests",
+   "evidence": [
+    "env/requirements-hpc.txt",
+    "env/env_snapshot.json"
+   ],
+   "verification": "HPC environment frozen 2026-09-27: pip freeze of /beegfs/a474r867/bioai/venv (238 pkgs) + env_snapshot.json with HF snapshot revisions (OLMo-2 3a5c85ba, Qwen2.5-14B cf98f3b3, SapBERT 090663c3, Geneformer 1f7fbae4, biobert 20ded278, MiniLM 1110a243), python 3.12.7, Xeon Gold 6442Y. Offline test suite on cluster node (HF_HUB_OFFLINE=1): 69 passed in 38.6s (job 30513659). Clean local venv reinstall verified earlier."
+  },
+  {
+   "id": "R7-ORCHESTRATION",
+   "title": "SLURM with afterok, GPU limits, shared logs, and atomic outputs",
+   "owner": "engineering",
+   "status": "pending",
+   "depends_on": [
+    "R3-RUNNER",
+    "R7-ENV"
+   ],
+   "acceptance": "Verifiable dry run; failure blocks downstream tasks; validation before COMPLETED"
+  },
+  {
+   "id": "R7-LICENSE",
+   "title": "Resolve the project license and redistribution permissions",
+   "owner": "project_owner",
+   "status": "blocked",
+   "depends_on": [
+    "R0-INVENTORY"
+   ],
+   "blocker": "License adopted (Apache-2.0 code/weights, CC-BY-4.0 generated artifacts); per-artifact redistribution permissions still need the R0-INVENTORY classification",
+   "acceptance": "Licenses/checklist approved; controlled-access data not redistributed"
+  },
+  {
+   "id": "R8-PAPER",
+   "title": "Rewrite the narrative and bibliography; generate tables, figures, and PDF",
+   "owner": "research",
+   "status": "pending",
+   "depends_on": [
+    "R0-CLAIMS",
+    "R6-CONFIRMATION",
+    "R5-REVIEW",
+    "R5-MARKERS"
+   ],
+   "acceptance": "Every claim links to v2 results; abstract, discussion, and conclusion are consistent"
+  },
+  {
+   "id": "R8-RELEASE",
+   "title": "Reproducible release of code, manifests, tables, and permitted weights",
+   "owner": "engineering",
+   "status": "pending",
+   "depends_on": [
+    "R8-PAPER",
+    "R7-ENV",
+    "R7-ORCHESTRATION",
+    "R7-LICENSE",
+    "R0-CREDENTIAL"
+   ],
+   "acceptance": "Independent reproduction and a complete G8 checklist"
+  },
+  {
+   "id": "R9-M13",
+   "title": "Review ADR-010 and decide on multi-cohort training using corrected evidence",
+   "owner": "research",
+   "status": "pending",
+   "depends_on": [
+    "R8-RELEASE"
+   ],
+   "acceptance": "Expert-reviewed alias map, explicit heads, 195 total/~146 train, comparable J0, and clearly defined transfer"
+  }
+ ]
+}
