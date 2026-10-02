@@ -1,0 +1,28 @@
+{
+ "hf_snapshots": {
+  "Qwen/Qwen2.5-14B-Instruct": {
+   "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8"
+  },
+  "allenai/OLMo-2-1124-13B-Instruct": {
+   "revision": "3a5c85baefbb1896a54d56fe2e76c0395627ddf4"
+  },
+  "cambridgeltl/SapBERT-from-PubMedBERT-fulltext": {
+   "revision": "090663c3ae57bf35ffe4d0d468a2a88d03051a4d"
+  },
+  "ctheodoris/Geneformer": {
+   "revision": "1f7fbae4e469a5f4f1af8c111a529cfe1b3829f5"
+  },
+  "dmis-lab/biobert-v1.1": {
+   "revision": "20ded2783c661df4795dd69ee0de1819d662219e"
+  },
+  "sentence-transformers/all-MiniLM-L6-v2": {
+   "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
+  }
+ },
+ "hardware": {
+  "platform": "Linux-5.14.0-570.42.2.el9_6.x86_64-x86_64-with-glibc2.34",
+  "python": "3.12.7",
+  "processor": "x86_64",
+  "cpu": "Intel(R) Xeon(R) Gold 6442Y"
+ }
+}
