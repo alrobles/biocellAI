@@ -60,7 +60,7 @@ keep their original terms.
 | 3. Classify each artifact by source-data terms | step 2 | engineering + owner |
 | 4. Package releasable weights with model cards (training data, protocol version, metrics, intended use, limitations) | step 3 | engineering |
 | 5. Package caption/manifest corpus with data cards | **Done (first upload)** — `scripts/hf_release.py`, whitelist + secret scan; https://huggingface.co/datasets/alrobles/biocellai-foundations (249 files). Weights pending inventory | engineering |
-| 6. Zenodo deposit + DOI; GitHub alpha tag | steps 1–5 | engineering |
+| 6. Zenodo deposit + DOI; GitHub alpha tag | **Done** — `alrobles/biocellAI` public, `v0.1.0-alpha` tag + release; DOI `10.5281/zenodo.23103004` | engineering |
 | 7. Re-run under v2 protocol → release v1.0 with validated weights/results | `R3-MATRIX`…`R8-RELEASE` | research |
 
 **Do not tag a stable release from historical results.** The alpha tag is an

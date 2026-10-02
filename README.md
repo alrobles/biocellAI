@@ -1,5 +1,7 @@
 # BioCellAI
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23103004.svg)](https://doi.org/10.5281/zenodo.23103004)
+
 **Foundations** — a research toolkit for controlled cell–text representation learning.
 
 BioCellAI investigates whether aligning single-cell expression profiles with
@@ -176,8 +178,9 @@ project-generated captions, retrieval corpora, and manifests are
 controlled-access data are not redistributed. Per-artifact release
 permissions are tracked in `R7-LICENSE` and
 [docs/release-plan.md](docs/release-plan.md). If you use this repository in
-work leading to a publication, cite the GitHub repo and note the Foundations
-codename.
+work leading to a publication, cite it via the archived DOI
+([10.5281/zenodo.23103004](https://doi.org/10.5281/zenodo.23103004)) and note
+the Foundations codename.
 
 ## Credits / context
 

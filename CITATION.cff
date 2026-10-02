@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "BioCellAI — Foundations"
+version: "0.1.0a2"
+authors:
+  - family-names: Robles Fernández
+    given-names: Angel Luis
+doi: 10.5281/zenodo.23103004
+url: https://github.com/alrobles/biocellAI
+license: Apache-2.0
+date-released: 2026-10-02
