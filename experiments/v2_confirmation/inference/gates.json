@@ -1,0 +1,61 @@
+{
+  "integrity": "PASS",
+  "improvement_T2_vs_B2": "FAIL",
+  "semantics_T2_vs_T1": "FAIL",
+  "semantics_T2_null": "FAIL",
+  "historical_G5b_T2": "FAIL",
+  "improvement_T3_vs_B2": "FAIL",
+  "semantics_T3_vs_T1": "FAIL",
+  "semantics_T3_null": "FAIL",
+  "historical_G5b_T3": "FAIL",
+  "transfer": {
+    "rosmap_to_seaad_mtg": "PASS",
+    "seaad_mtg_to_rosmap": "PASS",
+    "seaad_mtg_to_seaad_pfc": "PASS"
+  },
+  "composition": "NOT_EVALUABLE",
+  "negative_result_valid": "PASS",
+  "notes": [
+    "improvement_T2_vs_B2: rho 0.261 <= null q95 0.418 (n_null=300)",
+    "semantics_T2_vs_T1: rho 0.261 <= null q95 0.418 (n_null=300)",
+    "improvement_T3_vs_B2: rho 0.228 <= null q95 0.456 (n_null=300)",
+    "semantics_T3_vs_T1: rho 0.228 <= null q95 0.456 (n_null=300)"
+  ],
+  "_integrity_errors": [],
+  "_matrix_missing": [],
+  "_null_counts": {
+    "seaad_mtg": {
+      "B0": 300,
+      "B1": 300,
+      "B2": 300,
+      "T0": 300,
+      "T1": 300,
+      "T2": 300,
+      "T3": 300,
+      "N1": 0,
+      "N2": 300
+    },
+    "rosmap": {
+      "B0": 300,
+      "B1": 300,
+      "B2": 300,
+      "T0": 300,
+      "T1": 300,
+      "T2": 300,
+      "T3": 300,
+      "N1": 0,
+      "N2": 300
+    },
+    "seaad_pfc": {
+      "B0": 300,
+      "B1": 300,
+      "B2": 300,
+      "T0": 300,
+      "T1": 300,
+      "T2": 300,
+      "T3": 300,
+      "N1": 0,
+      "N2": 300
+    }
+  }
+}

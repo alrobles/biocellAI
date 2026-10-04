@@ -7,10 +7,7 @@
 \citation{scfoundation}
 \citation{cellwhisperer}
 \citation{c2sscale}
-\citation{olmo}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
-\citation{tabulasapiens}
-\citation{cellxgene}
 \citation{scgpt}
 \citation{geneformer}
 \citation{scfoundation}
@@ -18,6 +15,8 @@
 \citation{kedzierska,scfm_limits}
 \citation{kedzierska}
 \citation{scfm_limits}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related work}{2}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Expression-only single-cell foundation models.}{2}{section*.1}\protected@file@percent }
 \citation{langcell}
 \citation{cellwhisperer}
 \citation{c2sscale}
@@ -29,54 +28,66 @@
 \citation{kcfm}
 \citation{scrag}
 \citation{schilda}
-\@writefile{toc}{\contentsline {section}{\numberline {2}Related work}{2}{section.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Expression-only single-cell foundation models.}{2}{section*.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Language-grounded cell models.}{2}{section*.2}\protected@file@percent }
-\citation{sbert}
-\citation{sapbert}
-\citation{infonce,clip}
-\citation{qwen25}
+\citation{tabulasapiens}
+\citation{cellxgene}
+\citation{liu2025rosmap}
+\@writefile{toc}{\contentsline {paragraph}{Language-grounded cell models.}{3}{section*.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Knowledge-grounded approaches.}{3}{section*.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3}Methods}{3}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Data and evaluation protocol}{3}{subsection.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Held-out donors.}{3}{section*.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Models.}{3}{section*.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Arms.}{3}{section*.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Grounding sources (caption modes).}{3}{section*.7}\protected@file@percent }
-\citation{panglaodb}
-\@writefile{toc}{\contentsline {paragraph}{External-knowledge grounding via literature retrieval.}{4}{section*.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Matched-register evaluation.}{4}{section*.9}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}Results}{4}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Marker-list grounding matches supervised training on unseen donors}{4}{subsection.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}The grounding source dominates; the text encoder barely matters}{4}{subsection.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Label-free grounding remains the gap}{4}{subsection.4.3}\protected@file@percent }
-\citation{olmo2}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Zero-shot macro-F1 on held-out donors by grounding source and text encoder (mean $\pm $ s.d., 3 seeds). Dashed line: supervised cell-only baseline. The hatched group is a leakage probe (type name present in LLM prose), not an honest grounding result.}}{5}{figure.caption.10}\protected@file@percent }
+\newlabel{sec:methods}{{3}{3}{Methods}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Data and frozen splits}{3}{subsection.3.1}\protected@file@percent }
+\newlabel{sec:data}{{3.1}{3}{Data and frozen splits}{subsection.3.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Arm matrix: what is equalized, what is not}{3}{subsection.3.2}\protected@file@percent }
+\newlabel{sec:arms}{{3.2}{3}{Arm matrix: what is equalized, what is not}{subsection.3.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Cohorts and endpoints. Test donors differ across seeds, so a donor appears in more than one fold's held-out set; inference therefore clusters by donor (Section~\ref {sec:stats}). SEA-AD PFC donors overlap MTG donors (same study); it is a regional robustness leg, not an independent replication cohort.}}{4}{table.caption.4}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{fig:main}{{1}{5}{Zero-shot macro-F1 on held-out donors by grounding source and text encoder (mean $\pm $ s.d., 3 seeds). Dashed line: supervised cell-only baseline. The hatched group is a leakage probe (type name present in LLM prose), not an honest grounding result}{figure.caption.10}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Leaky text does not beat clean text}{5}{subsection.4.4}\protected@file@percent }
-\newlabel{sec:leak}{{4.4}{5}{Leaky text does not beat clean text}{subsection.4.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}External literature retrieval closes most of the label-free gap}{5}{subsection.4.5}\protected@file@percent }
-\newlabel{sec:m6}{{4.5}{5}{External literature retrieval closes most of the label-free gap}{subsection.4.5}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Held-out-donor performance at 85k cells (mean $\pm $ s.d., seeds 0--2). $\dagger $: leakage probes (type name in text); upper bounds, not honest grounding. Best honest zero-shot in bold.}}{6}{table.caption.11}\protected@file@percent }
-\newlabel{tab:main}{{1}{6}{Held-out-donor performance at 85k cells (mean $\pm $ s.d., seeds 0--2). $\dagger $: leakage probes (type name in text); upper bounds, not honest grounding. Best honest zero-shot in bold}{table.caption.11}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces External-knowledge grounding, matched-register zero-shot (macro-F1 / balanced accuracy, best encoder per arm, held-out donors). ``text only'': retrieved text is external but the query originates from train-derived markers. All external arms strip the literal type name.}}{6}{table.caption.13}\protected@file@percent }
-\newlabel{tab:m6}{{2}{6}{External-knowledge grounding, matched-register zero-shot (macro-F1 / balanced accuracy, best encoder per arm, held-out donors). ``text only'': retrieved text is external but the query originates from train-derived markers. All external arms strip the literal type name}{table.caption.13}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Left: contrastive training curves (seed 0, MiniLM). The \texttt  {type\_markers} plateau is expected --- only 16 unique texts, so most batch pairs collide. Right: linear-probe minus zero-shot F1 --- negative values mean the aligned space classifies better than a labeled readout.}}{7}{figure.caption.12}\protected@file@percent }
-\newlabel{fig:gap}{{2}{7}{Left: contrastive training curves (seed 0, MiniLM). The \texttt {type\_markers} plateau is expected --- only 16 unique texts, so most batch pairs collide. Right: linear-probe minus zero-shot F1 --- negative values mean the aligned space classifies better than a labeled readout}{figure.caption.12}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Identifier semantics: a cautionary engineering finding}{7}{subsection.4.6}\protected@file@percent }
-\newlabel{sec:symbols}{{4.6}{7}{Identifier semantics: a cautionary engineering finding}{subsection.4.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.7}Donor-level pathology representations in SEA-AD}{7}{subsection.4.7}\protected@file@percent }
-\newlabel{sec:m8}{{4.7}{7}{Donor-level pathology representations in SEA-AD}{subsection.4.7}{}}
-\citation{langcell}
-\citation{cellwhisperer}
-\citation{c2sscale}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{8}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{What grounding buys, mechanistically.}{8}{section*.14}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{External knowledge answers the open question.}{8}{section*.15}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Register matching is a hidden confounder of the field.}{8}{section*.16}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Limitations.}{8}{section*.17}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{8}{section.6}\protected@file@percent }
+\newlabel{tab:data}{{1}{4}{Cohorts and endpoints. Test donors differ across seeds, so a donor appears in more than one fold's held-out set; inference therefore clusters by donor (Section~\ref {sec:stats}). SEA-AD PFC donors overlap MTG donors (same study); it is a regional robustness leg, not an independent replication cohort}{table.caption.4}{}}
+\@writefile{toc}{\contentsline {paragraph}{Caption construction.}{4}{section*.5}\protected@file@percent }
+\citation{panglaodb}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Statistical protocol and gates}{5}{subsection.3.3}\protected@file@percent }
+\newlabel{sec:stats}{{3.3}{5}{Statistical protocol and gates}{subsection.3.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Strict cross-cohort transfer}{5}{subsection.3.4}\protected@file@percent }
+\newlabel{sec:transfer_methods}{{3.4}{5}{Strict cross-cohort transfer}{subsection.3.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Cell-identity linear-probe macro-F1 (mean over seeds). Blood has no pathology endpoint and ran in the exploratory phase only. B0/B1 are donor-level ridge baselines without a cell encoder and are omitted.}}{6}{table.caption.6}\protected@file@percent }
+\newlabel{tab:identity}{{2}{6}{Cell-identity linear-probe macro-F1 (mean over seeds). Blood has no pathology endpoint and ran in the exploratory phase only. B0/B1 are donor-level ridge baselines without a cell encoder and are omitted}{table.caption.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Marker-recovery evaluation}{6}{subsection.3.5}\protected@file@percent }
+\newlabel{sec:marker_methods}{{3.5}{6}{Marker-recovery evaluation}{subsection.3.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Results}{6}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Integrity and identity task}{6}{subsection.4.1}\protected@file@percent }
+\newlabel{sec:identity}{{4.1}{6}{Integrity and identity task}{subsection.4.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}No detectable benefit of text grounding on donor pathology}{6}{subsection.4.2}\protected@file@percent }
+\newlabel{sec:pathology}{{4.2}{6}{No detectable benefit of text grounding on donor pathology}{subsection.4.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Donor-level pathology $\rho $ by arm and cohort (bars: seed mean; dots: per-seed values). Left: exploratory seeds 0--2. Right: confirmatory seeds 3--5 (PFC: seeds 0--2). Non-text arms (B1, B2) dominate on every cohort; text arms (T2, T3) cluster with the non-semantic references (T0, T1) below them. Blood is absent: it has no pathology endpoint.}}{7}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:arms}{{1}{7}{Donor-level pathology $\rho $ by arm and cohort (bars: seed mean; dots: per-seed values). Left: exploratory seeds 0--2. Right: confirmatory seeds 3--5 (PFC: seeds 0--2). Non-text arms (B1, B2) dominate on every cohort; text arms (T2, T3) cluster with the non-semantic references (T0, T1) below them. Blood is absent: it has no pathology endpoint}{figure.caption.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Confirmatory donor-level pathology $\rho $ (mean over seeds 3--5; PFC 0--2). B2: supervised MLP; B1: pseudobulk-PCA; B0: composition; T0/T1: non-semantic contrastive references; T2/T3: marker/PubMed caption grounding; N1: permuted-label retrain; N2: permuted caption map.}}{7}{table.caption.8}\protected@file@percent }
+\newlabel{tab:rho}{{3}{7}{Confirmatory donor-level pathology $\rho $ (mean over seeds 3--5; PFC 0--2). B2: supervised MLP; B1: pseudobulk-PCA; B0: composition; T0/T1: non-semantic contrastive references; T2/T3: marker/PubMed caption grounding; N1: permuted-label retrain; N2: permuted caption map}{table.caption.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Permutation nulls quantify non-semantic signal}{7}{subsection.4.3}\protected@file@percent }
+\newlabel{sec:nulls}{{4.3}{7}{Permutation nulls quantify non-semantic signal}{subsection.4.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Paired donor-level $\Delta \rho $ (2{,}000 clustered bootstrap replicates; 95\% CIs) for the registered text comparisons. Dotted line at $-0.05$ marks the improvement-gate boundary in reverse: improvement would require $\geq +0.05$ with CI $>0$. Text arms sit at or left of zero against B2 and near zero against the non-semantic T1 reference, in both phases.}}{8}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:paired}{{2}{8}{Paired donor-level $\Delta \rho $ (2{,}000 clustered bootstrap replicates; 95\% CIs) for the registered text comparisons. Dotted line at $-0.05$ marks the improvement-gate boundary in reverse: improvement would require $\geq +0.05$ with CI $>0$. Text arms sit at or left of zero against B2 and near zero against the non-semantic T1 reference, in both phases}{figure.caption.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Strict source-fitted transfer replicates across cohorts}{8}{subsection.4.4}\protected@file@percent }
+\newlabel{sec:transfer}{{4.4}{8}{Strict source-fitted transfer replicates across cohorts}{subsection.4.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Confirmatory observed $\rho $ (diamonds) against 300 shared donor-permutation nulls per arm (violins; bars mark null q95). Two null designs are shown: for the non-B2 arms the donor ridge is fit on permuted targets over frozen features and centers near zero; for B2 the encoder is \emph  {retrained} on permuted endpoint labels and evaluated honestly --- its shifted distribution (red, mean $\approx 0.3$) measures signal reachable through non-endpoint channels, not a failed null. A separate readout-permuted check on B2's frozen features centers at zero (text).}}{9}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:null}{{3}{9}{Confirmatory observed $\rho $ (diamonds) against 300 shared donor-permutation nulls per arm (violins; bars mark null q95). Two null designs are shown: for the non-B2 arms the donor ridge is fit on permuted targets over frozen features and centers near zero; for B2 the encoder is \emph {retrained} on permuted endpoint labels and evaluated honestly --- its shifted distribution (red, mean $\approx 0.3$) measures signal reachable through non-endpoint channels, not a failed null. A separate readout-permuted check on B2's frozen features centers at zero (text)}{figure.caption.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Marker recovery: a structural gate failure}{9}{subsection.4.5}\protected@file@percent }
+\newlabel{sec:markers}{{4.5}{9}{Marker recovery: a structural gate failure}{subsection.4.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Gate ledger}{9}{subsection.4.6}\protected@file@percent }
+\newlabel{sec:gates}{{4.6}{9}{Gate ledger}{subsection.4.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Strict source-fitted transfer of the B2 donor-pathology predictor (all target donors, no target fitting). Bars: seed mean; dots: seeds. Dashed line: pre-registered gate $\rho \geq 0.35$. ROSMAP$\leftrightarrow $MTG passes in every seed of both phases. MTG$\to $PFC (right) is a same-study robustness check --- donors overlap --- and is reported separately.}}{10}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:transfer}{{4}{10}{Strict source-fitted transfer of the B2 donor-pathology predictor (all target donors, no target fitting). Bars: seed mean; dots: seeds. Dashed line: pre-registered gate $\rho \geq 0.35$. ROSMAP$\leftrightarrow $MTG passes in every seed of both phases. MTG$\to $PFC (right) is a same-study robustness check --- donors overlap --- and is reported separately}{figure.caption.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7}The exploratory record, superseded}{10}{subsection.4.7}\protected@file@percent }
+\newlabel{sec:historical}{{4.7}{10}{The exploratory record, superseded}{subsection.4.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{10}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{What the negative result means --- and does not mean.}{10}{section*.14}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Strict transfer $\rho $ over all target donors (mean over seeds). Only B2 exceeds the gate in every direction and phase. B0 is included for completeness --- its composition-only vocabulary transfer is near zero or undefined cross-cohort.}}{11}{table.caption.12}\protected@file@percent }
+\newlabel{tab:transfer}{{4}{11}{Strict transfer $\rho $ over all target donors (mean over seeds). Only B2 exceeds the gate in every direction and phase. B0 is included for completeness --- its composition-only vocabulary transfer is near zero or undefined cross-cohort}{table.caption.12}{}}
+\@writefile{toc}{\contentsline {paragraph}{Why supervised and pseudobulk signals win.}{11}{section*.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{The residual-signal confound.}{11}{section*.16}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Confirmatory gate ledger from \texttt  {experiments/v2\_confirmation/inference/gates.json}.}}{12}{table.caption.13}\protected@file@percent }
+\newlabel{tab:gates}{{5}{12}{Confirmatory gate ledger from \texttt {experiments/v2\_confirmation/inference/gates.json}}{table.caption.13}{}}
+\@writefile{toc}{\contentsline {paragraph}{What strict transfer does and does not establish.}{12}{section*.17}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Limitations.}{12}{section*.18}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Reproducibility and availability.}{12}{section*.19}\protected@file@percent }
 \bibstyle{plainnat}
 \bibdata{refs}
 \bibcite{scfm_limits}{{1}{2025}{{Atti and Subramaniam}}{{}}}
@@ -84,26 +95,21 @@
 \bibcite{scgpt}{{3}{2024}{{Cui et~al.}}{{Cui, Wang, Maan, Pang, Luo, Duan, and Wang}}}
 \bibcite{cellxgene}{{4}{2023}{{CZ CELLxGENE}}{{}}}
 \bibcite{panglaodb}{{5}{2019}{{Franz{\'e}n et~al.}}{{Franz{\'e}n, Gan, and Bj{\"o}rkegren}}}
-\bibcite{olmo}{{6}{2024}{{Groeneveld et~al.}}{{Groeneveld, Beltagy, Walsh, Bhagia, Kinney, Tafjord, Jha, Ivison, Magnusson, Wang, et~al.}}}
-\bibcite{olmo2}{{7}{2025}{{Groeneveld et~al.}}{{}}}
-\bibcite{scfoundation}{{8}{2024}{{Hao et~al.}}{{Hao, Gong, Zeng, Liu, Guo, Cheng, Wang, Ma, Zhang, and Song}}}
-\bibcite{scgenept}{{9}{2024}{{Istrate et~al.}}{{Istrate, Li, Karaletsos, and {CZ CELLxGENE AI}}}}
-\bibcite{kcfm}{{10}{2025}{{KCFM Team}}{{}}}
-\bibcite{kedzierska}{{11}{2025}{{Kedzierska et~al.}}{{Kedzierska, Crawford, Amini, and Lu}}}
-\bibcite{cell2sentence}{{12}{2024}{{Levine et~al.}}{{Levine, Rizvi, L{\'e}vy, Pallikkavaliyaveetil, Zhang, Chen, Ghadermarzi, Wu, et~al.}}}
-\bibcite{sapbert}{{13}{2021}{{Liu et~al.}}{{Liu, Shareghi, Meng, Basaldella, and Collier}}}
-\bibcite{qwen25}{{14}{2024}{{Qwen Team}}{{}}}
-\bibcite{clip}{{15}{2021}{{Radford et~al.}}{{Radford, Kim, Hallacy, Ramesh, Goh, Agarwal, Sastry, Askell, Mishkin, Clark, Krueger, and Sutskever}}}
-\bibcite{sbert}{{16}{2019}{{Reimers and Gurevych}}{{}}}
-\bibcite{c2sscale}{{17}{2025}{{Rizvi et~al.}}{{Rizvi, Levine, Patel, Zhang, Wang, Perry, Constante, He, Zhang, et~al.}}}
-\bibcite{uce}{{18}{2023}{{Rosen et~al.}}{{Rosen, Roohani, Agrawal, Samotor{\v {c}}an, {Tabula Sapiens Consortium}, Quake, and Leskovec}}}
-\bibcite{cellwhisperer}{{19}{2025}{{Schaefer et~al.}}{{Schaefer, Peneder, Malzl, Lombardo, Peycheva, Burton, Hakobyan, Sharma, Krausgruber, Sin, Menche, Tomazou, and Bock}}}
-\bibcite{schilda}{{20}{2025}{{scHilda Team}}{{}}}
-\bibcite{tabulasapiens}{{21}{2022}{{{Tabula Sapiens Consortium} et~al.}}{{{Tabula Sapiens Consortium}, Jones, Karkanias, Krasnow, et~al.}}}
-\bibcite{geneformer}{{22}{2023}{{Theodoris et~al.}}{{Theodoris, Xiao, Chopra, Chaffin, Al~Sayed, Hill, Mantineo, Brydon, Zeng, Liu, and Ellinor}}}
-\bibcite{infonce}{{23}{2018}{{van~den Oord et~al.}}{{van~den Oord, Li, and Vinyals}}}
-\bibcite{onclass}{{24}{2021}{{Wang et~al.}}{{Wang, Pisco, McGeever, Brbi{\'c}, Zitnik, Darmanis, Leskovec, Karkanias, and Altman}}}
-\bibcite{scrag}{{25}{2025}{{Yu et~al.}}{{}}}
-\bibcite{sccello}{{26}{2024}{{Yuan et~al.}}{{Yuan, Zhan, and {scCello Team}}}}
-\bibcite{langcell}{{27}{2024}{{Zhao et~al.}}{{Zhao, Zhang, Nie, Chen, Song, et~al.}}}
-\gdef \@abspage@last{11}
+\bibcite{scfoundation}{{6}{2024}{{Hao et~al.}}{{Hao, Gong, Zeng, Liu, Guo, Cheng, Wang, Ma, Zhang, and Song}}}
+\bibcite{scgenept}{{7}{2024}{{Istrate et~al.}}{{Istrate, Li, Karaletsos, and {CZ CELLxGENE AI}}}}
+\bibcite{kcfm}{{8}{2025}{{KCFM Team}}{{}}}
+\bibcite{kedzierska}{{9}{2025}{{Kedzierska et~al.}}{{Kedzierska, Crawford, Amini, and Lu}}}
+\bibcite{cell2sentence}{{10}{2024}{{Levine et~al.}}{{Levine, Rizvi, L{\'e}vy, Pallikkavaliyaveetil, Zhang, Chen, Ghadermarzi, Wu, et~al.}}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{13}{section.6}\protected@file@percent }
+\bibcite{liu2025rosmap}{{11}{2025}{{Liu et~al.}}{{}}}
+\bibcite{c2sscale}{{12}{2025}{{Rizvi et~al.}}{{Rizvi, Levine, Patel, Zhang, Wang, Perry, Constante, He, Zhang, et~al.}}}
+\bibcite{uce}{{13}{2023}{{Rosen et~al.}}{{Rosen, Roohani, Agrawal, Samotor{\v {c}}an, {Tabula Sapiens Consortium}, Quake, and Leskovec}}}
+\bibcite{cellwhisperer}{{14}{2025}{{Schaefer et~al.}}{{Schaefer, Peneder, Malzl, Lombardo, Peycheva, Burton, Hakobyan, Sharma, Krausgruber, Sin, Menche, Tomazou, and Bock}}}
+\bibcite{schilda}{{15}{2025}{{scHilda Team}}{{}}}
+\bibcite{tabulasapiens}{{16}{2022}{{{Tabula Sapiens Consortium} et~al.}}{{{Tabula Sapiens Consortium}, Jones, Karkanias, Krasnow, et~al.}}}
+\bibcite{geneformer}{{17}{2023}{{Theodoris et~al.}}{{Theodoris, Xiao, Chopra, Chaffin, Al~Sayed, Hill, Mantineo, Brydon, Zeng, Liu, and Ellinor}}}
+\bibcite{onclass}{{18}{2021}{{Wang et~al.}}{{Wang, Pisco, McGeever, Brbi{\'c}, Zitnik, Darmanis, Leskovec, Karkanias, and Altman}}}
+\bibcite{scrag}{{19}{2025}{{Yu et~al.}}{{}}}
+\bibcite{sccello}{{20}{2024}{{Yuan et~al.}}{{Yuan, Zhan, and {scCello Team}}}}
+\bibcite{langcell}{{21}{2024}{{Zhao et~al.}}{{Zhao, Zhang, Nie, Chen, Song, et~al.}}}
+\gdef \@abspage@last{14}

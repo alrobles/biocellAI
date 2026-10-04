@@ -1,4 +1,4 @@
-\begin{thebibliography}{27}
+\begin{thebibliography}{21}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -40,19 +40,6 @@ Oscar Franz{\'e}n, Li-Ming Gan, and Johan L.~M. Bj{\"o}rkegren.
 \newblock \emph{Database}, 2019:\penalty0 baz046, 2019.
 \newblock \doi{10.1093/database/baz046}.
 
-\bibitem[Groeneveld et~al.(2024)Groeneveld, Beltagy, Walsh, Bhagia, Kinney,
-  Tafjord, Jha, Ivison, Magnusson, Wang, et~al.]{olmo}
-Dirk Groeneveld, Iz~Beltagy, Evan~Pete Walsh, Akshita Bhagia, Rodney Kinney,
-  Oyvind Tafjord, Ananya~Harsh Jha, Hamish Ivison, Ian Magnusson, Yizhong Wang,
-  et~al.
-\newblock {OLMo}: Accelerating the science of language models.
-\newblock In \emph{Proceedings of ACL}, pages 15789--15809, 2024.
-
-\bibitem[Groeneveld et~al.(2025)]{olmo2}
-Dirk Groeneveld et~al.
-\newblock 2 {OLMo} 2 {F}urious.
-\newblock \emph{arXiv:2501.00656}, 2025.
-
 \bibitem[Hao et~al.(2024)Hao, Gong, Zeng, Liu, Guo, Cheng, Wang, Ma, Zhang, and
   Song]{scfoundation}
 Minsheng Hao, Jing Gong, Xin Zeng, Chiming Liu, Yucheng Guo, Xingyi Cheng,
@@ -91,29 +78,12 @@ Daniel Levine, Syed~A. Rizvi, Sacha L{\'e}vy, Nazreen Pallikkavaliyaveetil,
   biology.
 \newblock In \emph{Proceedings of ICML}, volume 235 of \emph{PMLR}, 2024.
 
-\bibitem[Liu et~al.(2021)Liu, Shareghi, Meng, Basaldella, and Collier]{sapbert}
-Fangyu Liu, Ehsan Shareghi, Zaiqiao Meng, Marco Basaldella, and Nigel Collier.
-\newblock Self-alignment pretraining for biomedical entity representations.
-\newblock In \emph{Proceedings of NAACL-HLT}, pages 4228--4238, 2021.
-
-\bibitem[{Qwen Team}(2024)]{qwen25}
-{Qwen Team}.
-\newblock Qwen2.5 technical report.
-\newblock \emph{arXiv:2412.15115}, 2024.
-
-\bibitem[Radford et~al.(2021)Radford, Kim, Hallacy, Ramesh, Goh, Agarwal,
-  Sastry, Askell, Mishkin, Clark, Krueger, and Sutskever]{clip}
-Alec Radford, Jong~Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh,
-  Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark,
-  Gretchen Krueger, and Ilya Sutskever.
-\newblock Learning transferable visual models from natural language
-  supervision.
-\newblock In \emph{Proceedings of ICML}, pages 8748--8763, 2021.
-
-\bibitem[Reimers and Gurevych(2019)]{sbert}
-Nils Reimers and Iryna Gurevych.
-\newblock Sentence-{BERT}: Sentence embeddings using {Siamese BERT-Networks}.
-\newblock In \emph{Proceedings of EMNLP-IJCNLP}, pages 3982--3992, 2019.
+\bibitem[Liu et~al.(2025)]{liu2025rosmap}
+Zunpeng Liu et~al.
+\newblock Single-cell multiregion epigenomic rewiring in {Alzheimer}'s disease
+  progression and cognitive resilience.
+\newblock \emph{Cell}, 188\penalty0 (18):\penalty0 4980--5002.e29, 2025.
+\newblock \doi{10.1016/j.cell.2025.06.031}.
 
 \bibitem[Rizvi et~al.(2025)Rizvi, Levine, Patel, Zhang, Wang, Perry, Constante,
   He, Zhang, et~al.]{c2sscale}
@@ -168,11 +138,6 @@ Christina~V. Theodoris, Ling Xiao, Anant Chopra, Mark~D. Chaffin, Zeina~R.
 \newblock Transfer learning enables predictions in network biology.
 \newblock \emph{Nature}, 618:\penalty0 616--624, 2023.
 \newblock \doi{10.1038/s41586-023-06139-9}.
-
-\bibitem[van~den Oord et~al.(2018)van~den Oord, Li, and Vinyals]{infonce}
-Aaron van~den Oord, Yazhe Li, and Oriol Vinyals.
-\newblock Representation learning with contrastive predictive coding.
-\newblock \emph{arXiv:1807.03748}, 2018.
 
 \bibitem[Wang et~al.(2021)Wang, Pisco, McGeever, Brbi{\'c}, Zitnik, Darmanis,
   Leskovec, Karkanias, and Altman]{onclass}

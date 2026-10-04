@@ -1,0 +1,21 @@
+{
+  "protocol": "v2_perm_null",
+  "perm_index": 0,
+  "perm_seed": 300009,
+  "fold": {
+    "path": "/beegfs/a474r867/bioai/repos/biocellai-devel/experiments/v2_confirmation/rosmap/folds/fold_s3.h5ad",
+    "sha256": "12928911ad0c3a44b96ee56840ceb6414f3447b5c0b9091187353aed7ec34e50"
+  },
+  "run": "/beegfs/a474r867/bioai/repos/biocellai-devel/experiments/v2_confirmation/rosmap/run_s3_full",
+  "arms": [
+    "B2",
+    "B0",
+    "B1",
+    "T0",
+    "T1",
+    "T2",
+    "T3",
+    "N2"
+  ],
+  "design": "shared train-donor->label permutation per index; B2 retrains encoder on permuted labels (N1 null); other arms permute the ridge target on frozen features"
+}

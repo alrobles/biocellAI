@@ -1,0 +1,4 @@
+cohort,seed,n_classes,n_evaluable,precision_nc,precision_naive
+seaad_pfc,0,24,22,0.022727272727272728,0.05
+seaad_pfc,1,24,22,0.022727272727272728,0.05
+seaad_pfc,2,24,22,0.02727272727272728,0.05

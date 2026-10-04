@@ -1,0 +1,27 @@
+{
+  "task": "R5-MARKERS",
+  "cohort": "blood",
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "k": 10,
+  "gate_threshold": 0.6,
+  "gate": "FAIL",
+  "macro_precision_nc": 0.01875,
+  "n_evaluable_total": 48,
+  "design": "Candidates = train-only Wilcoxon marker ranking minus genes injected into the fold's marker captions; reference = external PanglaoDB canonical sets",
+  "folds": [
+    "338c38966814b9071a8729186f8e4254225b45889705c77d9150d25b6aca05c6",
+    "029d60bb54895b85a2478fe268c875987f982658c6ecdb09aba2153ead5bcf41",
+    "973b86a9d8217f69f850afdf69b0902959f594a9eed089c02b18233ab6250375"
+  ],
+  "captions": [
+    "a556cb56829d1e20547055d483111e69001a6aad7468573804f4db24ce029ea7",
+    "f87b82d7fa2056cadf5a17b8c3a2af493f5134e05b96ae87b2c05626e258c586",
+    "2138be6da26e4eb34810ad4c914b4e544ad5f3b45e159495b6b828a372db59c2"
+  ],
+  "reference_file": "data/manifests/panglao_markers.json",
+  "reference_sha256": "139f6a1e299c266ce21f298723f34670284f3680e11e749ab3db3df8b32a8311"
+}

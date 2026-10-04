@@ -1,0 +1,14 @@
+{
+  "protocol": "v2_inference",
+  "root": "/beegfs/a474r867/bioai/repos/biocellai-devel/experiments/v2_revalidation",
+  "cohorts": {
+    "seaad_mtg": "CPS_Global",
+    "rosmap": "path_level"
+  },
+  "primary_cohort": "seaad_mtg",
+  "n_boot": 2000,
+  "boot_seed": 12345,
+  "bootstrap": "donor-clustered: donor identity is the resampling unit across seeds; statistic = mean per-seed paired delta-rho on shared test donors",
+  "multiplicity": "BH-FDR across secondary comparisons per cohort; primary comparisons unadjusted",
+  "perm_null_design": "100 shared train-donor->label maps per cohort x seed; B2 retrains on permuted labels, other arms permute the readout"
+}

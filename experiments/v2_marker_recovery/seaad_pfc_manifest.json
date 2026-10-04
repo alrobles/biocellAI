@@ -1,0 +1,27 @@
+{
+  "task": "R5-MARKERS",
+  "cohort": "seaad_pfc",
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "k": 10,
+  "gate_threshold": 0.6,
+  "gate": "FAIL",
+  "macro_precision_nc": 0.024242424242424246,
+  "n_evaluable_total": 66,
+  "design": "Candidates = train-only Wilcoxon marker ranking minus genes injected into the fold's marker captions; reference = external PanglaoDB canonical sets",
+  "folds": [
+    "da55d5f1bd19a3bfefdbf405ec87ec2eeeeedebeee7d6189e9aef70dbc477e1e",
+    "ae60386691d281c5749e7c0850320e2925f3ceab4307756edf63ade0dba3c270",
+    "d633fe6ddb6c2bc2d0b1f1acc7cd71f57a2713876dccfc8eebb715c542b16f00"
+  ],
+  "captions": [
+    "e51b6261945b050a91415ec73c179d414b613cd43a9dfbe6c0ba8bbdb9e74bb8",
+    "f4f4d8653f87c8b5f31d9b3be875b56a6caf2044c0f330d322b58c23e5f2e25d",
+    "76d098269cc98704545c96d85e74558c3a3e646fb9cb5adfda986a0249ba5072"
+  ],
+  "reference_file": "data/manifests/panglao_brain_markers.json",
+  "reference_sha256": "97b5b2293182fd09df7f018f989da17f12621459e3de2bc6e0d4959b672b45ac"
+}

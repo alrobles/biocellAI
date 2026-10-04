@@ -1,0 +1,126 @@
+{
+  "step": "v2_transfer",
+  "protocol": "v2",
+  "mode_definitions": {
+    "strict": "encoder, normalization, axis/predictor and sign fitted on source cohort only; zero target fitting/labels",
+    "refit": "source features, donor readout refit on target TRAIN donors; evaluated on target TEST donors (calibrated orientation \u2014 separate analysis)"
+  },
+  "source": {
+    "cohort": "seaad_mtg",
+    "fold": "/beegfs/a474r867/bioai/repos/biocellai-devel/experiments/v2_confirmation/seaad_mtg/folds/fold_s5.h5ad",
+    "fold_sha256": "18f57ac95743490102d96f60d11ec6df9d7c8fe7a344b65f0190d6798bc1acb8",
+    "run_dir": "/beegfs/a474r867/bioai/repos/biocellai-devel/experiments/v2_confirmation/seaad_mtg/run_s5_full",
+    "run_manifest_sha256": "d0879a5efcbfde6f4c6e852e8656dad5e0b7daecf441914ba35418a43f9c9393",
+    "pathology_col": "CPS_Global"
+  },
+  "target": {
+    "cohort": "rosmap",
+    "fold": "/beegfs/a474r867/bioai/repos/biocellai-devel/experiments/v2_confirmation/rosmap/folds/fold_s5.h5ad",
+    "fold_sha256": "876ad93f0292b826b3193e7f9c3ac07cb8e21c5fb7d64a1da5b1ee276c4e0264",
+    "raw": "/beegfs/a474r867/bioai/data/v2_src/rosmap_liu2025.h5ad",
+    "raw_sha256": "ff645584ed0593c2f4a66169bf29b7d780ba0f1b47bd38581ce0dbd778838011",
+    "pathology_col": "path_level"
+  },
+  "gene_stats": {
+    "n_source_genes": 2000,
+    "n_genes_matched": 2000,
+    "n_genes_zero_filled": 0,
+    "gene_coverage": 1.0,
+    "n_target_cells": 163646,
+    "transform": "full_transcriptome_total_10000_then_log1p"
+  },
+  "arms": [
+    "B0",
+    "B1",
+    "B2",
+    "T0",
+    "T1",
+    "T2",
+    "T3",
+    "N1",
+    "N2"
+  ],
+  "label_col": "cell_type",
+  "seed": 5,
+  "per_arm_info": {
+    "B0": {
+      "verification": {
+        "source_test_max_abs_diff": 4.632263173043327e-08
+      },
+      "n_target_donors": 111,
+      "n_target_test_donors": 28,
+      "label_vocab_coverage": 0.052631900565855566,
+      "n_vocab": 24
+    },
+    "B1": {
+      "verification": {
+        "source_test_max_abs_diff": 8.591269831104142e-07
+      },
+      "n_target_donors": 111,
+      "n_target_test_donors": 28
+    },
+    "B2": {
+      "verification": {
+        "source_test_max_abs_diff": 2.6405334474510767e-08
+      },
+      "n_target_donors": 111,
+      "n_target_test_donors": 28
+    },
+    "T0": {
+      "verification": {
+        "source_test_max_abs_diff": 2.7877807617926464e-08
+      },
+      "n_target_donors": 111,
+      "n_target_test_donors": 28
+    },
+    "T1": {
+      "verification": {
+        "source_test_max_abs_diff": 3.4022521910870296e-08
+      },
+      "n_target_donors": 111,
+      "n_target_test_donors": 28
+    },
+    "T2": {
+      "verification": {
+        "source_test_max_abs_diff": 2.377166752332016e-08
+      },
+      "n_target_donors": 111,
+      "n_target_test_donors": 28
+    },
+    "T3": {
+      "verification": {
+        "source_test_max_abs_diff": 2.9605102591645505e-08
+      },
+      "n_target_donors": 111,
+      "n_target_test_donors": 28
+    },
+    "N1": {
+      "verification": {
+        "source_test_max_abs_diff": 2.773895269037041e-08
+      },
+      "n_target_donors": 111,
+      "n_target_test_donors": 28
+    },
+    "N2": {
+      "verification": {
+        "source_test_max_abs_diff": 2.8842163102282825e-08
+      },
+      "n_target_donors": 111,
+      "n_target_test_donors": 28
+    }
+  },
+  "environment": {
+    "numpy": "2.5.3",
+    "pandas": "2.3.3",
+    "torch": "2.14.0",
+    "anndata": "0.13.4",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1"
+  },
+  "code_sha256": {
+    "transfer.py": "8e603026759136c6eff2d7fcdd6d1bd3a21548594f6048667866bdb4562a0aa0",
+    "v2_transfer.py": "70652c5eebd0f483ab0a9cad7bcb31abe35addf956ab67c44a2c96855426b7c6"
+  },
+  "git": "ca36f07ad2be8dac4f99619931b0ec590297e7b9",
+  "wall_s": 120.9
+}

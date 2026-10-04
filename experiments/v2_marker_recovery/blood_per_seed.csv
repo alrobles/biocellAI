@@ -1,0 +1,4 @@
+cohort,seed,n_classes,n_evaluable,precision_nc,precision_naive
+blood,0,16,16,0.0125,0.1
+blood,1,16,16,0.00625,0.14375
+blood,2,16,16,0.0375,0.15

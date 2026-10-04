@@ -2,15 +2,17 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{graphicx}
 \usepackage{booktabs}
+\usepackage{multirow}
 \usepackage{amsmath}
 \usepackage{hyperref}
 \usepackage{natbib}
 \usepackage{xcolor}
 \usepackage{caption}
 \captionsetup{font=small,labelfont=bf}
+\emergencystretch=1em
 
-\title{What does language grounding actually contribute to cell
-  representations?\\ A controlled decomposition on held-out donors}
+\title{Does biological text improve donor-level cell representations?\\
+  A controlled, donor-held-out evaluation}
 \author{A.~I.~Robles\thanks{Corresponding author. Code and artifacts:
   \url{https://github.com/alrobles/biocellAI}}\\
   Department of Ecology \& Evolutionary Biology, University of Kansas}
@@ -19,35 +21,45 @@
 \begin{document}
 \maketitle
 
-\noindent\textbf{Scientific audit status: not submission-ready.}
-This draft retains historical exploratory results from protocol v1. ADR-011
-specifies a corrective revalidation programme; no corrected v2 results are
-reported here yet. Historical claims of label-free training, strict zero-shot
-transfer, semantic attribution and causal composition/state decomposition are
-not established. The results sections below must be re-evaluated before those
-claims or gate decisions can be used in a submission.
-
 \begin{abstract}
-What does biological language contribute beyond the supervision used to
-assign text to cells? We assembled an exploratory benchmark spanning Tabula
-Sapiens blood, SEA-AD neuropathology and an external ROSMAP cohort. Historical
-blood experiments recorded macro-F1 of 0.591 for marker-caption alignment
-versus 0.603 for a supervised reference; external-marker retrieval and synthesis
-recorded similar performance. These are \emph{text-mediated supervised}
-experiments: class annotations assign captions even when their wording omits
-the class name. Caption register strongly affected nearest-prototype scoring.
-Historical SEA-AD analyses recorded donor CPS correlations near 0.60, while
-tested scGPT fine-tuning configurations did not improve that result. A
-composition-only diagnostic recorded approximately 0.50. These observations
-do not yet identify a language-specific or within-cell-type state advantage.
-A methodological audit identified repeated preprocessing, reuse of fold-derived
-captions, transductive PCA, target-label orientation in transfer and
-non-equivalent foundation-model input protocols. We therefore distinguish
-historical observations from a corrective revalidation programme using frozen
-donor splits, train-only transformations, label-equivalent non-text controls,
-paired donor-level inference and biological review of captions. Conclusions
-about semantic benefit, strict transfer and encoder scale remain conditional
-on that revalidation; this draft reports no corrected v2 results.
+Single-cell models increasingly align expression profiles with biological
+text, but whether the text contributes anything beyond the supervision used
+to write it is rarely measured. We evaluate this directly with an
+arm matrix that equalizes cells, donor splits, encoder capacity, update
+budget and identity-label access: a supervised MLP trained with a direct
+donor-pathology head (B2), non-text readouts (composition B0;
+pseudobulk-PCA B1), non-semantic contrastive references (T0 one-hot;
+T1 random prototypes), and two text-grounded contrastive arms (T2 marker
+captions; T3 PubMed/RAG captions), plus a permuted-endpoint null (N1)
+and a permuted caption-map null (N2). Exploratory runs (seeds 0--2) were
+frozen before a confirmation phase on fresh splits (seeds 3--5 of SEA-AD
+MTG and ROSMAP, plus a SEA-AD PFC robustness leg), 100 shared
+donor-permutations per seed, donor-clustered bootstrap intervals, and
+pre-registered gates. The decisive comparison for a semantic benefit ---
+text arms versus the equally endpoint-blind T1 reference --- shows no
+detectable advantage: confirmatory paired $\Delta\rho$ is $+0.041$
+(T2$-$T1) and $+0.007$ (T3$-$T1) on the primary cohort, both CIs
+crossing zero. Against direct endpoint supervision the text arms lose:
+confirmatory SEA-AD MTG $\rho$ was 0.454 (B2) versus 0.261 (T2) and
+0.228 (T3), and ROSMAP text arms were significantly \emph{worse} than
+B2 under paired donor-level tests. In contrast, the source-fitted B2
+predictor passed strict cross-cohort transfer in both registered
+directions (ROSMAP$\leftrightarrow$SEA-AD MTG, $\rho=0.40$--$0.53$ over
+all seeds, gate $\rho\geq0.35$) and in an MTG$\to$PFC same-study
+robustness check ($\rho\approx0.77$, donors overlapping). An
+endpoint-supervision null --- encoder retrained on permuted pathology
+labels, evaluated honestly --- retains $\rho\approx0.3$--$0.4$,
+quantifying how much pathology signal the identity/composition channel
+carries without endpoint supervision; a complementary readout-permuted
+null on B2's frozen features centers at zero, verifying the evaluation
+machinery. Marker-gene recovery against external references failed its
+gate structurally (only 13--33\% of reference genes are evaluable in a
+2{,}000-HVG space). We conclude that under this endpoint and donor
+scale, contrastive text grounding provides no detectable benefit over a
+non-semantic reference, and falls short of direct endpoint supervision,
+while donor-level pathology signal is real and transferable. This is a
+bounded negative result for the registered comparison, not a claim that
+biological language cannot help under different designs.
 \end{abstract}
 
 \section{Introduction}
@@ -59,498 +71,676 @@ of work argues that grounding those representations in biological language
 unlocks generalization that molecular data alone cannot provide:
 CellWhisperer aligns transcriptomes with AI-curated textual annotations
 \citep{cellwhisperer}, C2S-Scale renders expression profiles as ``cell
-sentences'' inside a general-purpose LLM \citep{c2sscale}, and ongoing open
-efforts (e.g., the Allen Institute's CellOLMo direction on top of OLMo
-\citep{olmo}) aim to build multimodal models where text is a first-class
-modality rather than an annotation.
+sentences'' inside a general-purpose LLM \citep{c2sscale}, and multimodal
+efforts increasingly treat text as a first-class modality.
 
 The motivating question --- \emph{does language grounding improve cell
 representations?} --- is harder to answer than it looks, because
-``grounding'' bundles at least three distinct mechanisms: (i) text can carry
-\emph{label-discriminative structure} (captions derived from cell-type
-labels); (ii) text can carry \emph{external biological knowledge}
-(function, lineage, marker semantics); and (iii) text can act as a
-\emph{representation bottleneck} that smooths per-cell measurement noise.
-Published systems typically report end-to-end performance and leave the
-decomposition implicit.
+``grounding'' bundles at least three distinct mechanisms: (i) text can
+carry \emph{label-discriminative structure} (captions derived from
+cell-type labels); (ii) text can carry \emph{external biological
+knowledge} (function, lineage, marker semantics); and (iii) text can act
+as a \emph{representation bottleneck} that smooths per-cell measurement
+noise. Published systems typically report end-to-end performance and leave
+the decomposition implicit --- and typically compare text arms against
+weaker supervision rather than an equally strong non-text baseline.
 
-Here we isolate these mechanisms with a deliberately small, controlled
-experiment. On 85{,}055 human blood cells from Tabula Sapiens
-\citep{tabulasapiens} accessed via CZ CELLxGENE Census
-\citep{cellxgene}, we train the same cell encoder either end-to-end with
-labels (supervised baseline) or by contrastive alignment to four different
-caption sources, and evaluate all models on \emph{whole held-out donors}
-with no label access at inference. Our contributions:
+This paper reports a deliberately controlled decomposition. Earlier
+exploratory work in this project (protocol v1) appeared to show that
+caption-grounded embeddings outperform expression-only baselines on
+donor-level pathology prediction. A methodological audit then identified
+conflation mechanisms in that record: repeated preprocessing on the same
+splits, reuse of fold-derived captions at evaluation, transductive PCA,
+target-label orientation in transfer analyses, and non-equivalent input
+protocols in external comparisons. Protocol v2 (ADR-011) freezes data
+contracts, makes every transformation train-only, pits each training
+signal against an equivalent-supervision control, and evaluates
+statistically at the donor level --- the unit of replication for any
+donor-held-out claim. Exploratory v2 runs were frozen before a
+confirmation phase on never-inspected splits.
+
+Our contributions are empirical and methodological:
 
 \begin{enumerate}
-  \item A reproducible benchmark protocol for language-grounded cell
-    representations with donor-level held-out evaluation and explicit
-    leakage probes.
-  \item Evidence that zero-shot cell-type assignment via marker-list
-    grounding reaches supervised performance on unseen donors
-    (0.591 vs.\ 0.603 macro-F1), showing that contrastive text alignment
-    can carry class structure across individuals.
-  \item A decomposition showing this benefit is carried almost entirely by
-    label-derived discriminative text: label-free grounding sources
-    (per-cell gene lists, LLM-inferred prose) recover only 48--66\% of the
-    marker-list result, and a biomedical text encoder offers no advantage
-    on gene-list captions.
-  \item A cautionary engineering finding: identifier-mapping errors
-    (Ensembl/positional feature IDs in place of gene symbols) silently
-    destroy grounding semantics --- a failure mode that produced
-    measurable metric differences and is now pinned by regression tests.
+  \item A reproducible donor-held-out benchmark in which cell identity
+    and donor pathology are evaluated under a nine-arm
+    controlled-supervision matrix, verified data lineage, shared
+    permutation nulls and donor-clustered inference
+    (Section~\ref{sec:methods}).
+  \item A bounded \emph{negative result}: contrastive biological-text
+    alignment (marker captions or retrieved PubMed text) shows no
+    detectable benefit over equally endpoint-blind non-semantic
+    references, and loses to direct endpoint supervision, in either
+    exploratory or confirmatory phases (Section~\ref{sec:pathology}).
+  \item A \emph{positive, confirmed result}: a supervised MLP trained on
+    one cohort predicts donor pathology on another cohort with a
+    strictly source-fitted predictor --- encoder, normalizations, axis
+    and readout all frozen --- in both registered directions and all
+    seeds (Section~\ref{sec:transfer}).
+  \item Quantification of a subtle confound: an endpoint-supervision
+    null --- encoder retrained on permuted pathology labels, identity
+    head intact, honest readout --- retains $\rho\approx0.3$--$0.4$,
+    decomposing how much apparent pathology signal the non-endpoint
+    (identity/composition) channels carry
+    (Section~\ref{sec:nulls}).
+  \item A structural marker-recovery audit showing the pre-registered
+    retrieval gate was unreachable under the evaluation space, with the
+    attainable ceiling reported rather than the gate redefined
+    post hoc (Section~\ref{sec:markers}).
 \end{enumerate}
 
 \section{Related work}
 
 \paragraph{Expression-only single-cell foundation models.}
 scGPT \citep{scgpt}, Geneformer \citep{geneformer}, scFoundation
-\citep{scfoundation}, and UCE \citep{uce} learn cell representations from
+\citep{scfoundation}, and UCE \citep{uce} learn representations from
 expression alone; UCE additionally targets cross-species universality via
-protein-embedding gene tokens. Critically, independent zero-shot
-evaluations find these models underperform simple baselines
-\citep{kedzierska,scfm_limits}: \citet{kedzierska} show Geneformer and
-scGPT lose to HVG selection plus Harmony/scVI on cell-type clustering, and
-\citet{scfm_limits} report Seurat v5 beating all three on classification.
-The burden of proof for any added modality is therefore high --- motivating
-the controlled, leakage-aware protocol used here.
+protein-embedding gene tokens. Independent zero-shot evaluations find
+these models underperform simple baselines \citep{kedzierska,scfm_limits}:
+\citet{kedzierska} show Geneformer and scGPT lose to HVG selection plus
+Harmony/scVI on cell-type clustering, and \citet{scfm_limits} report
+Seurat v5 beating all three on classification. The burden of proof for
+any added modality is therefore high --- motivating the controlled,
+leakage-aware protocol used here.
 
 \paragraph{Language-grounded cell models.}
 LangCell \citep{langcell} established contrastive cell--text pretraining
 on metadata-derived captions; CellWhisperer \citep{cellwhisperer} scales
-CLIP-style alignment to $\sim$1M cells with AI-curated descriptions and
-adds a chat interface; C2S-Scale \citep{c2sscale} and Cell2Sentence
-\citep{cell2sentence} instead serialize expression as ``cell sentences''
-inside general LLMs. None of these decompose which part of the text
-carries the transferable signal --- our central question.
+CLIP-style alignment to $\sim$1M cells with AI-curated descriptions;
+C2S-Scale \citep{c2sscale} and Cell2Sentence \citep{cell2sentence}
+serialize expression as ``cell sentences'' inside general LLMs. None of
+these decompose which part of the text carries the transferable signal
+under matched supervision --- our central question.
 
 \paragraph{Knowledge-grounded approaches.}
 At the gene level, GenePT \citep{genept} and scGenePT \citep{scgenept}
-show text-derived gene embeddings (NCBI/UniProt/GO) are additive but not
-sufficient alone --- consistent with our caption-level finding.
+show text-derived gene embeddings are additive but not sufficient alone.
 Ontology-structured supervision appears in OnClass \citep{onclass},
-scCello \citep{sccello}, and KCFM \citep{kcfm}; retrieval-based annotation
-in scRAG \citep{scrag} and scHilda \citep{schilda}. These ground in
-\emph{external} knowledge --- the direction our results identify as the
-open gap --- but target annotation rather than representation transfer
-across held-out individuals.
+scCello \citep{sccello}, and KCFM \citep{kcfm}; retrieval-based
+annotation in scRAG \citep{scrag} and scHilda \citep{schilda}. These
+ground in \emph{external} knowledge --- the direction our results leave
+open --- but target annotation rather than donor-level transfer.
 
 \section{Methods}
+\label{sec:methods}
 
-\subsection{Data and evaluation protocol}
+\subsection{Data and frozen splits}
+\label{sec:data}
 
-We queried the CZ CELLxGENE Census (version 2025-11-08) for Tabula Sapiens
-primary blood data, obtaining 85{,}055 cells from 9 donors annotated into
-16 cell types, restricted to the 2{,}000 most highly variable genes after
-standard normalization (library-size normalization to $10^4$ counts,
-$\log_1p$). Crucially, census feature identifiers were mapped to HGNC gene
-symbols via \texttt{feature\_name} before any caption construction ---
-positional or Ensembl identifiers carry no lexical semantics for a text
-encoder (Section~\ref{sec:symbols}).
+Three cohorts are used (Table~\ref{tab:data}). Tabula Sapiens blood
+\citep{tabulasapiens} (accessed via CZ CELLxGENE Census
+\citep{cellxgene}) provides a cell-\emph{identity} task (9 donors, 16
+cell types). The SEA-AD Alzheimer's atlas provides donor-\emph{pathology}
+tasks: a primary middle temporal gyrus cohort (MTG; 84 donors) and a
+prefrontal-cortex leg (PFC; 80 donors) used only for confirmation and
+same-study transfer robustness; the endpoint is the continuous cortical
+pathology score (CPS\_Global), a donor-level summary of quantitative
+neuropathology, not a longitudinal observation. The open ROSMAP
+multiregion release \citep{liu2025rosmap} (111 donors) provides an
+external pathology cohort whose public matrix carries a coarse
+three-level ordinal pathology label (nonAD $<$ earlyAD $<$ lateAD);
+we pre-registered this asymmetry against continuous CPS.
 
-\paragraph{Held-out donors.} For each of three seeds we split cells by
-donor (25\% of donors held out, whole donors only). Marker tables are
-computed on training donors only; test cells never contribute labels.
+Each cohort is reduced to a 2{,}000-gene highly-variable space selected
+on \emph{training donors only}, normalized per cell (library size to
+$10^4$, $\log_1p$), and split by \emph{whole donors} ($\sim$25\% held
+out). Fold artifacts record source hashes, code hashes, donor lists and
+the resulting matrix hash; the inference pipeline re-verifies fold
+SHA-256 values before evaluating gates (integrity gate,
+Section~\ref{sec:stats}). Exploratory folds use seeds 0--2;
+confirmatory folds use never-inspected seeds 3--5 (MTG, ROSMAP) and
+0--2 for the disjoint PFC cell population. All results below report
+predictions on held-out donors.
 
-\paragraph{Models.} A shared MLP cell encoder (2000$\to$256$\to$128$\to$64)
-produces a 64-d cell embedding. Text is encoded by a frozen sentence model:
-either general-purpose \texttt{all-MiniLM-L6-v2} (Sentence-BERT
-\citep{sbert}) or biomedical \texttt{SapBERT-from-PubMedBERT-fulltext}
-\citep{sapbert}, mean-pooled. For the grounded arm, a learned linear
-projection maps the cell embedding to the text-embedding space and training
-optimizes a symmetric InfoNCE objective \citep{infonce,clip}
-(temperature 0.1, AdamW, 40 epochs, batch 512).
+\begin{table}[t]
+\centering\small
+\begin{tabular}{@{}llllll@{}}
+\toprule
+cohort & cells & donors & test donors/seed & endpoint & phase \\
+\midrule
+blood (Tabula Sapiens) & 85{,}055 & 9 & 2 & identity F1 & exploratory \\
+SEA-AD MTG & 125{,}909 & 84 & 21 & CPS $\rho$ & expl.\ + conf.\ (s3--5) \\
+ROSMAP & 163{,}646 & 111 & 28 & path level $\rho$ & expl.\ + conf.\ (s3--5) \\
+SEA-AD PFC & 119{,}991 & 80 & 20 & CPS $\rho$ & confirmatory only \\
+\bottomrule
+\end{tabular}
+\caption{Cohorts and endpoints. Test donors differ across seeds, so a
+donor appears in more than one fold's held-out set; inference therefore
+clusters by donor (Section~\ref{sec:stats}). SEA-AD PFC donors overlap
+MTG donors (same study); it is a regional robustness leg, not an
+independent replication cohort.}
+\label{tab:data}
+\end{table}
 
-\paragraph{Arms.} (a) \emph{cell-only supervised}: same encoder plus a
-linear head, trained end-to-end with cross-entropy on labels. (b)
-\emph{grounded}: contrastive alignment against per-cell captions, then
-evaluated two ways --- \emph{zero-shot}, classifying test cells by nearest
-class-caption embedding in the aligned space; and \emph{linear probe},
-fitting a logistic head on frozen embeddings of training cells.
+\subsection{Arm matrix: what is equalized, what is not}
+\label{sec:arms}
 
-\paragraph{Grounding sources (caption modes).}
+All arms see the same cells, the same donor split, the same encoder
+capacity (a four-layer MLP producing a 64-d cell embedding), the same
+update budget and the same
+identity-label access; only the \emph{training signal} differs.
+Critically, the arms differ in \emph{when and how} the pathology endpoint
+is visible: B2 optimizes it directly during representation learning,
+whereas the contrastive arms (T0--T3) never see it until the frozen
+donor-level ridge readout.
+
+The matrix therefore supports two distinct comparisons: (a)
+\emph{semantic benefit at equal endpoint access} --- text arms versus
+the equally endpoint-blind references T0/T1, the clean test of whether
+caption biology adds anything; and (b) \emph{contrastive text versus
+direct endpoint supervision} --- text arms versus B2, which jointly
+varies text use and endpoint supervision form. We report both
+explicitly rather than calling the matrix ``equivalent supervision''
+for the endpoint; a text arm \emph{with} a B2-style endpoint head would
+isolate a third contrast and is noted as future work.
+
 \begin{itemize}
-  \item \texttt{own\_genes}: ``A cell from human blood. Highly expressed
-    genes: \emph{<top-8 expressed HVGs of this cell>}'' --- label-free,
-    per-cell.
-  \item \texttt{type\_markers}: same template, genes replaced by the
-    top-5 differential markers of the cell's type computed on \emph{train}
-    donors --- label-derived, type-level.
-  \item \texttt{type\_llm} (honest): two-sentence biological descriptions
-    generated by Qwen2.5-14B-Instruct \citep{qwen25} conditioned
-    \emph{only on the marker list} (never the type name), with literal
-    type-name occurrences stripped post hoc and flagged --- label-free,
-    knowledge-enriched.
-  \item \texttt{type\_llm} (labeled, leakage probe): descriptions written
-    with the type name given to the LLM; reported only as an upper bound.
+  \item \textbf{B0} donor composition ($\pm$ covariates) $\to$ ridge:
+    no encoder, tests how far cell-type proportions alone carry the
+    donor endpoint.
+  \item \textbf{B1} pseudobulk expression $\to$ train-fit PCA $\to$
+    ridge: the standard non-encoder baseline.
+  \item \textbf{B2} supervised MLP with two heads: cell-type
+    cross-entropy plus a donor-pathology regression head --- the
+    non-text reference with equal capacity and label access.
+  \item \textbf{T0} contrastive alignment vs.\ \emph{one-hot} class
+    prototypes: identity structure without semantics.
+  \item \textbf{T1} contrastive alignment vs.\ \emph{fixed random}
+    prototypes: contrastive geometry without biology.
+  \item \textbf{T2} contrastive alignment vs.\ marker-list captions
+    (train-donor Wilcoxon markers, frozen at fold creation).
+  \item \textbf{T3} contrastive alignment vs.\ PubMed/RAG-derived
+    captions --- retrieved-literature text rather than engineered
+    prose.
+  \item \textbf{N1} B2 with donor$\to$pathology labels permuted within
+    training donors: a supervision null that preserves donor
+    structure.
+  \item \textbf{N2} the cohort's stronger text arm (T3 for SEA-AD, T2
+    for ROSMAP) with the class$\to$caption map permuted: a semantics
+    null that preserves text format.
 \end{itemize}
-Zero-shot class captions are always marker-list captions
-(``A \emph{<type>} cell \ldots Highly expressed genes: \emph{<markers>}''),
-so zero-shot never reduces to string-matching train captions.
 
-\paragraph{External-knowledge grounding via literature retrieval.}
-To test whether text \emph{independent of our training labels} carries the
-same structure, we built a retrieval pipeline over a 30.8M-article PubMed
-corpus (SQLite FTS5 over title, abstract and MeSH fields). For each cell
-type, queries form a broad-to-specific ladder over the type's marker
-genes: strict ANDs of top markers, pairwise co-occurrence, marker plus
-topical context, HGNC alias-expanded synonym queries (FTS5 has no
-stemming, so \texttt{GNLY}$\leftrightarrow$``granulysin'' matters), and
-MeSH-column-filtered queries for name-based arms. Pooled documents are
-deduplicated by PMID and reranked by marker coverage (dominant), an
-immune-context lexical prior, reciprocal-rank aggregation, and BM25.
-Literal cell-type names are stripped from retrieved text for
-leakage-controlled arms. Three query sources are compared:
-train-derived markers (label-derived selection, external text),
-PanglaoDB curated markers \citep{panglaodb} (label-free end-to-end), and
-the type name itself (upper bound). Additionally, \texttt{extkb\_markers}
-uses the PanglaoDB marker lists \emph{directly} as captions, isolating
-curated knowledge from retrieval.
+\paragraph{Caption construction.}
+T2 captions are generated per fold: Wilcoxon differential expression on
+\emph{training donors only} yields the top-8 markers per class, rendered
+in a fixed template (``\emph{<class>}: a cell type defined by elevated
+expression of \emph{<genes>}''); genes used in captions are logged so
+downstream evaluations can exclude them. T3 captions come from a
+pre-registered per-cohort corpus
+(\texttt{type\_desc\_pubmed\_rag\_markers\_alias\_*}): PubMed titles and
+abstracts retrieved per class over marker-gene queries with HGNC alias
+expansion, reranked by marker coverage and BM25, and concatenated
+verbatim (no LLM synthesis in this arm); classes missing from the
+corpus fall back to a name-only caption, recorded in the provenance
+file. Each fold's caption bank is frozen at fold creation,
+hashed, and stored with its provenance manifest; N2's permuted
+class$\to$caption map uses the same bank.
 
-\paragraph{Matched-register evaluation.}
-Because zero-shot scoring compares cell embeddings to class-caption
-embeddings, train and eval text must share register: marker-list train
-captions are evaluated against marker-list class captions (the default
-above), while retrieved-prose train captions are additionally evaluated
-against class captions in the same retrieved-prose register
-(\emph{matched} column in Table~\ref{tab:m6}).
+Donor pathology is read out by a ridge fit on train-donor pooled
+embeddings and evaluated as Spearman $\rho$ on held-out donors;
+per-donor predictions are exported for paired inference. Cell identity
+is read out by a linear probe (and, for contrastive arms, zero-shot
+nearest-prototype scoring) and evaluated as macro-F1 on held-out cells.
 
-\section{Historical results (protocol v1; under revalidation)}
+\subsection{Statistical protocol and gates}
+\label{sec:stats}
 
-The following numerical tables preserve the exploratory record. Wording such
-as ``label-free'', ``statistically indistinguishable'' and historical gate
-verdicts in this record is superseded by the audit notice above. A corrected
-results section will replace this record only after the ADR-011 comparisons
-have been executed; historical metrics are not treated as v2 baselines.
+Inference is performed on \emph{paired} per-donor predictions, not on
+per-seed aggregate metrics:
 
-\subsection{Marker-list grounding matches supervised training on unseen donors}
+\begin{itemize}
+  \item \textbf{Paired differences.} For each arm comparison, $\Delta\rho$
+    is computed on donors shared across folds. Confidence intervals come
+    from 2{,}000 bootstrap replicates that \emph{cluster by donor across
+    seeds} --- resampling donors rather than seed$\times$donor cells,
+    because the same donor can appear in several folds' test sets.
+  \item \textbf{Multiplicity.} Primary comparisons (T2/T3 vs.\ B2 and
+    vs.\ T1 on the primary cohort, SEA-AD MTG) use empirical
+    permutation p-values; all secondary comparisons carry
+    Benjamini--Hochberg q-values.
+  \item \textbf{Permutation nulls (two complementary designs).} 100
+    shared donor$\to$label permutation maps per seed (300 per cohort)
+    permute labels \emph{among training donors only} and are applied to
+    every arm. (i) \emph{Readout null}: for B0/B1/T0--T3/N2, features
+    are frozen and the donor ridge is fit on the permuted target ---
+    a full label null expected to center at zero. (ii)
+    \emph{Endpoint-supervision null}: for B2, the encoder is
+    \emph{retrained} with permuted pathology labels (identity head
+    intact; an N1 replicate) and evaluated with a true-label ridge ---
+    this isolates how much endpoint signal the non-endpoint channels
+    carry, and is not expected to reach zero if composition or identity
+    structure carries pathology information. A third check, added in
+    revision, permutes the readout target over the \emph{frozen} B2
+    encoder's features to verify the machinery on B2 specifically.
+    Observed $\rho$ is compared against the appropriate null's 95th
+    percentile.
+  \item \textbf{Pre-registered gates} (evaluated once per phase,
+    automatically, from artifacts): integrity (identical fold hashes),
+    improvement ($\Delta\rho\geq0.05$ over B2 with CI lower bound $>0$),
+    semantics (beat T1 \emph{and} exceed the shared null q95),
+    historical-threshold G5b ($\rho\geq0.5$), transfer (strict $\rho\geq
+    0.35$), composition-adjusted improvement, and a
+    negative-result-validity check that the full matrix ran with correct
+    provenance.
+\end{itemize}
 
-Figure~\ref{fig:main} and Table~\ref{tab:main} summarize the 85k-cell
-ablation. The headline result: with \texttt{type\_markers} captions,
-zero-shot classification on held-out donors reaches 0.591 macro-F1 /
-0.635 balanced accuracy (MiniLM), statistically indistinguishable from the
-supervised cell-only baseline (0.603 / 0.618) and better on balanced
-accuracy --- with \emph{no weight ever trained on a label}. The contrastive
-objective alone suffices to organize the representation space so that
-unseen donors' cells land near the correct class caption.
+\subsection{Strict cross-cohort transfer}
+\label{sec:transfer_methods}
+
+Transfer is \emph{source-fitted}: the donor-level predictor (encoder
+weights, gene space, train-fit PCA/ridge, label axis and sign) is frozen
+on the source cohort; the target cohort contributes only cells
+re-quantified into the source gene space, and no target labels are
+touched. The gate is $\rho\geq0.35$ over all target donors. A
+\emph{calibrated refit} variant (readout refit on target train donors,
+evaluated on target test donors) is reported separately as an
+orientation analysis and never counted toward the strict gate.
+MTG$\to$PFC transfer is additionally flagged as a same-study robustness
+check: PFC and MTG donors overlap.
+
+\subsection{Marker-recovery evaluation}
+\label{sec:marker_methods}
+
+To probe whether biologically meaningful genes drive the caption
+machinery, we rank genes by train-only Wilcoxon differential expression,
+\emph{exclude} the genes injected into that fold's captions
+(non-circular evaluation), and score the next top-10 against external
+PanglaoDB marker sets \citep{panglaodb} mapped to each cohort's cell-type
+vocabulary (P@10 macro over evaluable types). The pre-registered gate
+was P@10 $\geq 0.6$. We additionally report the \emph{attainable
+ceiling}: the best achievable P@10 given how many reference genes exist
+inside the 2{,}000-HVG evaluation space.
+
+\section{Results}
+
+\subsection{Integrity and identity task}
+\label{sec:identity}
+
+Fold-hash verification passed for all runs in both phases
+(\texttt{integrity: PASS}); every reported number traces to a fold whose
+source, code and donor lists are manifest-recorded.
+
+All encoder arms learn cell identity on held-out donors
+(Table~\ref{tab:identity}). On the brain cohorts every encoder arm
+reaches probe macro-F1 0.86--0.99 (B2 best: 0.95--0.99); on blood
+(exploratory only) the supervised head reaches 0.61 macro-F1 with
+contrastive arms at 0.49--0.55 probe / 0.51--0.61 zero-shot. Identity is
+therefore a solved subproblem at this scale and not the discriminating
+axis between arms; the decisive comparisons are on donor pathology.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+ & \multicolumn{3}{c}{exploratory} & \multicolumn{3}{c}{confirmatory} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+arm & blood & ROSMAP & MTG & ROSMAP & MTG & PFC \\
+\midrule
+B2 & 0.607 & 0.949 & 0.989 & 0.950 & 0.993 & 0.984 \\
+T0 & 0.547 & 0.899 & 0.906 & 0.919 & 0.913 & 0.944 \\
+T1 & 0.525 & 0.878 & 0.934 & 0.871 & 0.937 & 0.945 \\
+T2 & 0.514 & 0.918 & 0.940 & 0.916 & 0.965 & 0.960 \\
+T3 & 0.487 & 0.677 & 0.860 & 0.667 & 0.857 & 0.860 \\
+N1 & ---   & 0.946 & 0.992 & 0.950 & 0.991 & 0.987 \\
+N2 & 0.498 & 0.923 & 0.868 & 0.898 & 0.881 & 0.880 \\
+\bottomrule
+\end{tabular}
+\caption{Cell-identity linear-probe macro-F1 (mean over seeds).
+Blood has no pathology endpoint and ran in the exploratory phase only.
+B0/B1 are donor-level ridge baselines without a cell encoder and are
+omitted.}
+\label{tab:identity}
+\end{table}
+
+\subsection{No detectable benefit of text grounding on donor pathology}
+\label{sec:pathology}
+
+Figure~\ref{fig:arms} and Table~\ref{tab:rho} report donor-level
+pathology $\rho$ across arms and phases. Three observations recur in
+both phases. First, the strongest signals come from \emph{non-text}
+supervision: B2 and the pseudobulk B1 lead on every pathology cohort.
+Second, the text arms T2 and T3 sit at or below the non-semantic
+references T0/T1 on the primary cohort and below them on ROSMAP; they
+never approach B2. Third, B0 --- donor composition alone --- carries
+non-trivial signal (confirmatory $\rho=0.24$--$0.32$), consistent with
+the composition confound documented in Section~\ref{sec:nulls}.
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=\columnwidth]{figures/fig1_grounding_source.pdf}
-  \caption{Zero-shot macro-F1 on held-out donors by grounding source and
-  text encoder (mean $\pm$ s.d., 3 seeds). Dashed line: supervised
-  cell-only baseline. The hatched group is a leakage probe (type name
-  present in LLM prose), not an honest grounding result.}
-  \label{fig:main}
+  \includegraphics[width=\columnwidth]{figures/fig_arms_rho.pdf}
+  \caption{Donor-level pathology $\rho$ by arm and cohort (bars: seed
+  mean; dots: per-seed values). Left: exploratory seeds 0--2. Right:
+  confirmatory seeds 3--5 (PFC: seeds 0--2). Non-text arms (B1, B2)
+  dominate on every cohort; text arms (T2, T3) cluster with the
+  non-semantic references (T0, T1) below them. Blood is absent: it has
+  no pathology endpoint.}
+  \label{fig:arms}
 \end{figure}
 
 \begin{table}[t]
 \centering\small
-\begin{tabular}{@{}llllcc@{}}
-\toprule
-arm & source & encoder & leak & macro-F1 & bal.\ acc \\
-\midrule
-supervised & --- & --- & & 0.603$\pm$.018 & 0.618$\pm$.017 \\
-probe & own genes & MiniLM & & 0.414$\pm$.001 & 0.476$\pm$.025 \\
-probe & own genes & SapBERT & & 0.404$\pm$.013 & 0.483$\pm$.031 \\
-probe & type markers & MiniLM & & 0.560$\pm$.053 & 0.578$\pm$.047 \\
-probe & type markers & SapBERT & & 0.548$\pm$.013 & 0.585$\pm$.018 \\
-probe & LLM honest & MiniLM & & 0.531$\pm$.046 & 0.553$\pm$.030 \\
-probe & LLM honest & SapBERT & & 0.549$\pm$.029 & 0.572$\pm$.022 \\
-probe & LLM labeled & MiniLM & $\dagger$ & 0.510$\pm$.033 & 0.530$\pm$.047 \\
-probe & LLM labeled & SapBERT & $\dagger$ & 0.565$\pm$.036 & 0.579$\pm$.029 \\
-\midrule
-zero-shot & own genes & MiniLM & & 0.288$\pm$.022 & 0.473$\pm$.031 \\
-zero-shot & own genes & SapBERT & & 0.261$\pm$.010 & 0.446$\pm$.050 \\
-zero-shot & type markers & MiniLM & & \textbf{0.591$\pm$.015} & \textbf{0.635$\pm$.034} \\
-zero-shot & type markers & SapBERT & & 0.578$\pm$.025 & 0.620$\pm$.020 \\
-zero-shot & LLM honest & MiniLM & & 0.324$\pm$.049 & 0.436$\pm$.059 \\
-zero-shot & LLM honest & SapBERT & & 0.401$\pm$.044 & 0.487$\pm$.015 \\
-zero-shot & LLM labeled & MiniLM & $\dagger$ & 0.575$\pm$.040 & 0.625$\pm$.023 \\
-zero-shot & LLM labeled & SapBERT & $\dagger$ & 0.553$\pm$.045 & 0.601$\pm$.021 \\
-\bottomrule
-\end{tabular}
-\caption{Held-out-donor performance at 85k cells (mean $\pm$ s.d., seeds
-0--2). $\dagger$: leakage probes (type name in text); upper bounds, not
-honest grounding. Best honest zero-shot in bold.}
-\label{tab:main}
+\input{figures/tab_rho_confirmatory.tex}
+\caption{Confirmatory donor-level pathology $\rho$ (mean over seeds
+3--5; PFC 0--2). B2: supervised MLP; B1: pseudobulk-PCA; B0:
+composition; T0/T1: non-semantic contrastive references; T2/T3:
+marker/PubMed caption grounding; N1: permuted-label retrain; N2:
+permuted caption map.}
+\label{tab:rho}
 \end{table}
 
-\subsection{The grounding source dominates; the text encoder barely matters}
-
-Across every condition, SapBERT $\approx$ MiniLM on gene-list captions ---
-a biomedical entity-linking encoder offers no benefit when the caption is a
-comma-separated gene list. On natural prose (LLM arms), SapBERT pulls ahead
-in zero-shot (+0.08 F1), consistent with domain pretraining helping only
-when the text is actually prose. The dominant axis is the grounding
-\emph{source}: a $\sim$2$\times$ zero-shot gap between per-cell gene lists
-(0.29) and type markers (0.59).
-
-\subsection{Label-free grounding remains the gap}
-
-Honest label-free sources underperform: per-cell gene lists reach 0.29 F1
-zero-shot, and LLM prose inferred \emph{from markers alone} --- which
-correctly recovered lineage and function (e.g., ``megakaryocyte
-developmental continuum'' from \texttt{PPBP, TUBB1, GP9, ITGA2B}) ---
-reaches 0.40 with SapBERT. The probe-vs-zero-shot gap
-(Figure~\ref{fig:gap}) is instructive: for \texttt{type\_markers} the gap
-is \emph{negative} (zero-shot beats the probe), meaning the aligned space
-itself carries the discriminative structure; for label-free sources the gap
-is positive, i.e., the representation still needs label supervision to be
-read out.
+Paired donor-level inference (Figure~\ref{fig:paired}) separates the two
+registered comparisons. \emph{Semantic benefit at equal endpoint access}
+(text vs.\ the equally endpoint-blind T1): on the primary cohort,
+$\Delta\rho$(T2$-$T1) $= +0.041$ (95\% CI $-0.036$ to $0.132$) and
+$\Delta\rho$(T3$-$T1) $= +0.007$ ($-0.125$ to $0.162$) ---
+statistically indistinguishable from prototypes containing no biology;
+at 84--111 donors the CIs bound the plausible benefit below roughly
+$\pm0.15$, so modest advantages cannot be excluded but no benefit is
+detected. \emph{Contrastive text vs.\ direct endpoint supervision} (text
+vs.\ B2): confirmatory $\Delta\rho$(T2$-$B2) $= -0.192$ ($-0.487$ to
+$0.109$) and $\Delta\rho$(T3$-$B2) $= -0.226$ ($-0.491$ to $0.047$) on
+MTG; on ROSMAP the deficit is significant in the exploratory phase
+($\Delta\rho \approx -0.27$ to $-0.38$, FDR $q<0.05$) and replicates in
+sign under confirmation. Because B2 optimizes the endpoint during
+representation learning and the text arms do not, this second comparison
+is confounded by supervision form --- it bounds what contrastive text
+achieves relative to the strongest available alternative, not a pure
+text effect.
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=\columnwidth]{figures/fig2_loss_gap.pdf}
-  \caption{Left: contrastive training curves (seed 0, MiniLM). The
-  \texttt{type\_markers} plateau is expected --- only 16 unique texts, so
-  most batch pairs collide. Right: linear-probe minus zero-shot F1 ---
-  negative values mean the aligned space classifies better than a labeled
-  readout.}
-  \label{fig:gap}
+  \includegraphics[width=\columnwidth]{figures/fig_paired.pdf}
+  \caption{Paired donor-level $\Delta\rho$ (2{,}000 clustered bootstrap
+  replicates; 95\% CIs) for the registered text comparisons. Dotted
+  line at $-0.05$ marks the improvement-gate boundary in reverse:
+  improvement would require $\geq+0.05$ with CI $>0$. Text arms sit at
+  or left of zero against B2 and near zero against the non-semantic T1
+  reference, in both phases.}
+  \label{fig:paired}
 \end{figure}
 
-\subsection{Leaky text does not beat clean text}
-\label{sec:leak}
+\subsection{Permutation nulls quantify non-semantic signal}
+\label{sec:nulls}
 
-The leakage probe (LLM prose containing the type name) scores 0.575
-zero-shot --- \emph{below} the clean \texttt{type\_markers} arm. The reason
-is format consistency: class captions are marker lists, so train captions
-in the same register transfer best. Leakage helps only when train and eval
-text share register, underscoring that benchmark comparisons of grounding
-methods must control caption \emph{format}, not just label content.
+Figure~\ref{fig:null} overlays each arm's observed confirmatory $\rho$
+on its shared permutation-null distribution; the two null designs
+(Section~\ref{sec:stats}) answer different questions and must be read
+separately.
 
-\subsection{External literature retrieval closes most of the label-free gap}
-\label{sec:m6}
+\emph{Readout nulls (features frozen, ridge target permuted).} For every
+non-B2 arm these center at zero (grand means $|{\mu}|\leq0.01$ across
+600+ replicates per arm per cohort), verifying that the evaluation
+machinery itself produces no signal under label destruction. Observed
+text-arm $\rho$ (0.19--0.29) nonetheless lies \emph{below} the q95 of
+their own readout-permuted nulls (0.32--0.46) --- the readout is noisy
+enough at this donor scale that chance alignments of frozen features
+with permuted labels can exceed the observed values; the semantics gate
+fails outright. A verification added in revision permutes the ridge
+target over the \emph{frozen} B2 encoder's features on the same shared
+maps: the resulting null centers at zero (means $-0.01$ to $+0.02$,
+q95 $0.28$--$0.41$ over 300 permutations per cohort), consistent with
+all other readout nulls --- the machinery is sound on B2's features
+too.
 
-Table~\ref{tab:m6} reports grounding from text that is external to our
-training labels. Under matched-register evaluation, PubMed text retrieved
-by marker queries --- with the cell-type name stripped --- reaches 0.563
-macro-F1, 95\% of the label-derived \texttt{type\_markers} arm and within
-0.04 of the supervised baseline. The end-to-end label-free arm
-(curated PanglaoDB markers $\to$ retrieval $\to$ name-stripped text)
-reaches 0.512, and curated markers used directly as captions reach 0.459
---- respectively 87\% and 78\% of the label-derived effect, both above
-the pre-registered 75\% positive threshold. The register control is
-decisive: the \emph{same} retrieved captions evaluated against
-marker-list class captions collapse to 0.15--0.19 F1, a $\sim$0.4
-penalty attributable purely to caption format. On the retrieval side,
-HGNC alias expansion raised pooled candidates by 72\% and
-high-marker-coverage documents by 40\%; curated external markers pooled
-\emph{more} documents than train-derived markers, so external knowledge
-is not recall-limited at this scale.
+\emph{Endpoint-supervision null (B2 retrained on permuted endpoint,
+true-label readout; N1 replicate).} This null is deliberately different:
+it asks how much endpoint signal an encoder \emph{trained without
+access to the true endpoint} still supports when evaluated honestly.
+It does not collapse to zero --- mean $\rho\approx0.29$ (ROSMAP), 0.31
+(MTG), 0.16 (PFC), q95 0.39--0.59 --- because the intact identity head
+preserves cell-type structure, and donor-level pooling of that
+structure (composition plus donor-associated expression) correlates
+with pathology. The in-run N1 arm shows the same effect
+($\rho=0.36$--$0.41$ on ROSMAP/MTG). The correct reading is therefore
+not ``donor identity memorization fakes pathology'' but a measured
+decomposition: roughly two-thirds of B2's observed $\rho$ is reachable
+through non-endpoint channels alone, and the endpoint head adds the
+remainder ($\approx0.1$--$0.15$). The cross-cohort strict transfer
+result (Section~\ref{sec:transfer}) is the stronger evidence that this
+remainder captures portable biology rather than within-cohort donor
+structure.
 
-The strongest honest arm pairs retrieval with LLM synthesis
-(\texttt{ragllm\_honest}): Qwen2.5-14B reads the top retrieved excerpts
---- the type name is never shown --- and writes a two-sentence
-functional description; outputs that infer a conventional name are
-stripped and flagged (2/16, mostly ``megakaryocyte'' inferred from
-platelet markers). These descriptions reach 0.589 macro-F1 /
-0.631 balanced accuracy --- statistically indistinguishable from both
-the label-derived marker arm (0.591/0.635) and the supervised baseline
-(0.600/0.620). The labeled synthesis probe (name shown, 0.600) bounds
-the residual headroom at $\approx$0.01. Finally, substituting the
-PanglaoDB curated markers as the query source (\texttt{ragllm\_curated})
-makes the pipeline label-free end-to-end --- external marker database,
-external literature, LLM synthesis, name never shown anywhere --- and
-reaches \textbf{0.603 macro-F1 / 0.634 balanced accuracy} (SapBERT),
-matching the supervised baseline with zero labels in the chain.
-Substituting OLMo-2-13B \citep{olmo2} for Qwen2.5-14B in the synthesis
-step reproduces the result within noise (honest 0.597, curated
-label-free \textbf{0.598}, labeled 0.606 macro-F1), so the finding is
-not specific to the synthesis model.
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{figures/fig_null.pdf}
+  \caption{Confirmatory observed $\rho$ (diamonds) against 300 shared
+  donor-permutation nulls per arm (violins; bars mark null q95). Two
+  null designs are shown: for the non-B2 arms the donor ridge is fit on
+  permuted targets over frozen features and centers near zero; for B2
+  the encoder is \emph{retrained} on permuted endpoint labels and
+  evaluated honestly --- its shifted distribution (red, mean
+  $\approx0.3$) measures signal reachable through non-endpoint
+  channels, not a failed null. A separate readout-permuted check on
+  B2's frozen features centers at zero (text).}
+  \label{fig:null}
+\end{figure}
+
+\subsection{Strict source-fitted transfer replicates across cohorts}
+\label{sec:transfer}
+
+The positive claim that survives confirmation is B2 strict transfer
+(Figure~\ref{fig:transfer}, Table~\ref{tab:transfer}). With predictor,
+axis and sign entirely frozen on the source cohort, B2 trained on
+ROSMAP predicts SEA-AD MTG donor CPS at $\rho=0.46$--$0.50$
+(exploratory seeds 0--2) and $\rho=0.47$--$0.53$ (confirmatory seeds
+3--5); the reverse direction reaches $\rho=0.44$--$0.50$ and
+$0.40$--$0.50$ respectively --- every seed above the pre-registered
+$\rho\geq0.35$ gate, in both phases. This is a portable,
+non-cohort-specific pathology signal learned without text.
+
+Two honest boundaries. First, MTG$\to$PFC transfer is much higher
+($\rho=0.76$--$0.79$, all confirmatory seeds) but shares donors with
+the source cohort; we report it as a same-study regional robustness
+check, not independent replication. Second, the text arms do
+\emph{not} transfer (strict $\rho$ near or below zero for T0--T3; see
+generated table), and B1 transfers inconsistently (0.26--0.38, below
+gate in most seeds). The transferable object is specifically the
+supervised donor-pathology head, not contrastive geometry.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=.85\columnwidth]{figures/fig_transfer.pdf}
+  \caption{Strict source-fitted transfer of the B2 donor-pathology
+  predictor (all target donors, no target fitting). Bars: seed mean;
+  dots: seeds. Dashed line: pre-registered gate $\rho\geq0.35$.
+  ROSMAP$\leftrightarrow$MTG passes in every seed of both phases.
+  MTG$\to$PFC (right) is a same-study robustness check --- donors
+  overlap --- and is reported separately.}
+  \label{fig:transfer}
+\end{figure}
 
 \begin{table}[t]
 \centering\small
-\begin{tabular}{@{}lllcc@{}}
-\toprule
-arm & query source & label-free & F1 & bal.\ acc \\
-\midrule
-\texttt{type\_markers} (M3 ref.) & train labels & no & 0.591 & 0.635 \\
-\texttt{extkb\_markers} & PanglaoDB (direct) & yes & 0.459 & 0.564 \\
-\texttt{rag\_markers\_alias} & train markers+aliases & text only & 0.563 & 0.613 \\
-\texttt{rag\_curated\_alias} & PanglaoDB+aliases & \textbf{yes} & 0.512 & 0.565 \\
-\texttt{ragllm\_honest} & retrieval$\to$Qwen synth & text only & 0.589 & 0.631 \\
-\texttt{ragllm\_curated} & PanglaoDB$\to$retr.$\to$Qwen & \textbf{yes} & \textbf{0.603} & \textbf{0.634} \\
-\texttt{ragllm\_labeled} & name shown to LLM & no (upper bound) & 0.600 & 0.635 \\
-\texttt{rag\_name} & type name + MeSH & no (upper bound) & 0.506 & 0.554 \\
-\bottomrule
-\end{tabular}
-\caption{External-knowledge grounding, matched-register zero-shot
-(macro-F1 / balanced accuracy, best encoder per arm, held-out donors).
-``text only'': retrieved text is external but the query originates from
-train-derived markers. All external arms strip the literal type name.}
-\label{tab:m6}
+\input{figures/tab_transfer.tex}
+\caption{Strict transfer $\rho$ over all target donors (mean over
+seeds). Only B2 exceeds the gate in every direction and phase. B0 is
+included for completeness --- its composition-only vocabulary transfer
+is near zero or undefined cross-cohort.}
+\label{tab:transfer}
 \end{table}
 
-\subsection{Identifier semantics: a cautionary engineering finding}
-\label{sec:symbols}
+\subsection{Marker recovery: a structural gate failure}
+\label{sec:markers}
 
-Our first benchmark iteration silently produced meaningless captions:
-census-downloaded matrices carry feature IDs as \texttt{var\_names}, and
-one cached file had \emph{positional} indices (\texttt{"0"}, \texttt{"1"},
-\ldots). Captions therefore listed tokens with no biological semantics.
-After mapping to gene symbols via \texttt{feature\_name}, honest zero-shot
-F1 improved from 0.214 to 0.293 on the 30k benchmark --- a 37\% relative
-change from a ``plumbing'' fix. Any language-grounded pipeline that does
-not explicitly validate identifier semantics risks the same failure;
-we pin it with regression tests.
+Against external PanglaoDB references, fold-derived non-circular marker
+rankings recover P@10 of only 0.019 (blood), 0.054 (MTG), 0.020
+(ROSMAP), 0.024 (PFC) --- far below the pre-registered $\geq0.6$ gate.
+The failure is partly structural: only 13--33\% of external reference
+genes exist inside the 2{,}000-HVG evaluation space, so the maximum
+achievable P@10 is 0.16--0.38 --- below the gate on every cohort. We
+report the gate as failed rather than redefining it, with the ceiling
+documented. Within the attainable range recovery is still weak: brain
+PanglaoDB references collapse many excitatory subtypes into generic
+categories, while fold-derived markers are subtype-specific. The
+caption pipeline's genes are thus poor external-marker retrievers ---
+consistent with the pathology results, captions here act as a
+supervision format, not a knowledge channel.
 
-\subsection{Donor-level pathology representations in SEA-AD}
-\label{sec:m8}
+\subsection{Gate ledger}
+\label{sec:gates}
 
-We extended the pipeline to the SEA-AD Alzheimer's atlas (240{,}026
-nuclei, 127 donors, MTG+V1C) and asked whether embeddings trained to
-discriminate cell \emph{identity} carry donor \emph{state}. Mean-pooled
-donor embeddings from the M7 cell-type objective exceeded a
-pseudobulk-PCA baseline on the continuous cortical pathology score
-(CPS; Spearman $\rho \approx 0.4$ vs.\ $0.21$ on held-out donors) but
-fell short of our pre-registered gate ($\rho \geq 0.5$) and produced no
-consistent ordinal trajectory. Variance analysis explains the ceiling:
-$\sim$93\% of embedding variance separates cell types, leaving donor
-state as a $\sim$7\% side-channel.
+Table~\ref{tab:gates} summarizes the automatic gate evaluation on the
+confirmatory artifacts. The improvement, semantics and historical
+gates fail; integrity, strict transfer and negative-result validity
+pass; composition is not evaluable (see Discussion). Per ADR-011, the
+complete protocol executed correctly on never-inspected data --- the
+negative finding is a valid experimental outcome, not a pipeline
+failure.
 
-We therefore retrained the contrastive objective against captions
-describing each \emph{donor's pathology label} rather than each cell's
-type, and swept eight pathology targets (ADNC, Braak, CERAD, Thal,
-cognitive status, quantile-binned CPS, and a cell-type$\times$ADNC
-composite) under a donor-label-permutation null. On held-out donors,
-donor embeddings now reach $\rho = 0.62$ for CPS (binary cognitive
-status), $0.52$--$0.57$ for molecular ordinals, with positive Braak /
-CERAD / ADNC trajectories for the strongest arms and a $+0.15$--$0.36$
-gap over shuffled-label controls. Per-cell pathology classification
-remains at chance, confirming that the signal aggregates at the donor
-level. Two targets falsified cleanly: Thal phase (label saturation in
-this cohort) and the 96-class composite (diluted contrast). The
-objective, not the architecture, determines which biology the
-representation retains.
+\begin{table}[t]
+\centering\small
+\begin{tabular}{@{}ll@{}}
+\toprule
+gate (confirmatory phase) & decision \\
+\midrule
+integrity (fold SHA-256 verified) & \textbf{PASS} \\
+improvement T2 vs.\ B2 ($\Delta\rho\geq0.05$, CI$>0$) & FAIL \\
+improvement T3 vs.\ B2 & FAIL \\
+semantics T2 (vs.\ T1 and null q95) & FAIL \\
+semantics T3 (vs.\ T1 and null q95) & FAIL \\
+historical G5b T2/T3 ($\rho\geq0.5$) & FAIL \\
+strict transfer ROSMAP$\to$MTG, MTG$\to$ROSMAP, MTG$\to$PFC & \textbf{PASS} \\
+composition-adjusted improvement & NOT EVALUABLE \\
+negative result valid (complete protocol) & \textbf{PASS} \\
+\bottomrule
+\end{tabular}
+\caption{Confirmatory gate ledger from
+\texttt{experiments/v2\_confirmation/inference/gates.json}.}
+\label{tab:gates}
+\end{table}
 
-Scaling to the full atlas (440{,}390 nuclei across 11 cortical and
-hippocampal regions; same 84 donors) preserves the effect: cognitive
-status holds $\rho \approx 0.60$ with stable ADNC/CERAD trajectories
-($\rho = 0.65$--$0.70$) in both text encoders, and regional transfer
-recovers a vulnerability-consistent ordering (MTG $\rho \approx 0.65$ >
-STG > MEC > AnG > V1C; hippocampus is an honest outlier at $\sim$0).
-The binding constraint is donor count, not cells: 84 unique donors
-yields $\sim$21 held-out donors, so further gains require new cohorts
-rather than more nuclei per donor.
+\subsection{The exploratory record, superseded}
+\label{sec:historical}
 
-\subsection{External replication in ROSMAP and cross-cohort transfer}
-\label{sec:m11}
+For provenance: protocol-v1 exploratory runs had reported apparent
+text-grounding advantages on the same question (caption-grounded donor
+embeddings with CPS $\rho\approx0.60$, cross-cohort transfer, and
+external-marker retrieval). The audit that motivated ADR-011 showed
+those estimates conflated the caption channel with (i) repeated
+preprocessing on the same splits, (ii) evaluation against fold-derived
+captions whose genes were selected on the same data, (iii) transductive
+PCA fit before the donor split, and (iv) transfer analyses that used
+target labels for orientation. Under the corrected pipeline --- frozen
+splits, train-only transforms, equivalent-supervision controls,
+strictly source-fitted transfer, donor-level inference --- the text
+advantage does not reproduce, while a corrected version of the transfer
+result does (Section~\ref{sec:transfer}). We retain the historical
+numbers only in the repository reports, not as evidence here.
 
-We replicated the protocol on the open ROSMAP multiregion snRNA-seq
-release \citep{liu2025rosmap}: 300{,}057 nuclei from 111 donors across
-six regions (HC, EC, TH, AG, MTC, PFC), downsampled to $\leq$800 cells
-per donor$\times$region and embedded in the same 2000-HVG space. The
-open release carries a coarse three-level pathology label
-(nonAD/earlyAD/lateAD) rather than continuous scores --- we
-pre-registered the ordinal level as the replication target and note
-this asymmetry throughout.
+\section{Discussion}
 
-\paragraph{Replication is partial and target-dependent.}
-Donor-held-out training on ROSMAP reproduces the ordinal trajectory
-structure (real $\rho = 0.37$ vs.\ shuffled-label null $-0.08$) and,
-strikingly, the same region-vulnerability gradient as SEA-AD
-(hippocampus $\rho \approx 0.57$ $>$ entorhinal $\approx 0.55$ $>$
-cortical regions $\approx 0.3$--$0.4$). However, on this coarse target
-the grounded model does \emph{not} beat an expression-only pseudobulk
-baseline ($\rho = 0.51$ vs.\ $0.52$) --- unlike SEA-AD, where the same
-objective doubled it (0.60 vs.\ 0.26). The grounding advantage is
-largest precisely when the phenotype is a fine continuous score that
-mean expression dilutes; when the label is a coarse class driven by
-compositional shifts, expression alone suffices.
+\paragraph{What the negative result means --- and does not mean.}
+The cleanest question the matrix answers is: does aligning a cell
+encoder to biological captions add anything over equally
+endpoint-blind, non-semantic contrastive references? The answer,
+replicated across two independent cohorts and two phases on
+never-inspected splits, is that we detect none --- text arms are
+statistically indistinguishable from T1, with CIs that bound any
+benefit to below roughly $\pm0.15$ in $\Delta\rho$. A second,
+confounded-by-design comparison shows contrastive text loses to direct
+endpoint supervision (B2) and to pseudobulk averaging. This is not a
+claim that language is useless for single-cell modeling, nor that the
+text arms could not be made stronger: it bounds the benefit of
+\emph{this} grounding procedure on \emph{this} endpoint at this donor
+scale. Designs that differ in task (annotation, retrieval), supervision
+asymmetry (text used to \emph{reduce} label requirements), endpoint
+access during encoder training (a text arm with a B2-style pathology
+head, which our matrix deliberately leaves untested), or scale could
+still show benefits --- the contribution here is a protocol capable of
+detecting them cleanly.
 
-\paragraph{Zero-shot cross-cohort transfer passes the pre-registered
-gate.} Sharing the SEA-AD 2000-gene input space, we applied each
-cohort's model to the other without fitting anything on the target.
-The ROSMAP-trained model --- conditioned only on three-level pathology
-captions --- predicts SEA-AD's continuous CPS at $\rho = 0.46$--$0.52$
-(bootstrap CIs exclude zero; held-out half of donors), within $\sim$0.1
-of the within-cohort models. The reverse direction is weaker
-($\rho \approx 0.29$ for ADNC captions, $\approx 0.18$ for binary
-cognitive status): transfer toward a continuous target tolerates
-partial axis alignment, and cognition and neuropathology are partially
-dissociable, consistent with the cognitive-resilience literature. The
-transfer result is robust to grounding source: a ROSMAP model grounded
-on retrieved PubMed captions instead of authored ones transfers at
-$\rho = 0.47$ --- statistically indistinguishable from the manual-caption
-transfer --- even though retrieval captions confer no within-cohort gain
-on the coarse three-level target ($\rho = 0.43$--$0.44$, still
-$\leq$ pseudobulk).
+\paragraph{Why supervised and pseudobulk signals win.}
+B2's advantage plausibly reflects direct optimization of the endpoint:
+the donor-pathology regression head shapes the pooled representation
+toward exactly the quantity being read out, whereas contrastive text
+alignment optimizes a surrogate objective whose information content is
+bounded by caption quality and register. B1 matching B2 on ROSMAP
+($\rho\approx0.50$ vs.\ 0.45) further shows that simple expression
+averaging captures most of what a coarse ordinal endpoint contains ---
+the added value of any encoder, grounded or not, is small when the
+phenotype is driven by compositional shifts.
 
-\paragraph{What moves the number: captions, not pooling.}
-We swept three improvement avenues on SEA-AD. Gated attention/MIL donor
-pooling failed to beat mean pooling (negative result; mean stays). A
-soft-ordinal contrastive loss that spreads probability mass over nearby
-ordinal captions sharpened ADNC/CERAD trajectories by $+0.04$--$0.10$
-at some cost to ridge-CPS signal. The largest gain came from the
-grounding corpus itself: replacing manually authored pathology captions
-with direct PubMed retrieval (title/abstract concatenation, no LLM
-synthesis) lifted CPS to $\rho = 0.60$--$0.61$ on \emph{both} text
-encoders ($+0.05$/$+0.13$ over manual captions) --- evidence that
-retrieved literature, not engineered prose, is the stronger grounding
-source.
+\paragraph{The residual-signal confound.}
+That an encoder trained with a \emph{permuted} endpoint still supports
+$\rho\approx0.3$--$0.4$ under honest evaluation (endpoint-supervision
+null; N1 replicates it) is the most consequential methodological
+observation, and it is worth being precise about what it does not
+prove. Because the identity head remains intact during null training,
+the retained signal cannot be attributed to donor bookkeeping alone:
+it measures everything the non-endpoint channels carry --- cell-type
+composition, donor-associated expression, and any residual identity
+memorization pooled at the donor level. The complementary readout-perm
+nulls (which destroy labels only at evaluation and do center at zero,
+including on B2's own frozen features) rule out an artifact of the
+readout machinery. Two implications follow. First, donor-level
+evaluations need both nulls: raw correlations overstate every arm, and
+retrain-style nulls must be interpreted as channel decompositions, not
+sanity checks expected to reach zero. Second, our composition gate was
+registered as \texttt{NOT\_EVALUABLE} in the confirmation phase
+(covariate/residual block absent from confirmation runs); we report the
+\emph{presence} of residual signal but claim no composition-adjusted
+improvement for any arm.
 
-\paragraph{Comparison with external foundation models.}
-Under the identical donor-held-out protocol without fine-tuning,
-pretrained single-cell foundation models trail the pathology-grounded
-objective on donor state: scGPT reaches CPS $\rho = 0.43$--$0.51$,
-Geneformer V2-104M $0.13$--$0.46$, Geneformer V1-10M $0.28$--$0.37$,
-and CellWhisperer $0.34$--$0.58$, versus $0.60$--$0.61$ for the
-grounded model. Cell-type identity tells the opposite story ---
-foundation models dominate the type probe (up to 0.95 macro-F1) ---
-confirming that identity and state are separable axes and that
-unsupervised corpus diversity alone does not recover the
-pathology-progression axis as efficiently as targeted grounding.
+\paragraph{What strict transfer does and does not establish.}
+The source-fitted B2 transfer is the strongest positive evidence in the
+study: a pathology readout trained on ROSMAP donors ranks MTG donors
+correctly across every seed of both phases, and vice versa, without
+touching target labels. Because no target fitting occurs, this is
+portable signal rather than within-cohort donor-structure memorization
+--- the answer to the confound above. However, both cohorts index
+Alzheimer's-related pathology in post-mortem cortex; MTG$\to$PFC
+(additionally same-study, donor-overlapping) and
+ROSMAP$\leftrightarrow$MTG together bound the claim to
+\emph{related-neuropathology} portability, not general biological
+transfer.
 
-\section{Discussion under revalidation}
+\paragraph{Limitations.}
+(i) Donor counts --- not cell counts --- bound statistical power; the
+primary MTG comparisons leave CI widths of $\sim$0.5 in $\Delta\rho$,
+so small true effects are not excluded. (ii) ROSMAP's public endpoint
+is a coarse three-level ordinal, asymmetric with continuous CPS; the
+two pathology tasks are related but not identical. (iii) MTG and PFC
+share donors; the PFC leg is a robustness check. (iv) Text arms were
+evaluated at one budget/architecture; a different text encoder or
+longer training might differ, though the T1 equivalence makes large
+gains unlikely under this endpoint. (v) Marker-recovery references are
+coarse for fine brain subtypes, and the evaluation universe (2{,}000
+HVGs) excludes most reference genes. (vi) Blood ran only in the
+exploratory phase and has no pathology endpoint. (vii) The
+pre-registered marker-recovery gate was infeasible by construction ---
+a registration-time lesson: gate feasibility should be verified against
+the evaluation space before registration, and we report the gate as
+failed rather than silently rescoping it. (viii) The arm matrix
+equalizes capacity and label access but not endpoint-supervision form;
+a text arm with a B2-style endpoint head is the natural next experiment
+and is deliberately out of the frozen protocol's scope here.
 
-\paragraph{Supervision is not semantic attribution.}
-Class annotations determine the training cell--caption pairs, including the
-external-marker and name-stripped arms. Their results therefore concern
-text-mediated supervision, not label-free training. Fixed random and one-hot
-class prototypes and non-text objectives with the same labels are required to
-identify any additional contribution of biological semantics. Matched-register
-performance also needs testing against independently phrased class descriptions.
-
-\paragraph{Composition and state remain unresolved.}
-A donor mean mixes cell-type and regional proportions with within-group states.
-The historical composition correlation near 0.50 is an important baseline, but
-subtracting it from an embedding correlation near 0.61 does not isolate state
-information. Train-only scaling, covariate adjustment, within-type/region
-analysis and paired donor-level comparisons are specified in ADR-011. Sampled
-nucleus fractions do not establish absolute cell loss or causal vulnerability.
-
-\paragraph{Transfer and encoder scale.}
-The historical transfer procedure fits PCA in the target cohort and uses an
-orientation subset's labels. It should be distinguished from a source-fitted
-predictor evaluated without target fitting or labels. Likewise, the negative
-scGPT sweep concerns the configurations and training budgets tested, not a
-general absence of benefit from encoder capacity. Native tokenization and
-matched cells, probes and budgets are prerequisites for foundation-model claims.
-
-\paragraph{Biological and statistical limitations.}
-The study spans blood and post-mortem brain cohorts and uses both Qwen and OLMo
-for synthesis. Nevertheless, independent sample sizes are donor counts, not
-cell counts; repeated model selection on the same splits remains exploratory.
-The open ROSMAP matrix exposes a coarse three-level endpoint unlike continuous
-SEA-AD CPS. CPS denotes a Continuous Pseudoprogression Score derived from
-quantitative neuropathology, not longitudinal observation of disease progression.
-Caption discrimination is not proof of biological correctness: the audit found
-incorrect lineage assertions in generated descriptions. Domain review, source
-support, paired confidence intervals, matched permutation controls and explicit
-handling of incomplete gates remain necessary before submission.
+\paragraph{Reproducibility and availability.}
+Code, fold manifests, run manifests, per-donor predictions,
+permutation-null artifacts, gate JSONs and reports are versioned at
+\url{https://github.com/alrobles/biocellAI} (release
+\texttt{v0.1.0-alpha}, DOI \texttt{10.5281/zenodo.23103004}), with
+derived artifacts on Hugging Face
+(\texttt{alrobles/biocellai-foundations}). Controlled-access source data
+(SEA-AD, ROSMAP raw) are not redistributed; fold contracts record
+hashes sufficient to reconstruct them from the original repositories.
+Paper figures and tables are generated from committed artifacts by
+\texttt{scripts/v2\_paper\_figures.py} --- no result is hand-copied.
 
 \section{Conclusion}
 
-Historical experiments motivate a controlled study of text-mediated
-supervision across cell identity and donor pathology. They do not yet establish
-an advantage attributable specifically to biological language, a causal
-composition/state decomposition, or strict zero-shot cohort transfer. The next
-step is methodological revalidation with equivalent supervision, frozen data
-contracts, inductive transforms and donor-level uncertainty, rather than
-additional model complexity. Final claims and the submission-ready manuscript
-will be determined by those comparisons, including negative outcomes.
+Under frozen data contracts, equal capacity and label access, and
+donor-level inference with permutation controls, contrastive
+biological-text alignment shows no detectable benefit over an equally
+endpoint-blind, non-semantic reference --- in exploratory or
+confirmatory phases, on either of two cohorts --- and falls short of
+direct endpoint supervision. The same protocol confirms that
+donor-level pathology signal is real and transfers across cohorts when
+the predictor is strictly source-fitted, and decomposes how much
+apparent signal the non-endpoint channels carry. The protocol --- not a
+positive text-grounding claim --- is the durable result: it converts a
+literature-level question into an evaluable experiment whose negative
+outcomes are as reportable as positive ones.
 
 \bibliographystyle{plainnat}
 \bibliography{refs}

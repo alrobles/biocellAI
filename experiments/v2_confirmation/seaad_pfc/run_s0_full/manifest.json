@@ -1,0 +1,66 @@
+{
+  "protocol": "v2",
+  "arms": [
+    "B0",
+    "B1",
+    "B2",
+    "T0",
+    "T1",
+    "T2",
+    "T3",
+    "N1",
+    "N2"
+  ],
+  "fold": {
+    "path": "/beegfs/a474r867/bioai/repos/biocellai-devel/experiments/v2_confirmation/seaad_pfc/folds/fold_s0.h5ad",
+    "sha256": "da55d5f1bd19a3bfefdbf405ec87ec2eeeeedebeee7d6189e9aef70dbc477e1e"
+  },
+  "config": {
+    "label_col": "cell_type",
+    "pathology_col": "CPS_Global",
+    "covariates": [],
+    "proto_dim": 384,
+    "ridge_alpha": 1.0,
+    "train": {
+      "epochs": "40",
+      "lr": "0.001",
+      "batch_size": "256",
+      "seed": "0",
+      "hidden": "(256, 128)",
+      "embed_dim": "64",
+      "dropout": "0.1",
+      "temperature": "0.07",
+      "device": "cpu",
+      "probe_epochs": "200"
+    }
+  },
+  "text_targets": {
+    "T2": {
+      "captions_file": "experiments/v2_confirmation/seaad_pfc/folds/captions_s0_markers.json",
+      "captions_sha256": "e51b6261945b050a91415ec73c179d414b613cd43a9dfbe6c0ba8bbdb9e74bb8"
+    },
+    "T3": {
+      "captions_file": "experiments/v2_confirmation/seaad_pfc/folds/captions_s0_pubmed_rag.json",
+      "captions_sha256": "ca1f096d1c9bce1b07ca017500ee3465f4c7581025885d40b834816b056c1662"
+    },
+    "N2": {
+      "permutes": "T3",
+      "seed": 888
+    }
+  },
+  "text_encoder": "all-MiniLM-L6-v2",
+  "environment": {
+    "numpy": "2.5.3",
+    "pandas": "2.3.3",
+    "torch": "2.14.0",
+    "scanpy": "1.12.4",
+    "anndata": "0.13.4"
+  },
+  "code_sha256": {
+    "v2run.py": "37fc19240f2095574c2f43294022e9f1590c9ad1f3c762bb296f50e09bfbe718",
+    "train.py": "f19824d3c60868d05fbab6058604f7a0284a5d6b64ce3a2c9b856f99e454ed07",
+    "data.py": "e824ad4368d9e3de1d2b00eb24d36b3d95734e1ef6b83e28f9fc22f9008f54c1",
+    "v2_run.py": "83988e3a2d6e18400fea2045792558f28f740a11fb3b84dec614e9d159c4f9b9"
+  },
+  "seed": 0
+}

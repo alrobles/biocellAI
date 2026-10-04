@@ -1,0 +1,21 @@
+{
+  "protocol": "v2_perm_null",
+  "perm_index": 3,
+  "perm_seed": 400015,
+  "fold": {
+    "path": "/beegfs/a474r867/bioai/repos/biocellai-devel/experiments/v2_confirmation/seaad_mtg/folds/fold_s4.h5ad",
+    "sha256": "84c8488bac13124e1b502ee8f896b68da8dd90165ba951679b88ea5c92d4475a"
+  },
+  "run": "/beegfs/a474r867/bioai/repos/biocellai-devel/experiments/v2_confirmation/seaad_mtg/run_s4_full",
+  "arms": [
+    "B2",
+    "B0",
+    "B1",
+    "T0",
+    "T1",
+    "T2",
+    "T3",
+    "N2"
+  ],
+  "design": "shared train-donor->label permutation per index; B2 retrains encoder on permuted labels (N1 null); other arms permute the ridge target on frozen features"
+}

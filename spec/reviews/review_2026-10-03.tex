@@ -1,0 +1,101 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{parskip}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue
+}
+
+\title{Revisión del paper \textit{biocellai\_paper.pdf}}
+\author{Revisión técnica}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Resumen breve}
+
+El paper pregunta si el texto biológico mejora representaciones celulares a nivel de donante. Para ello compara, bajo un protocolo congelado y con separación por donante, varias arms: baselines no-texto (B0 composición, B1 pseudobulk-PCA, B2 MLP supervisado), referencias contrastivas no semánticas (T0 one-hot, T1 prototipos aleatorios), arms con texto (T2 captions de marcadores, T3 captions PubMed/RAG) y nulls (N1 etiquetas permutadas, N2 mapa caption permutado). Evalúa patología a nivel de donante en SEA-AD MTG/PFC y ROSMAP, con transferencia estricta entre cohortes. Concluye que el text grounding no mejora la generalización a nivel de donante, mientras que B2 sí transfiere estrictamente, y que una parte sustancial de la señal aparente proviene de estructura de donante.
+
+\section*{Fortalezas}
+
+\begin{enumerate}[label=\arabic*.]
+    \item \textbf{Diseño controlado y conciencia de leakage.} El paper documenta auditorías de protocolos previos (v1) y congela contratos de datos, splits, transformaciones train-only, hashes de folds y gates pre-registrados. Esto es excelente y poco común.
+    \item \textbf{Inferencia a nivel de donante.} Usa bootstrap agrupado por donante, comparaciones pareadas y permutation nulls compartidos. Esto evita pseudorreplicación y es el estándar correcto para afirmaciones donor-held-out.
+    \item \textbf{Matriz de arms bien pensada.} Incluye referencias no semánticas (T0/T1) que permiten separar ``geometría contrastiva'' de ``semántica biológica''. La comparación T2/T3 vs T1 es la más limpia para evaluar si el texto aporta algo.
+    \item \textbf{Resultado positivo de transferencia estricta.} B2, con predictor congelado en la cohorte fuente, supera el gate $\rho \geq 0.35$ en ambas direcciones y todos los seeds. Esto es evidencia fuerte de señal portátil.
+    \item \textbf{Honestidad y reproducibilidad.} Reporta gates fallidos, límites estructurales, artefactos versionados, código y predicciones por donante. La conclusión está acotada explícitamente a este diseño.
+    \item \textbf{Cuantificación del confound por estructura de donante.} Aunque discutible (ver abajo), el intento de medir cuánto de la señal aparente se debe a estructura de donante es metodológicamente valioso.
+\end{enumerate}
+
+\section*{Problemas mayores}
+
+\subsection*{1. La comparación B2 vs T2/T3 no es de ``supervisión equivalente'' para el endpoint}
+
+B2 tiene una \textbf{cabeza de regresión de patología a nivel donante} entrenada directamente con la variable objetivo. T2/T3 se entrenan por alineamiento contrastivo contra captions y luego se les ajusta una regresión ridge sobre embeddings congelados. Por tanto:
+
+\begin{itemize}
+    \item B2 ve la patología del donante durante el entrenamiento del encoder.
+    \item T2/T3 no ven la patología del donante durante el entrenamiento del encoder; solo la ven en el readout ridge.
+\end{itemize}
+
+Esto no es supervisión equivalente para el endpoint. La comparación T2/T3 vs B2 mezcla dos cosas: (a) texto vs no-texto y (b) supervisión directa del endpoint vs supervisión indirecta/surrogate. El paper reconoce en la discusión que B2 ``optimiza directamente el endpoint'', pero el abstract y la conclusión siguen diciendo ``under matched supervision''. Eso es engañoso. La comparación justa para ``¿el texto aporta semántica?'' es T2/T3 vs T1, y ahí el texto no ayuda. La comparación T2/T3 vs B2 debería presentarse como ``texto contrastivo vs supervisión directa'', no como ``texto vs supervisión equivalente''.
+
+\textbf{Recomendación:} añadir un brazo de texto con la misma cabeza de patología que B2 (por ejemplo, T2/T3 + regression head) o reformular todas las afirmaciones para no llamar ``matched supervision'' a B2.
+
+\subsection*{2. El null N1 es sospechoso y necesita verificación}
+
+El paper dice que al permutar etiquetas donante$\rightarrow$patología y reentrenar B2, el null retiene $\rho \approx 0.3$--$0.4$. Si la permutación es correcta y el modelo se reentrena desde cero con esas etiquetas permutadas, la correlación esperada con la patología verdadera en donantes held-out debería ser $\sim 0$. Que sea $0.3$--$0.4$ sugiere al menos una de estas posibilidades:
+
+\begin{itemize}
+    \item La permutación no rompe completamente la asociación (p. ej., se permuta dentro de folds, o se conserva la cabeza de tipos celulares con etiquetas verdaderas y eso filtra la patología).
+    \item Hay leakage del test set o de la estructura de donante que el modelo explota de forma no esperada.
+    \item El readout no se reentrena realmente con etiquetas permutadas.
+    \item El null no está centrado en cero por un problema de implementación.
+\end{itemize}
+
+La explicación de que ``el encoder puede memorizar identidad de donante y la estructura de donante correlaciona con patología'' no basta: si las etiquetas están permutadas, el mapa de identidad$\rightarrow$etiqueta es aleatorio; en donantes nuevos, aplicarlo no debería predecir la patología verdadera. Este punto es central porque el paper lo usa como una de sus contribuciones principales (``quantification of a subtle confound''). Si el null es inválido, esa contribución se cae.
+
+\textbf{Recomendación:} documentar exactamente el procedimiento de permutación, verificar que el null está centrado en cero para un predictor aleatorio, y quizás añadir un null adicional donde se permuten features de donante o se entrene con etiquetas aleatorias pero sin cabeza de tipos celulares.
+
+\subsection*{3. Poder estadístico limitado y resultados mixtos}
+
+Los intervalos de confianza para $\Delta\rho$ en MTG son anchos ($\sim 0.5$) y varios incluyen cero. En ROSMAP la degradación de T2/T3 vs B2 es significativa, pero en MTG no. El paper lo reconoce, pero la conclusión de ``no hay beneficio'' es más fuerte de lo que el poder permite. Con 84 donantes, efectos pequeños o moderados no pueden excluirse. La frase ``no detectable benefit'' es correcta; ``no improvement'' a secas es demasiado fuerte.
+
+\subsection*{4. Gates pre-registrados imposibles}
+
+El gate de marker recovery P@10 $\geq 0.6$ era estructuralmente inalcanzable porque solo $13$--$33\%$ de los genes de referencia están en el espacio de 2000 HVG, con techo máximo $0.16$--$0.38$. Esto es una falla de diseño del pre-registro: un gate debe ser factible. El paper lo reporta honestamente, pero revela que la fase de pre-registro no verificó la alcanzabilidad de todos los gates. Es una lección metodológica, no un error fatal, pero debe señalarse.
+
+\section*{Problemas menores}
+
+\begin{itemize}
+    \item \textbf{Falta detalle sobre la generación de captions T2/T3.} No queda claro cómo se construyen exactamente los captions de marcadores, cómo se hace el RAG/PubMed, qué prompts se usan, cómo se evita circularidad, etc. Para reproducibilidad, esto es esencial.
+    \item \textbf{Tabla 4 incompleta y algunas figuras con formato roto.} Es un draft, pero debe corregirse.
+    \item \textbf{Endpoint ROSMAP ordinal vs CPS continuo.} Ya está declarado, pero limita comparaciones directas.
+    \item \textbf{PFC y MTG comparten donantes.} Está bien marcado como robustness check, pero no debe contarse como replicación independiente.
+    \item \textbf{B1 iguala a B2 en ROSMAP.} Esto sugiere que el endpoint está fuertemente impulsado por composición/pseudobulk. El paper lo discute, pero refuerza que el texto no tiene mucho margen para brillar en esta tarea.
+    \item \textbf{No hay evaluación de otros endpoints.} El título y la pregunta son generales, pero la evidencia es solo patología de Alzheimer en corteza post-mortem. La conclusión está acotada, pero el título podría ser más específico.
+\end{itemize}
+
+\section*{Evaluación global}
+
+\textbf{Fortalezas:} diseño experimental riguroso, pre-registro, inferencia a nivel de donante, transferencia estricta, reproducibilidad, honestidad con resultados negativos y fallos de gates.
+
+\textbf{Debilidades:} la comparación central B2 vs T2/T3 no es de supervisión equivalente para el endpoint; el null N1 es sospechoso y necesita verificación; poder estadístico limitado; gates imposibles; falta detalle de captions; alcance acotado.
+
+\textbf{Calificación orientativa:} $6.5/10$. Es un paper metodológico valioso, pero necesita revisiones mayores para sostener sus afirmaciones. Si se aclara la equivalencia de supervisión, se valida el null N1 y se reformulan las conclusiones, podría ser un buen paper en un venue de bioinformática/métodos (por ejemplo, \textit{Bioinformatics}, \textit{Genome Biology} o \textit{NeurIPS Datasets \& Benchmarks}). Tal como está, el mensaje principal es prometedor pero está sobreextendido en el abstract y la conclusión.
+
+\textbf{Recomendación:} revisión mayor. Aclarar la diferencia entre supervisión directa e indirecta, verificar el null de etiquetas permutadas, añadir un brazo de texto con cabeza de patología, y reescribir las afirmaciones para que el alcance coincida con la evidencia.
+
+\end{document}

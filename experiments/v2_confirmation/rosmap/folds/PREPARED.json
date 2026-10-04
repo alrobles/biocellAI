@@ -1,0 +1,21 @@
+{
+  "protocol": "v2",
+  "folds": [
+    {
+      "seed": 3,
+      "matrix": "fold_s3.h5ad",
+      "manifest": "fold_s3.json"
+    },
+    {
+      "seed": 4,
+      "matrix": "fold_s4.h5ad",
+      "manifest": "fold_s4.json"
+    },
+    {
+      "seed": 5,
+      "matrix": "fold_s5.h5ad",
+      "manifest": "fold_s5.json"
+    }
+  ],
+  "scientific_results_complete": false
+}

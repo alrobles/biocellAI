@@ -1,0 +1,43 @@
+{
+  "step": "v2_captions",
+  "mode": "copy",
+  "fold": "/beegfs/a474r867/bioai/repos/biocellai-devel/experiments/v2_confirmation/seaad_pfc/folds/fold_s0.h5ad",
+  "fold_sha256": "da55d5f1bd19a3bfefdbf405ec87ec2eeeeedebeee7d6189e9aef70dbc477e1e",
+  "label_col": "cell_type",
+  "n_classes": 24,
+  "classes": [
+    "Astrocyte",
+    "Chandelier",
+    "Endothelial",
+    "Immune",
+    "L2/3 IT",
+    "L4 IT",
+    "L5 ET",
+    "L5 IT",
+    "L5/6 NP",
+    "L6 CT",
+    "L6 IT",
+    "L6 IT Car3",
+    "L6b",
+    "Lamp5",
+    "Lamp5 Lhx6",
+    "OPC",
+    "Oligodendrocyte",
+    "Pax6",
+    "Pvalb",
+    "Sncg",
+    "Sst",
+    "Sst Chodl",
+    "VLMC & Perivascular",
+    "Vip"
+  ],
+  "environment": {
+    "anndata": "0.13.4",
+    "scanpy": "1.12.4"
+  },
+  "source_file": "/beegfs/a474r867/bioai/repos/biocellai-devel/data/text/m7/type_desc_pubmed_rag_markers_alias_allregions.json",
+  "source_sha256": "e18ca54255c906d8c797a6654018006e210f8e8e248eecb00c184cd6aa287c4c",
+  "missing_policy": "name",
+  "missing_classes": [],
+  "captions_sha256": "ca1f096d1c9bce1b07ca017500ee3465f4c7581025885d40b834816b056c1662"
+}

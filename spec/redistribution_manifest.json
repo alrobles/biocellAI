@@ -1,0 +1,53 @@
+{
+  "version": "2026-10-03",
+  "decision": "R7-LICENSE — per-artifact redistribution rules, owner-approved stack",
+  "license_stack": {
+    "code": "Apache-2.0 (LICENSE)",
+    "generated_artifacts": "CC-BY-4.0 (NOTICE)",
+    "paper_and_reports": "CC-BY-4.0",
+    "project_weights": "per training-data chain (see classes below)"
+  },
+  "source_terms": {
+    "tabula_sapiens_cellxgene": {
+      "term": "CC-BY-4.0 (cellxgene collection)",
+      "consequence": "processed folds and trained weights releasable with attribution"
+    },
+    "seaad_allen_abc_atlas": {
+      "term": "CC BY-NC 4.0 + Allen Institute Terms of Use + citation policy",
+      "consequence": "derivatives redistributable NON-COMMERCIALLY ONLY with Allen attribution; raw snRNASeq via AD Knowledge Portal remains controlled"
+    },
+    "rosmap_synapse_adkp": {
+      "term": "controlled access (AD Knowledge Portal DUO)",
+      "consequence": "no derived matrices or trained weights; donor IDs, split lists, hashes and recipes only"
+    },
+    "third_party_model_weights": {
+      "term": "each model's own license (scGPT, Geneformer, CellWhisperer, SapBERT, MiniLM, OLMo, Qwen)",
+      "consequence": "never re-host; cite source repository and version"
+    },
+    "pubmed_corpus": {
+      "term": "titles and abstracts only, truncated (~1200 chars/class)",
+      "consequence": "releasable; no full-text or paywalled content present"
+    }
+  },
+  "artifact_rules": [
+    {"pattern": "src/**, scripts/**, spec/**, tests/**, docs/**", "license": "Apache-2.0", "release": "yes"},
+    {"pattern": "data/text/**, data/retrieval/**, captions corpora", "license": "CC-BY-4.0", "release": "yes"},
+    {"pattern": "experiments/** metrics, predictions, gates, manifests, null CSVs", "license": "CC-BY-4.0", "release": "yes"},
+    {"pattern": "fold manifests, donor-split lists, hashes, dataset_flow", "license": "CC-BY-4.0", "release": "yes"},
+    {"pattern": "blood fold .h5ad (Tabula Sapiens derived)", "license": "CC-BY-4.0 + Tabula citation", "release": "yes"},
+    {"pattern": "weights trained on Tabula blood", "license": "Apache-2.0 + model card", "release": "yes"},
+    {"pattern": "SEA-AD fold .h5ad (MTG/PFC processed)", "license": "CC BY-NC 4.0 + Allen citation", "release": "conditional — only if redistribution desired; otherwise manifests+recipe"},
+    {"pattern": "weights trained on SEA-AD", "license": "CC BY-NC 4.0 + model card (non-commercial only)", "release": "conditional — withhold by default"},
+    {"pattern": "ROSMAP fold .h5ad / donor tables / matrices", "license": "none — controlled", "release": "no"},
+    {"pattern": "weights trained on ROSMAP", "license": "none — controlled-derived", "release": "no"},
+    {"pattern": "cached third-party weights (data/cellwhisperer, HF caches)", "license": "upstream", "release": "no — link only"},
+    {"pattern": "raw source datasets", "license": "upstream", "release": "no"}
+  ],
+  "withheld_by_default": [
+    "all ROSMAP-trained checkpoints and fold matrices",
+    "SEA-AD-trained checkpoints (pending CC BY-NC release decision)",
+    "SEA-AD/ROSMAP processed .h5ad matrices",
+    "all third-party model weights"
+  ],
+  "notes": "SEA-AD is CC BY-NC 4.0, NOT CC-BY: any released SEA-AD derivative must carry non-commercial terms and Allen citation. Weights derived from controlled-access data are never released. This manifest governs what R8-RELEASE may ship."
+}

@@ -1,0 +1,36 @@
+{
+  "task": "R5-MARKERS",
+  "cohort": "rosmap",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "k": 10,
+  "gate_threshold": 0.6,
+  "gate": "FAIL",
+  "macro_precision_nc": 0.01979166666666667,
+  "n_evaluable_total": 192,
+  "design": "Candidates = train-only Wilcoxon marker ranking minus genes injected into the fold's marker captions; reference = external PanglaoDB canonical sets",
+  "folds": [
+    "f4eb429fbd471fab7656af0777d7ec6f7e058d21847f5ec3417d3bbbf8f67518",
+    "7b32111542eaf96bc6b4dbd08e18abdf1121c247b4be8f5c03cde04dd52041c7",
+    "dd90c82cf8b37671768042cd050e0ff109f65bc87a11b3c9d302fbc2c9931fea",
+    "12928911ad0c3a44b96ee56840ceb6414f3447b5c0b9091187353aed7ec34e50",
+    "f74064294cc0655f17fb7c5f17848cd4c3706a39912e32fa492b7058207eecec",
+    "876ad93f0292b826b3193e7f9c3ac07cb8e21c5fb7d64a1da5b1ee276c4e0264"
+  ],
+  "captions": [
+    "c8bda60516ad5e17b8c4cdc3568141824e28ffe8fe0ccdfcabe72ffe484bc98b",
+    "24f99eb16710e2055e6a34f075d36ddaacf629dffefede1b1bdbb652351aba6a",
+    "b812277f991fba96268f81a0fbeee7db59f0627be7ddd15fab142b34abe167e8",
+    "1b28c02ad3c8a12f55e8ed3a7cef8bfe12c07a31dd35e187d615ef5795ee4f93",
+    "45de7185f02592671d9269c1c30b8aec968f2107fafd4e0c61ba167b260ff676",
+    "a110c38775a61e4a0b1d807a95fa1d41b6ddfdcdf6323da3a191002e1a100ad1"
+  ],
+  "reference_file": "data/manifests/panglao_rosmap_markers.json",
+  "reference_sha256": "6ad95fa969f861c2d2fb145976cc31379420d457ea53902c5991c9203bd776d7"
+}

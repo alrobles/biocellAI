@@ -14,14 +14,19 @@ https://creativecommons.org/licenses/by/4.0/
 
 THIRD-PARTY DATA
 This repository does not redistribute source single-cell datasets.
-Tabula Sapiens, SEA-AD (Allen Institute), and ROSMAP data retain their
-original terms and access conditions; processed derivatives are released
-only where those terms permit, and controlled-access data (ROSMAP via the
-AD Knowledge Portal) are represented here by manifests and donor
-identifiers only.
+Tabula Sapiens (cellxgene, CC-BY-4.0), SEA-AD (Allen Brain Cell Atlas,
+CC BY-NC 4.0 plus Allen Institute Terms of Use and citation policy), and
+ROSMAP (AD Knowledge Portal, controlled access) retain their original
+terms. SEA-AD-derived artifacts may be shared only non-commercially with
+Allen attribution; controlled-access ROSMAP data are represented here by
+manifests and donor identifiers only. Per-artifact decisions live in
+spec/redistribution_manifest.json.
 
 MODEL WEIGHTS
-Any trained checkpoints released through the project channels are licensed
-Apache-2.0 and carry a provenance manifest identifying their training-data
-license chain. Checkpoints derived from controlled-access data are released
-only where the data-use terms permit.
+Trained checkpoints released through the project channels carry a
+provenance manifest identifying their training-data license chain.
+Weights trained on Tabula Sapiens blood are Apache-2.0; weights trained
+on SEA-AD may be released only under CC BY-NC 4.0 (non-commercial);
+weights derived from controlled-access data (ROSMAP) are never
+released. Third-party model weights are never re-hosted — the original
+repositories and versions are cited instead.

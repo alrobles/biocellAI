@@ -28,20 +28,27 @@ keep their original terms.
 | Trained cell-encoder checkpoints | **Conditional by training data** | See provenance limits |
 | Raw datasets | **No** | Not ours to redistribute |
 
-### Source-data terms (must be verified before releasing derivatives)
+### Source-data terms (verified 2026-10-03; decisions in `spec/redistribution_manifest.json`)
 
-- **Tabula Sapiens** (cellxgene): permissive; processed blood folds likely
-  redistributable with attribution — confirm collection license on the
-  cellxgene page before uploading.
-- **SEA-AD** (Allen Institute / cellxgene): Allen Institute terms apply;
-  derived processed matrices may be shareable under attribution, but donor
-  metadata fields must be checked for restricted columns.
+- **Tabula Sapiens** (cellxgene): CC-BY-4.0 — processed blood folds and
+  Tabula-trained weights are redistributable with attribution.
+- **SEA-AD** (Allen Brain Cell Atlas): **CC BY-NC 4.0** + Allen Terms of
+  Use + citation policy — derivatives may be shared only
+  **non-commercially** with Allen attribution. SEA-AD-trained weights
+  may therefore NOT be released under Apache-2.0; options are a
+  CC BY-NC 4.0 release or withholding (default: withhold, ship
+  manifests + recipe). Raw snRNASeq stays behind the AD Knowledge
+  Portal regardless.
 - **ROSMAP** (AD Knowledge Portal / RADC, controlled access): **do not**
   redistribute raw or processed donor matrices. Release donor IDs/split
   lists and recipes only.
-- **Weights trained on ROSMAP**: treat as controlled-access-derived; release
-  only after confirming the DUO terms. Weights trained on Tabula Sapiens /
-  SEA-AD are lower risk but should carry a provenance manifest.
+- **Weights trained on ROSMAP**: controlled-access-derived; **never
+  released** (DUO does not permit redistribution of derivatives).
+- **Third-party model weights** (scGPT, Geneformer, CellWhisperer,
+  SapBERT, MiniLM, OLMo, Qwen caches): **never re-hosted**; cite the
+  source repository and version.
+- **PubMed caption corpus**: verified titles+abstracts only, truncated
+  (~1200 chars/class); no paywalled full text.
 
 ## Release channels
 

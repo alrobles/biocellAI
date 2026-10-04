@@ -1,0 +1,3511 @@
+{
+ "s0": {
+  "classes": [
+   {
+    "cell_type": "Astrocyte",
+    "n_reference": 12,
+    "n_ref_in_space": 10,
+    "ceiling_nc": 1.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "SLC1A3"
+    ],
+    "candidates_nc": [
+     "HIF3A",
+     "ATP1A2",
+     "PARD3B",
+     "NEAT1",
+     "SLC1A3",
+     "LINC00299",
+     "BMPR1B",
+     "TPD52L1",
+     "ITPKB",
+     "CDH20"
+    ],
+    "precision_naive": 0.1,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Chandelier",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "SLC6A1"
+    ],
+    "candidates_nc": [
+     "TMEM132C",
+     "FSTL5",
+     "MYO16",
+     "PLD5",
+     "ERBB4",
+     "SLC6A1",
+     "TAFA4",
+     "SLC24A3",
+     "FGF13",
+     "ADAM12"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Endothelial",
+    "n_reference": 12,
+    "n_ref_in_space": 9,
+    "ceiling_nc": 0.9,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "CLDN5"
+    ],
+    "candidates_nc": [
+     "ABCB1",
+     "CLDN5",
+     "HLA-E",
+     "PRKCH",
+     "FLI1",
+     "ERG",
+     "PECAM1",
+     "SYNE2",
+     "PODXL",
+     "TGM2"
+    ],
+    "precision_naive": 0.1,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Immune",
+    "n_reference": 0,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "CHST11",
+     "DOCK2",
+     "ARHGAP15",
+     "SFMBT2",
+     "RUNX1",
+     "DISC1",
+     "SLCO2B1",
+     "INPP5D",
+     "PTPRC",
+     "ITPR2"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": false
+   },
+   {
+    "cell_type": "L2/3 IT",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 2,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "AC011287.1",
+     "LINC01378",
+     "CA10",
+     "LINC00276",
+     "AL157944.1",
+     "LINC02306",
+     "MEIS2",
+     "AC093607.1",
+     "AC034268.2",
+     "DENND3"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L4 IT",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 3,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "AC073091.3",
+     "COBLL1",
+     "IL1RAPL2",
+     "LINC01725",
+     "LINC02232",
+     "AC016687.2",
+     "AL356295.1",
+     "AL450352.1",
+     "SCHLAP1",
+     "ALDH1A1"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L5 ET",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "KLHL1",
+     "EYA4",
+     "CDH20",
+     "HS3ST2",
+     "FAM126A",
+     "TMEM163",
+     "SEMA6A",
+     "CNKSR3",
+     "UTRN",
+     "PDE1C"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L5 IT",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 7,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "AC109466.1",
+     "AC060765.2",
+     "AC008415.1",
+     "IPCEF1",
+     "HS3ST4",
+     "DPP10",
+     "AC073091.3",
+     "PRUNE2",
+     "LDLRAD3",
+     "AC016687.2"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L5/6 NP",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "CPNE4",
+     "LHFPL3",
+     "NXPH2",
+     "CHRM2",
+     "SAMD3",
+     "PWRN1",
+     "IFNG-AS1",
+     "CALCRL",
+     "UST",
+     "LUZP2"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L6 CT",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "DPP10",
+     "SULF1",
+     "AC011246.1",
+     "ZFHX3",
+     "SNTG2",
+     "HS3ST2",
+     "MEIS2",
+     "TRIM22",
+     "SDK1",
+     "MEGF11"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L6 IT",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 2,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "AL136456.1",
+     "ZNF804B",
+     "AC011287.1",
+     "CBLN2",
+     "CA10",
+     "DPP10",
+     "SNTG2",
+     "HS3ST5",
+     "DENND3",
+     "HS3ST2"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L6 IT Car3",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 3,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "AC110023.1",
+     "CACHD1",
+     "RGS12",
+     "LRMDA",
+     "ATP10A",
+     "THEMIS",
+     "GNB4",
+     "SYNPR",
+     "CA10",
+     "RASGEF1C"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L6b",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "RYR3",
+     "SGCZ",
+     "LINC02232",
+     "AL136456.1",
+     "HS3ST5",
+     "TENM1",
+     "PWRN1",
+     "RGMA",
+     "CCN2",
+     "DPP10"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Lamp5",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "GAD2"
+    ],
+    "candidates_nc": [
+     "MYO16",
+     "PTCHD4",
+     "EGFR",
+     "PRELID2",
+     "AC132803.1",
+     "KIT",
+     "GAD2",
+     "ADAMTS9-AS2",
+     "FBXL7",
+     "EYA4"
+    ],
+    "precision_naive": 0.1,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Lamp5 Lhx6",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.2,
+    "hits_nc": [
+     "GAD2",
+     "SLC6A1"
+    ],
+    "candidates_nc": [
+     "SGCZ",
+     "PTCHD4",
+     "ALK",
+     "GAD2",
+     "SV2C",
+     "SLC6A1",
+     "NXPH1",
+     "GRIN3A",
+     "ITGA8",
+     "GRIK1"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "OPC",
+    "n_reference": 12,
+    "n_ref_in_space": 11,
+    "ceiling_nc": 1.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "PDGFRA"
+    ],
+    "candidates_nc": [
+     "SEMA5A",
+     "PDGFRA",
+     "XYLT1",
+     "KAT2B",
+     "LINC00511",
+     "LUZP2",
+     "AC004852.2",
+     "CA10",
+     "TMEM132C",
+     "CHST11"
+    ],
+    "precision_naive": 0.5,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Oligodendrocyte",
+    "n_reference": 12,
+    "n_ref_in_space": 11,
+    "ceiling_nc": 1.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.3,
+    "hits_nc": [
+     "PLP1",
+     "ENPP2",
+     "TF"
+    ],
+    "candidates_nc": [
+     "PLP1",
+     "QKI",
+     "TMEM165",
+     "DOCK5",
+     "C10orf90",
+     "ENPP2",
+     "TF",
+     "CLMN",
+     "PDE4B",
+     "FRMD4B"
+    ],
+    "precision_naive": 0.3,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Pax6",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "RGS12",
+     "NR2F2-AS1",
+     "GALNTL6",
+     "MAML3",
+     "PLD5",
+     "IL1RAPL2",
+     "SHISA6",
+     "HS3ST5",
+     "DDR2",
+     "DLX6-AS1"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Pvalb",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "GAD2"
+    ],
+    "candidates_nc": [
+     "ZNF385D",
+     "TMEM132C",
+     "GAD2",
+     "RUNX2",
+     "KIF26B",
+     "ADAMTS17",
+     "PTCHD4",
+     "DPP10",
+     "ADAMTS9-AS2",
+     "SULF1"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Sncg",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "EGFR",
+     "CHRNA7",
+     "THSD7B",
+     "AC132803.1",
+     "SGO1-AS1",
+     "PLD5",
+     "GRIK1",
+     "BTBD11",
+     "ZNF385D",
+     "AL589740.1"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Sst",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "GAD2"
+    ],
+    "candidates_nc": [
+     "GRIN3A",
+     "LHFPL3",
+     "TENM1",
+     "PAWR",
+     "KCNIP1",
+     "SLC24A3",
+     "PCDH15",
+     "GAD2",
+     "COL25A1",
+     "ZNF385D"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Sst Chodl",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "SST"
+    ],
+    "candidates_nc": [
+     "LHFPL3",
+     "UTRN",
+     "PCSK5",
+     "CRYBG3",
+     "SST",
+     "TRPC6",
+     "SOX2-OT",
+     "SVIL",
+     "SRGAP1",
+     "ARHGAP24"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "VLMC & Perivascular",
+    "n_reference": 0,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "ITIH5",
+     "NID1",
+     "PARD3",
+     "UTRN",
+     "COLEC12",
+     "AC092957.1",
+     "ZFHX3",
+     "NEAT1",
+     "ARHGAP42",
+     "TIMP3"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": false
+   },
+   {
+    "cell_type": "Vip",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "DLX6-AS1",
+     "BTBD11",
+     "CALB2",
+     "THSD7A",
+     "AC233296.1",
+     "NR2F2-AS1",
+     "PROX1-AS1",
+     "EGFR",
+     "C8orf34",
+     "SDK1"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   }
+  ],
+  "macro": {
+   "n_classes": 24,
+   "n_evaluable": 22,
+   "precision_nc": 0.059090909090909104,
+   "precision_naive": 0.05,
+   "ceiling_nc": 0.38181818181818183,
+   "n_ref_in_space": 86
+  }
+ },
+ "s1": {
+  "classes": [
+   {
+    "cell_type": "Astrocyte",
+    "n_reference": 12,
+    "n_ref_in_space": 10,
+    "ceiling_nc": 1.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "SLC1A3"
+    ],
+    "candidates_nc": [
+     "HIF3A",
+     "ATP1A2",
+     "PARD3B",
+     "NEAT1",
+     "SLC1A3",
+     "TPD52L1",
+     "BMPR1B",
+     "NPAS3",
+     "LINC00299",
+     "ZNRF3"
+    ],
+    "precision_naive": 0.1,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Chandelier",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "SLC6A1"
+    ],
+    "candidates_nc": [
+     "CA8",
+     "TMEM132C",
+     "MYO16",
+     "PLD5",
+     "ERBB4",
+     "TAFA4",
+     "SLC24A3",
+     "SLC6A1",
+     "FGF13",
+     "ADAM12"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Endothelial",
+    "n_reference": 12,
+    "n_ref_in_space": 9,
+    "ceiling_nc": 0.9,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "CLDN5"
+    ],
+    "candidates_nc": [
+     "CLDN5",
+     "PRKCH",
+     "FLI1",
+     "ANO2",
+     "HLA-E",
+     "ERG",
+     "GALNT15",
+     "SYNE2",
+     "TGM2",
+     "ADIPOR2"
+    ],
+    "precision_naive": 0.1,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Immune",
+    "n_reference": 0,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "ST6GAL1",
+     "ARHGAP15",
+     "CHST11",
+     "SFMBT2",
+     "INPP5D",
+     "PTPRC",
+     "ITPR2",
+     "RUNX1",
+     "DISC1",
+     "FYB1"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": false
+   },
+   {
+    "cell_type": "L2/3 IT",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 2,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "AC011287.1",
+     "LINC01378",
+     "CA10",
+     "LINC00276",
+     "AL157944.1",
+     "LINC02306",
+     "MEIS2",
+     "AC093607.1",
+     "AC034268.2",
+     "LINC00326"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L4 IT",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 3,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "AC073091.3",
+     "COBLL1",
+     "IL1RAPL2",
+     "LINC01725",
+     "LINC02232",
+     "AL356295.1",
+     "AC016687.2",
+     "AL450352.1",
+     "SCHLAP1",
+     "CNTN5"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L5 ET",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "EYA4",
+     "FAM126A",
+     "CDH20",
+     "HS3ST2",
+     "TMEM163",
+     "CNKSR3",
+     "SEMA6A",
+     "UTRN",
+     "PDE1C",
+     "CBLN2"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L5 IT",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 7,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "AC109466.1",
+     "AC060765.2",
+     "AC008415.1",
+     "IPCEF1",
+     "HS3ST4",
+     "DPP10",
+     "AC073091.3",
+     "PRUNE2",
+     "LDLRAD3",
+     "AC016687.2"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L5/6 NP",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "CPNE4",
+     "LHFPL3",
+     "NXPH2",
+     "CHRM2",
+     "IFNG-AS1",
+     "PWRN1",
+     "SAMD3",
+     "CALCRL",
+     "UST",
+     "LUZP2"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L6 CT",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "SULF1",
+     "DPP10",
+     "AC011246.1",
+     "MCC",
+     "ZFHX3",
+     "SNTG2",
+     "TRIM22",
+     "MEIS2",
+     "HS3ST2",
+     "SDK1"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L6 IT",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 2,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "AL136456.1",
+     "ZNF804B",
+     "AC011287.1",
+     "CBLN2",
+     "CA10",
+     "DPP10",
+     "HS3ST5",
+     "SNTG2",
+     "DENND3",
+     "AKAP13"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L6 IT Car3",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 3,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "AC110023.1",
+     "CACHD1",
+     "RGS12",
+     "ATP10A",
+     "LRMDA",
+     "THEMIS",
+     "GNB4",
+     "SYNPR",
+     "CA10",
+     "RASGEF1C"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L6b",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "RYR3",
+     "SGCZ",
+     "LINC02232",
+     "AL136456.1",
+     "HS3ST5",
+     "TENM1",
+     "PWRN1",
+     "RGMA",
+     "CCN2",
+     "DPP10"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Lamp5",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "GAD2"
+    ],
+    "candidates_nc": [
+     "MYO16",
+     "PTCHD4",
+     "EGFR",
+     "PRELID2",
+     "AC132803.1",
+     "KIT",
+     "GAD2",
+     "FBXL7",
+     "ADAMTS9-AS2",
+     "EYA4"
+    ],
+    "precision_naive": 0.1,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Lamp5 Lhx6",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.2,
+    "hits_nc": [
+     "GAD2",
+     "SLC6A1"
+    ],
+    "candidates_nc": [
+     "ALK",
+     "PTCHD4",
+     "GAD2",
+     "SV2C",
+     "KAZN",
+     "SLC6A1",
+     "NXPH1",
+     "GRIN3A",
+     "GRIK1",
+     "ITGA8"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "OPC",
+    "n_reference": 12,
+    "n_ref_in_space": 11,
+    "ceiling_nc": 1.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.2,
+    "hits_nc": [
+     "EPN2",
+     "PDGFRA"
+    ],
+    "candidates_nc": [
+     "EPN2",
+     "PDGFRA",
+     "XYLT1",
+     "KAT2B",
+     "LINC00511",
+     "AC004852.2",
+     "LUZP2",
+     "CA10",
+     "CHST11",
+     "SOX6"
+    ],
+    "precision_naive": 0.5,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Oligodendrocyte",
+    "n_reference": 12,
+    "n_ref_in_space": 11,
+    "ceiling_nc": 1.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.3,
+    "hits_nc": [
+     "PLP1",
+     "ENPP2",
+     "TF"
+    ],
+    "candidates_nc": [
+     "QKI",
+     "PLP1",
+     "TMEM165",
+     "DOCK5",
+     "C10orf90",
+     "ENPP2",
+     "TF",
+     "PDE4B",
+     "CLMN",
+     "FRMD4B"
+    ],
+    "precision_naive": 0.3,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Pax6",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "RGS12",
+     "NR2F2-AS1",
+     "GALNTL6",
+     "MAML3",
+     "PLD5",
+     "IL1RAPL2",
+     "SHISA6",
+     "KAZN",
+     "KCNIP1",
+     "HS3ST5"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Pvalb",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "GAD2"
+    ],
+    "candidates_nc": [
+     "KAZN",
+     "ZNF385D",
+     "TMEM132C",
+     "GAD2",
+     "RUNX2",
+     "KIF26B",
+     "ADAMTS17",
+     "PTCHD4",
+     "DPP10",
+     "ADAMTS9-AS2"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Sncg",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "CHRNA7",
+     "EGFR",
+     "SGO1-AS1",
+     "THSD7B",
+     "PLD5",
+     "AC132803.1",
+     "NPAS3",
+     "GRIK1",
+     "BTBD11",
+     "ZNF385D"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Sst",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "GAD2"
+    ],
+    "candidates_nc": [
+     "SOX6",
+     "LHFPL3",
+     "TENM1",
+     "PAWR",
+     "KCNIP1",
+     "SLC24A3",
+     "NPAS3",
+     "GAD2",
+     "PCDH15",
+     "COL25A1"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Sst Chodl",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "SST"
+    ],
+    "candidates_nc": [
+     "LHFPL3",
+     "NOS1",
+     "SST",
+     "PCSK5",
+     "TRPC6",
+     "SHISA6",
+     "ARHGAP24",
+     "SRGAP1",
+     "CRYBG3",
+     "PARD3"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "VLMC & Perivascular",
+    "n_reference": 0,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "ITIH5",
+     "UTRN",
+     "PARD3",
+     "NID1",
+     "COLEC12",
+     "AC092957.1",
+     "ZFHX3",
+     "TIMP3",
+     "ARHGAP42",
+     "NEAT1"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": false
+   },
+   {
+    "cell_type": "Vip",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "DLX6-AS1",
+     "BTBD11",
+     "CALB2",
+     "THSD7A",
+     "AC233296.1",
+     "NR2F2-AS1",
+     "PROX1-AS1",
+     "EGFR",
+     "SDK1",
+     "C8orf34"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   }
+  ],
+  "macro": {
+   "n_classes": 24,
+   "n_evaluable": 22,
+   "precision_nc": 0.06363636363636366,
+   "precision_naive": 0.05,
+   "ceiling_nc": 0.38181818181818183,
+   "n_ref_in_space": 86
+  }
+ },
+ "s2": {
+  "classes": [
+   {
+    "cell_type": "Astrocyte",
+    "n_reference": 12,
+    "n_ref_in_space": 11,
+    "ceiling_nc": 1.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "SLC1A3"
+    ],
+    "candidates_nc": [
+     "ATP1A2",
+     "GLIS3",
+     "PARD3B",
+     "NEAT1",
+     "SLC1A3",
+     "NPAS3",
+     "LINC00299",
+     "TPD52L1",
+     "BMPR1B",
+     "ITPKB"
+    ],
+    "precision_naive": 0.1,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Chandelier",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "SLC6A1"
+    ],
+    "candidates_nc": [
+     "CA8",
+     "TMEM132C",
+     "MYO16",
+     "PLD5",
+     "ERBB4",
+     "TAFA4",
+     "SLC6A1",
+     "SLC24A3",
+     "ADAM12",
+     "FGF13"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Endothelial",
+    "n_reference": 12,
+    "n_ref_in_space": 9,
+    "ceiling_nc": 0.9,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "ANO2",
+     "FLI1",
+     "ERG",
+     "ABCB1",
+     "PRKCH",
+     "HLA-E",
+     "PECAM1",
+     "THSD4",
+     "SYNE2",
+     "ITGA1"
+    ],
+    "precision_naive": 0.1,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Immune",
+    "n_reference": 0,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "ST6GAL1",
+     "ARHGAP15",
+     "CHST11",
+     "RUNX1",
+     "FKBP5",
+     "INPP5D",
+     "SLCO2B1",
+     "DISC1",
+     "FYB1",
+     "PTPRC"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": false
+   },
+   {
+    "cell_type": "L2/3 IT",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 1,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "AC011287.1",
+     "LINC01378",
+     "CA10",
+     "LINC00276",
+     "LINC02306",
+     "AC093607.1",
+     "MEIS2",
+     "AC034268.2",
+     "DENND3",
+     "LINC00326"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L4 IT",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 3,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "AC073091.3",
+     "COBLL1",
+     "IL1RAPL2",
+     "LINC01725",
+     "LINC02232",
+     "AC016687.2",
+     "AL356295.1",
+     "AL450352.1",
+     "CNTN5",
+     "SCHLAP1"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L5 ET",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "KLHL1",
+     "EYA4",
+     "MYO16",
+     "HS3ST2",
+     "CDH20",
+     "FAM126A",
+     "SEMA6A",
+     "CNKSR3",
+     "TMEM163",
+     "UTRN"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L5 IT",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 7,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "AC109466.1",
+     "AC060765.2",
+     "AC008415.1",
+     "IPCEF1",
+     "HS3ST4",
+     "AC073091.3",
+     "DPP10",
+     "PRUNE2",
+     "LDLRAD3",
+     "AC016687.2"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L5/6 NP",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "CPNE4",
+     "LHFPL3",
+     "NXPH2",
+     "CHRM2",
+     "PWRN1",
+     "SAMD3",
+     "IFNG-AS1",
+     "CALCRL",
+     "UST",
+     "LUZP2"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L6 CT",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "DPP10",
+     "RYR3",
+     "AC011246.1",
+     "ZFHX3",
+     "HS3ST2",
+     "GRIK3",
+     "TRIM22",
+     "MEIS2",
+     "MEGF11",
+     "SDK1"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L6 IT",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 2,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "AL136456.1",
+     "ZNF804B",
+     "AC011287.1",
+     "CA10",
+     "GRIK3",
+     "DPP10",
+     "HS3ST5",
+     "HS3ST2",
+     "DENND3",
+     "CCK"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L6 IT Car3",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "CA10",
+     "CPNE4",
+     "TMEM163",
+     "CHRM2",
+     "RASGEF1C",
+     "MCTP2",
+     "HS3ST4",
+     "HPSE2",
+     "LINC02073",
+     "AL136119.1"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L6b",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "RYR3",
+     "ADD3-AS1",
+     "GRIK3",
+     "LINC02232",
+     "AL136456.1",
+     "HS3ST5",
+     "TENM1",
+     "PWRN1",
+     "RGMA",
+     "DPP10"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Lamp5",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "GAD2"
+    ],
+    "candidates_nc": [
+     "MYO16",
+     "PTCHD4",
+     "EGFR",
+     "PRELID2",
+     "AC132803.1",
+     "KIT",
+     "GAD2",
+     "ADAMTS9-AS2",
+     "EYA4",
+     "FBXL7"
+    ],
+    "precision_naive": 0.1,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Lamp5 Lhx6",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.2,
+    "hits_nc": [
+     "GAD2",
+     "SLC6A1"
+    ],
+    "candidates_nc": [
+     "PTCHD4",
+     "GAD2",
+     "ALK",
+     "SV2C",
+     "KAZN",
+     "SLC6A1",
+     "ITGA8",
+     "NXPH1",
+     "GRIN3A",
+     "UNC13C"
+    ],
+    "precision_naive": 0.1,
+    "evaluable": true
+   },
+   {
+    "cell_type": "OPC",
+    "n_reference": 12,
+    "n_ref_in_space": 11,
+    "ceiling_nc": 1.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.2,
+    "hits_nc": [
+     "EPN2",
+     "PDGFRA"
+    ],
+    "candidates_nc": [
+     "XYLT1",
+     "EPN2",
+     "PDGFRA",
+     "KAT2B",
+     "AC004852.2",
+     "LUZP2",
+     "LINC00511",
+     "CA10",
+     "TMEM132C",
+     "CHST11"
+    ],
+    "precision_naive": 0.4,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Oligodendrocyte",
+    "n_reference": 12,
+    "n_ref_in_space": 11,
+    "ceiling_nc": 1.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.3,
+    "hits_nc": [
+     "PLP1",
+     "TF",
+     "ENPP2"
+    ],
+    "candidates_nc": [
+     "PLP1",
+     "TMEM165",
+     "PHLPP1",
+     "CLMN",
+     "TF",
+     "DOCK5",
+     "ENPP2",
+     "C10orf90",
+     "PDE4B",
+     "FRMD4B"
+    ],
+    "precision_naive": 0.3,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Pax6",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "NR2F2-AS1",
+     "RGS12",
+     "GALNTL6",
+     "MAML3",
+     "PLD5",
+     "IL1RAPL2",
+     "SHISA6",
+     "HS3ST5",
+     "KAZN",
+     "DDR2"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Pvalb",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "GAD2"
+    ],
+    "candidates_nc": [
+     "KAZN",
+     "ZNF385D",
+     "GAD2",
+     "TMEM132C",
+     "RUNX2",
+     "GRIK3",
+     "KIF26B",
+     "ADAMTS17",
+     "PTCHD4",
+     "DPP10"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Sncg",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "AC132803.1",
+     "EGFR",
+     "CHRNA7",
+     "SGO1-AS1",
+     "GRIK1",
+     "THSD7B",
+     "PLD5",
+     "BTBD11",
+     "NPAS3",
+     "ZNF385D"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Sst",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "GAD2"
+    ],
+    "candidates_nc": [
+     "GRIN3A",
+     "LHFPL3",
+     "TENM1",
+     "SHISA6",
+     "PAWR",
+     "GPC6",
+     "KCNIP1",
+     "SLC24A3",
+     "PCDH15",
+     "GAD2"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Sst Chodl",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "SST"
+    ],
+    "candidates_nc": [
+     "SST",
+     "UTRN",
+     "NOS1",
+     "TRPC6",
+     "CRYBG3",
+     "SVIL",
+     "SHISA6",
+     "SGCZ",
+     "ARHGAP24",
+     "SRGAP1"
+    ],
+    "precision_naive": 0.1,
+    "evaluable": true
+   },
+   {
+    "cell_type": "VLMC & Perivascular",
+    "n_reference": 0,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "NID1",
+     "UTRN",
+     "ITIH5",
+     "COLEC12",
+     "ZFHX3",
+     "PARD3",
+     "AC092957.1",
+     "TIMP3",
+     "ARHGAP42",
+     "GRAMD2B"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": false
+   },
+   {
+    "cell_type": "Vip",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "DLX6-AS1",
+     "BTBD11",
+     "CALB2",
+     "THSD7A",
+     "AC233296.1",
+     "NR2F2-AS1",
+     "PROX1-AS1",
+     "EGFR",
+     "C8orf34",
+     "SDK1"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   }
+  ],
+  "macro": {
+   "n_classes": 24,
+   "n_evaluable": 22,
+   "precision_nc": 0.059090909090909104,
+   "precision_naive": 0.05454545454545454,
+   "ceiling_nc": 0.38181818181818183,
+   "n_ref_in_space": 87
+  }
+ },
+ "s3": {
+  "classes": [
+   {
+    "cell_type": "Astrocyte",
+    "n_reference": 12,
+    "n_ref_in_space": 11,
+    "ceiling_nc": 1.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "SLC1A3"
+    ],
+    "candidates_nc": [
+     "RYR3",
+     "ATP1A2",
+     "PARD3B",
+     "NEAT1",
+     "TPD52L1",
+     "NFIA",
+     "SLC1A3",
+     "LINC00299",
+     "ITPKB",
+     "BMPR1B"
+    ],
+    "precision_naive": 0.1,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Chandelier",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "SLC6A1"
+    ],
+    "candidates_nc": [
+     "MYO16",
+     "PLD5",
+     "ERBB4",
+     "TAFA4",
+     "SLC6A1",
+     "SLC24A3",
+     "FGF13",
+     "ADAM12",
+     "RUNX2",
+     "AC046195.2"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Endothelial",
+    "n_reference": 12,
+    "n_ref_in_space": 11,
+    "ceiling_nc": 1.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "EGFL7"
+    ],
+    "candidates_nc": [
+     "ANO2",
+     "HLA-E",
+     "ABCB1",
+     "PRKCH",
+     "FLI1",
+     "PECAM1",
+     "ERG",
+     "EGFL7",
+     "TGM2",
+     "ADIPOR2"
+    ],
+    "precision_naive": 0.1,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Immune",
+    "n_reference": 0,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "ST6GAL1",
+     "CHST11",
+     "DOCK2",
+     "RUNX1",
+     "INPP5D",
+     "PTPRC",
+     "DISC1",
+     "SFMBT2",
+     "FKBP5",
+     "FYB1"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": false
+   },
+   {
+    "cell_type": "L2/3 IT",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 2,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "AC011287.1",
+     "LINC01378",
+     "CA10",
+     "LINC00276",
+     "AL157944.1",
+     "LINC02306",
+     "AC093607.1",
+     "MEIS2",
+     "AC034268.2",
+     "DENND3"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L4 IT",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 3,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "AC073091.3",
+     "COBLL1",
+     "IL1RAPL2",
+     "LINC01725",
+     "AL356295.1",
+     "LINC02232",
+     "AC016687.2",
+     "AL450352.1",
+     "SCHLAP1",
+     "ALDH1A1"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L5 ET",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "SPHKAP",
+     "MYO16",
+     "PCSK6",
+     "KLHL1",
+     "EYA4",
+     "HS3ST2",
+     "CDH20",
+     "LINC02208",
+     "FAM126A",
+     "SEMA6A"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L5 IT",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 7,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "AC109466.1",
+     "AC060765.2",
+     "AC008415.1",
+     "IPCEF1",
+     "DPP10",
+     "HS3ST4",
+     "GRM8",
+     "AC073091.3",
+     "PRUNE2",
+     "AC016687.2"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L5/6 NP",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "DLC1",
+     "CPNE4",
+     "NXPH2",
+     "LHFPL3",
+     "CHRM2",
+     "PWRN1",
+     "SAMD3",
+     "IFNG-AS1",
+     "CALCRL",
+     "UST"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L6 CT",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "SULF1",
+     "RYR3",
+     "AC011246.1",
+     "GRM8",
+     "ROBO2",
+     "GRIK3",
+     "ZFHX3",
+     "HS3ST2",
+     "TRIM22",
+     "MEIS2"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L6 IT",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 2,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "AL136456.1",
+     "ZNF804B",
+     "AC011287.1",
+     "CBLN2",
+     "CA10",
+     "NFIA",
+     "GRIK3",
+     "DPP10",
+     "HS3ST5",
+     "HS3ST2"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L6 IT Car3",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "CA10",
+     "CPNE4",
+     "RASGEF1C",
+     "TMEM163",
+     "CHRM2",
+     "HS3ST4",
+     "MCTP2",
+     "HPSE2",
+     "LINC02073",
+     "AL136119.1"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L6b",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "SEMA3E",
+     "SGCZ",
+     "RYR3",
+     "UTRN",
+     "ADD3-AS1",
+     "GRIK3",
+     "LINC02232",
+     "AL136456.1",
+     "HS3ST5",
+     "PWRN1"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Lamp5",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "GAD2"
+    ],
+    "candidates_nc": [
+     "PTCHD4",
+     "PRELID2",
+     "EGFR",
+     "AC132803.1",
+     "KIT",
+     "GAD2",
+     "EYA4",
+     "ADAMTS9-AS2",
+     "NXPH1",
+     "FBXL7"
+    ],
+    "precision_naive": 0.1,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Lamp5 Lhx6",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.2,
+    "hits_nc": [
+     "GAD2",
+     "SLC6A1"
+    ],
+    "candidates_nc": [
+     "PTCHD4",
+     "ALK",
+     "GAD2",
+     "SV2C",
+     "SLC6A1",
+     "NXPH1",
+     "ITGA8",
+     "GRIN3A",
+     "GRIK1",
+     "UNC13C"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "OPC",
+    "n_reference": 12,
+    "n_ref_in_space": 11,
+    "ceiling_nc": 1.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "PDGFRA"
+    ],
+    "candidates_nc": [
+     "SEMA5A",
+     "XYLT1",
+     "PDGFRA",
+     "KAT2B",
+     "AC004852.2",
+     "LUZP2",
+     "CA10",
+     "LINC00511",
+     "TMEM132C",
+     "CHST11"
+    ],
+    "precision_naive": 0.4,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Oligodendrocyte",
+    "n_reference": 12,
+    "n_ref_in_space": 11,
+    "ceiling_nc": 1.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.2,
+    "hits_nc": [
+     "ENPP2",
+     "TF"
+    ],
+    "candidates_nc": [
+     "QKI",
+     "PHLPP1",
+     "TMEM165",
+     "DOCK5",
+     "C10orf90",
+     "ENPP2",
+     "TF",
+     "CLMN",
+     "PDE4B",
+     "FRMD4B"
+    ],
+    "precision_naive": 0.3,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Pax6",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "RGS12",
+     "GALNTL6",
+     "NR2F2-AS1",
+     "MAML3",
+     "ROBO2",
+     "PLD5",
+     "IL1RAPL2",
+     "SHISA6",
+     "HS3ST5",
+     "DLX6-AS1"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Pvalb",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "GAD2"
+    ],
+    "candidates_nc": [
+     "GAD2",
+     "TMEM132C",
+     "RUNX2",
+     "GRIK3",
+     "KIF26B",
+     "ADAMTS17",
+     "PTCHD4",
+     "DPP10",
+     "ADAMTS9-AS2",
+     "SULF1"
+    ],
+    "precision_naive": 0.1,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Sncg",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "AC132803.1",
+     "CHRNA7",
+     "THSD7B",
+     "EGFR",
+     "GRIK1",
+     "SGO1-AS1",
+     "PLD5",
+     "BTBD11",
+     "ZNF385D",
+     "THSD7A"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Sst",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "SOX6",
+     "GRIN3A",
+     "LHFPL3",
+     "SHISA6",
+     "PCDH11X",
+     "PAWR",
+     "GPC6",
+     "KCNIP1",
+     "PCDH15",
+     "SLC24A3"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Sst Chodl",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "SST"
+    ],
+    "candidates_nc": [
+     "NOS1",
+     "PCSK5",
+     "CRYBG3",
+     "UTRN",
+     "SST",
+     "SVIL",
+     "SHISA6",
+     "GRIK3",
+     "SGCZ",
+     "TRPC6"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "VLMC & Perivascular",
+    "n_reference": 0,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "ITIH5",
+     "ATP1A2",
+     "UTRN",
+     "ZFHX3",
+     "COLEC12",
+     "ARHGAP42",
+     "AC092957.1",
+     "PARD3",
+     "GRAMD2B",
+     "TIMP3"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": false
+   },
+   {
+    "cell_type": "Vip",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "DLX6-AS1",
+     "BTBD11",
+     "CALB2",
+     "THSD7A",
+     "AC233296.1",
+     "NR2F2-AS1",
+     "PROX1-AS1",
+     "ROBO2",
+     "C8orf34",
+     "EGFR"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   }
+  ],
+  "macro": {
+   "n_classes": 24,
+   "n_evaluable": 22,
+   "precision_nc": 0.05000000000000002,
+   "precision_naive": 0.05,
+   "ceiling_nc": 0.38636363636363635,
+   "n_ref_in_space": 89
+  }
+ },
+ "s4": {
+  "classes": [
+   {
+    "cell_type": "Astrocyte",
+    "n_reference": 12,
+    "n_ref_in_space": 11,
+    "ceiling_nc": 1.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "SLC1A3"
+    ],
+    "candidates_nc": [
+     "GLIS3",
+     "NEAT1",
+     "ATP1A2",
+     "PARD3B",
+     "SLC1A3",
+     "LINC00299",
+     "TPD52L1",
+     "NPAS3",
+     "ITPKB",
+     "BMPR1B"
+    ],
+    "precision_naive": 0.1,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Chandelier",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "SLC6A1"
+    ],
+    "candidates_nc": [
+     "CA8",
+     "TMEM132C",
+     "MYO16",
+     "PLD5",
+     "ERBB4",
+     "TAFA4",
+     "SLC6A1",
+     "SLC24A3",
+     "FGF13",
+     "ADAM12"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Endothelial",
+    "n_reference": 12,
+    "n_ref_in_space": 11,
+    "ceiling_nc": 1.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "EGFL7"
+    ],
+    "candidates_nc": [
+     "ABCB1",
+     "ANO2",
+     "FLI1",
+     "PRKCH",
+     "HLA-E",
+     "ERG",
+     "ADIPOR2",
+     "EGFL7",
+     "TGM2",
+     "PECAM1"
+    ],
+    "precision_naive": 0.1,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Immune",
+    "n_reference": 0,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "ARHGAP15",
+     "DOCK2",
+     "CHST11",
+     "DISC1",
+     "RUNX1",
+     "PTPRC",
+     "SFMBT2",
+     "ITPR2",
+     "INPP5D",
+     "SLCO2B1"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": false
+   },
+   {
+    "cell_type": "L2/3 IT",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 1,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "AC011287.1",
+     "LINC01378",
+     "CA10",
+     "LINC00276",
+     "AL157944.1",
+     "LINC02306",
+     "MEIS2",
+     "AC093607.1",
+     "DENND3",
+     "LINC00326"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L4 IT",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 3,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "AC073091.3",
+     "COBLL1",
+     "IL1RAPL2",
+     "LINC01725",
+     "LINC02232",
+     "AL356295.1",
+     "AC016687.2",
+     "AL450352.1",
+     "CNTN5",
+     "SCHLAP1"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L5 ET",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "KLHL1",
+     "PCSK6",
+     "MYO16",
+     "EYA4",
+     "FAM126A",
+     "HS3ST2",
+     "CDH20",
+     "SEMA6A",
+     "CNKSR3",
+     "TMEM163"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L5 IT",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 7,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "AC109466.1",
+     "AC060765.2",
+     "AC008415.1",
+     "IPCEF1",
+     "DPP10",
+     "HS3ST4",
+     "AC073091.3",
+     "PRUNE2",
+     "LDLRAD3",
+     "AC016687.2"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L5/6 NP",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "CPNE4",
+     "LHFPL3",
+     "NXPH2",
+     "CHRM2",
+     "PWRN1",
+     "IFNG-AS1",
+     "SAMD3",
+     "UST",
+     "CALCRL",
+     "LUZP2"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L6 CT",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "RYR3",
+     "DPP10",
+     "AC011246.1",
+     "ZFHX3",
+     "ROBO2",
+     "HS3ST2",
+     "TRIM22",
+     "MEIS2",
+     "SDK1",
+     "MEGF11"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L6 IT",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 2,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "AL136456.1",
+     "ZNF804B",
+     "AC011287.1",
+     "CA10",
+     "DPP10",
+     "HS3ST5",
+     "HS3ST2",
+     "ROBO2",
+     "DENND3",
+     "XYLT1"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L6 IT Car3",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "SYNPR",
+     "CPNE4",
+     "TMEM163",
+     "RASGEF1C",
+     "CHRM2",
+     "MCTP2",
+     "HS3ST4",
+     "HPSE2",
+     "LINC02073",
+     "AL136119.1"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L6b",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "SEMA3E",
+     "UTRN",
+     "RYR3",
+     "SGCZ",
+     "ADD3-AS1",
+     "LINC02232",
+     "AL136456.1",
+     "HS3ST5",
+     "TENM1",
+     "PWRN1"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Lamp5",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "GAD2"
+    ],
+    "candidates_nc": [
+     "PTCHD4",
+     "PRELID2",
+     "EGFR",
+     "AC132803.1",
+     "KIT",
+     "GAD2",
+     "ADAMTS9-AS2",
+     "EYA4",
+     "FBXL7",
+     "NXPH1"
+    ],
+    "precision_naive": 0.1,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Lamp5 Lhx6",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.2,
+    "hits_nc": [
+     "GAD2",
+     "SLC6A1"
+    ],
+    "candidates_nc": [
+     "ALK",
+     "PTCHD4",
+     "SV2C",
+     "GAD2",
+     "SLC6A1",
+     "NXPH1",
+     "GRIN3A",
+     "ITGA8",
+     "GRIK1",
+     "UNC13C"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "OPC",
+    "n_reference": 12,
+    "n_ref_in_space": 10,
+    "ceiling_nc": 1.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "PDGFRA"
+    ],
+    "candidates_nc": [
+     "XYLT1",
+     "PDGFRA",
+     "KAT2B",
+     "AC004852.2",
+     "LUZP2",
+     "LINC00511",
+     "CA10",
+     "SOX6",
+     "CHST11",
+     "TMEM132C"
+    ],
+    "precision_naive": 0.4,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Oligodendrocyte",
+    "n_reference": 12,
+    "n_ref_in_space": 11,
+    "ceiling_nc": 1.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.2,
+    "hits_nc": [
+     "ENPP2",
+     "TF"
+    ],
+    "candidates_nc": [
+     "QKI",
+     "PHLPP1",
+     "TMEM165",
+     "ENPP2",
+     "DOCK5",
+     "TF",
+     "C10orf90",
+     "PDE4B",
+     "CLMN",
+     "SHTN1"
+    ],
+    "precision_naive": 0.3,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Pax6",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "RGS12",
+     "NR2F2-AS1",
+     "GALNTL6",
+     "MAML3",
+     "PLD5",
+     "ROBO2",
+     "IL1RAPL2",
+     "SHISA6",
+     "HS3ST5",
+     "KCNIP1"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Pvalb",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "GAD2"
+    ],
+    "candidates_nc": [
+     "ZNF385D",
+     "TMEM132C",
+     "GAD2",
+     "RUNX2",
+     "KIF26B",
+     "ADAMTS17",
+     "PTCHD4",
+     "DPP10",
+     "ADAMTS9-AS2",
+     "SULF1"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Sncg",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "CHRNA7",
+     "AC132803.1",
+     "THSD7B",
+     "GRIK1",
+     "EGFR",
+     "PLD5",
+     "SGO1-AS1",
+     "BTBD11",
+     "NPAS3",
+     "ZNF385D"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Sst",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "GRIN3A",
+     "LHFPL3",
+     "SHISA6",
+     "TENM1",
+     "PCDH11X",
+     "PAWR",
+     "GPC6",
+     "KCNIP1",
+     "SLC24A3",
+     "PCDH15"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Sst Chodl",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "LHFPL3",
+     "UTRN",
+     "PCSK5",
+     "NOS1",
+     "SHISA6",
+     "ARHGAP24",
+     "CRYBG3",
+     "TRPC6",
+     "SGCZ",
+     "SRGAP1"
+    ],
+    "precision_naive": 0.1,
+    "evaluable": true
+   },
+   {
+    "cell_type": "VLMC & Perivascular",
+    "n_reference": 0,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "ITIH5",
+     "ATP1A2",
+     "UTRN",
+     "PARD3",
+     "ZFHX3",
+     "COLEC12",
+     "AC092957.1",
+     "ARHGAP42",
+     "IGFBP7",
+     "TIMP3"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": false
+   },
+   {
+    "cell_type": "Vip",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "DLX6-AS1",
+     "BTBD11",
+     "CALB2",
+     "THSD7A",
+     "AC233296.1",
+     "NR2F2-AS1",
+     "PROX1-AS1",
+     "ROBO2",
+     "EGFR",
+     "C8orf34"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   }
+  ],
+  "macro": {
+   "n_classes": 24,
+   "n_evaluable": 22,
+   "precision_nc": 0.04545454545454546,
+   "precision_naive": 0.05,
+   "ceiling_nc": 0.38636363636363635,
+   "n_ref_in_space": 88
+  }
+ },
+ "s5": {
+  "classes": [
+   {
+    "cell_type": "Astrocyte",
+    "n_reference": 12,
+    "n_ref_in_space": 11,
+    "ceiling_nc": 1.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "SLC1A3"
+    ],
+    "candidates_nc": [
+     "ATP1A2",
+     "GLIS3",
+     "PARD3B",
+     "SLC1A3",
+     "NEAT1",
+     "NPAS3",
+     "LINC00299",
+     "TPD52L1",
+     "BMPR1B",
+     "CDH20"
+    ],
+    "precision_naive": 0.1,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Chandelier",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "SLC6A1"
+    ],
+    "candidates_nc": [
+     "CA8",
+     "TMEM132C",
+     "SLC9A9",
+     "MYO16",
+     "PLD5",
+     "ERBB4",
+     "SLC24A3",
+     "TAFA4",
+     "SLC6A1",
+     "FGF13"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Endothelial",
+    "n_reference": 12,
+    "n_ref_in_space": 9,
+    "ceiling_nc": 0.9,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "FLI1",
+     "ANO2",
+     "ABCB1",
+     "PRKCH",
+     "HLA-E",
+     "ERG",
+     "GALNT15",
+     "TGM2",
+     "THSD4",
+     "PECAM1"
+    ],
+    "precision_naive": 0.1,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Immune",
+    "n_reference": 0,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "CHST11",
+     "DOCK2",
+     "ARHGAP15",
+     "FYB1",
+     "DISC1",
+     "RUNX1",
+     "ITPR2",
+     "SLCO2B1",
+     "INPP5D",
+     "PTPRC"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": false
+   },
+   {
+    "cell_type": "L2/3 IT",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 1,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "AC011287.1",
+     "LINC01378",
+     "CA10",
+     "LINC00276",
+     "AL157944.1",
+     "LINC02306",
+     "AC093607.1",
+     "MEIS2",
+     "AC034268.2",
+     "DENND3"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L4 IT",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 2,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "AC073091.3",
+     "COBLL1",
+     "IL1RAPL2",
+     "LINC01725",
+     "LINC02232",
+     "AL356295.1",
+     "AC016687.2",
+     "AL450352.1",
+     "SCHLAP1",
+     "CNTN5"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L5 ET",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "SPHKAP",
+     "EYA4",
+     "MYO16",
+     "KLHL1",
+     "HS3ST2",
+     "CDH20",
+     "FAM126A",
+     "TMEM163",
+     "SEMA6A",
+     "CNKSR3"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L5 IT",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 7,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "AC109466.1",
+     "AC060765.2",
+     "AC008415.1",
+     "IPCEF1",
+     "HS3ST4",
+     "DPP10",
+     "AC073091.3",
+     "PRUNE2",
+     "LDLRAD3",
+     "AC016687.2"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L5/6 NP",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "LHFPL3",
+     "NXPH2",
+     "CHRM2",
+     "PWRN1",
+     "SAMD3",
+     "IFNG-AS1",
+     "CALCRL",
+     "UST",
+     "LINC02822",
+     "LUZP2"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L6 CT",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "RYR3",
+     "DPP10",
+     "AC011246.1",
+     "ZFHX3",
+     "TRIM22",
+     "HS3ST2",
+     "GRIK3",
+     "MEIS2",
+     "SDK1",
+     "MEGF11"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L6 IT",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 2,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "AL136456.1",
+     "ZNF804B",
+     "AC011287.1",
+     "GRIK3",
+     "CA10",
+     "DPP10",
+     "HS3ST5",
+     "DENND3",
+     "HS3ST2",
+     "AC034268.2"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L6 IT Car3",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 3,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "AC110023.1",
+     "RGS12",
+     "ATP10A",
+     "CACHD1",
+     "THEMIS",
+     "LRMDA",
+     "GNB4",
+     "SYNPR",
+     "CA10",
+     "CPNE4"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "L6b",
+    "n_reference": 12,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "UTRN",
+     "RYR3",
+     "SGCZ",
+     "LINC02232",
+     "ADD3-AS1",
+     "GRIK3",
+     "AL136456.1",
+     "HS3ST5",
+     "TENM1",
+     "PWRN1"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Lamp5",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "GAD2"
+    ],
+    "candidates_nc": [
+     "MYO16",
+     "PTCHD4",
+     "EGFR",
+     "PRELID2",
+     "AC132803.1",
+     "KIT",
+     "GAD2",
+     "ADAMTS9-AS2",
+     "EYA4",
+     "NXPH1"
+    ],
+    "precision_naive": 0.1,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Lamp5 Lhx6",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.2,
+    "hits_nc": [
+     "GAD2",
+     "SLC6A1"
+    ],
+    "candidates_nc": [
+     "PTCHD4",
+     "ALK",
+     "SV2C",
+     "GAD2",
+     "KAZN",
+     "SLC6A1",
+     "NXPH1",
+     "ITGA8",
+     "GRIN3A",
+     "GRIK1"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "OPC",
+    "n_reference": 12,
+    "n_ref_in_space": 11,
+    "ceiling_nc": 1.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "PDGFRA"
+    ],
+    "candidates_nc": [
+     "SEMA5A",
+     "XYLT1",
+     "PDGFRA",
+     "KAT2B",
+     "AC004852.2",
+     "LUZP2",
+     "LINC00511",
+     "CA10",
+     "CHST11",
+     "TMEM132C"
+    ],
+    "precision_naive": 0.4,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Oligodendrocyte",
+    "n_reference": 12,
+    "n_ref_in_space": 11,
+    "ceiling_nc": 1.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.2,
+    "hits_nc": [
+     "ENPP2",
+     "TF"
+    ],
+    "candidates_nc": [
+     "PHLPP1",
+     "QKI",
+     "TMEM165",
+     "ENPP2",
+     "DOCK5",
+     "TF",
+     "PDE4B",
+     "C10orf90",
+     "CLMN",
+     "PLEKHH1"
+    ],
+    "precision_naive": 0.3,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Pax6",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "RGS12",
+     "NR2F2-AS1",
+     "GALNTL6",
+     "MAML3",
+     "PLD5",
+     "IL1RAPL2",
+     "SHISA6",
+     "HS3ST5",
+     "KAZN",
+     "DLX6-AS1"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Pvalb",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "GAD2"
+    ],
+    "candidates_nc": [
+     "ZNF385D",
+     "TMEM132C",
+     "KAZN",
+     "GAD2",
+     "RUNX2",
+     "GRIK3",
+     "KIF26B",
+     "ADAMTS17",
+     "PTCHD4",
+     "DPP10"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Sncg",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "THSD7B",
+     "CHRNA7",
+     "AC132803.1",
+     "EGFR",
+     "GRIK1",
+     "PLD5",
+     "SGO1-AS1",
+     "COL21A1",
+     "BTBD11",
+     "NPAS3"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Sst",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "GRIN3A",
+     "LHFPL3",
+     "SHISA6",
+     "TENM1",
+     "PCDH11X",
+     "PAWR",
+     "KCNIP1",
+     "SLC24A3",
+     "PCDH15",
+     "COL25A1"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   },
+   {
+    "cell_type": "Sst Chodl",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.1,
+    "hits_nc": [
+     "SST"
+    ],
+    "candidates_nc": [
+     "LHFPL3",
+     "SST",
+     "NOS1",
+     "PCSK5",
+     "SVIL",
+     "TRPC6",
+     "SHISA6",
+     "SGCZ",
+     "CRYBG3",
+     "SRGAP1"
+    ],
+    "precision_naive": 0.1,
+    "evaluable": true
+   },
+   {
+    "cell_type": "VLMC & Perivascular",
+    "n_reference": 0,
+    "n_ref_in_space": 0,
+    "ceiling_nc": 0.0,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "ATP1A2",
+     "ITIH5",
+     "UTRN",
+     "COLEC12",
+     "PARD3",
+     "ZFHX3",
+     "ARHGAP42",
+     "AC092957.1",
+     "NEAT1",
+     "GRAMD2B"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": false
+   },
+   {
+    "cell_type": "Vip",
+    "n_reference": 12,
+    "n_ref_in_space": 5,
+    "ceiling_nc": 0.5,
+    "n_caption_genes": 8,
+    "precision_nc": 0.0,
+    "hits_nc": [],
+    "candidates_nc": [
+     "PWRN1",
+     "BTBD11",
+     "THSD7A",
+     "CALB2",
+     "AC233296.1",
+     "NR2F2-AS1",
+     "PROX1-AS1",
+     "EGFR",
+     "C8orf34",
+     "SDK1"
+    ],
+    "precision_naive": 0.0,
+    "evaluable": true
+   }
+  ],
+  "macro": {
+   "n_classes": 24,
+   "n_evaluable": 22,
+   "precision_nc": 0.045454545454545456,
+   "precision_naive": 0.05,
+   "ceiling_nc": 0.38181818181818183,
+   "n_ref_in_space": 87
+  }
+ }
+}
